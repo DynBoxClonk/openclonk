@@ -1182,7 +1182,7 @@ bool C4Playback::StreamToRecord(const char *szStream, StdStrBuf *pRecordFile)
 
 	// Copy original scenario
 	const char *szOrigin = Initial.Head.Origin.getData();
-	char szRecord[_MAX_PATH + 1];
+	char szRecord[_MAX_PATH_LEN];
 	SCopy(szStream, szRecord, _MAX_PATH);
 	if (GetExtension(szRecord))
 		*(GetExtension(szRecord) - 1) = 0;

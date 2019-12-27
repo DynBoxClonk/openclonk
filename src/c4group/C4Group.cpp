@@ -368,7 +368,7 @@ bool C4Group_ReadFile(const char *szFile, char **pData, size_t *iSize)
 	// security
 	if (!szFile || !pData) return false;
 	// get mother path & file name
-	char szPath[_MAX_PATH + 1];
+	char szPath[_MAX_PATH_LEN];
 	GetParentPath(szFile, szPath);
 	const char *pFileName = GetFilename(szFile);
 	// open mother group
@@ -1460,7 +1460,7 @@ bool C4Group_IsExcluded(const char *szFile, const char *szExcludeList)
 	if (!szFile || !szFile[0] || !szExcludeList || !szExcludeList[0]) return false;
 	// Process segmented exclude list
 	char cSeparator = (SCharCount(';', szExcludeList) ? ';' : '|');
-	char szSegment[_MAX_PATH + 1];
+	char szSegment[_MAX_PATH_LEN];
 	for (int i = 0; SCopySegment(szExcludeList, i, szSegment, cSeparator); i++)
 		if (WildcardMatch(szSegment, GetFilename(szFile)))
 			return true;
@@ -1487,7 +1487,7 @@ bool C4Group::Extract(const char *szFiles, const char *szExtractTo, const char *
 
 	// Process segmented list
 	char cSeparator = (SCharCount(';', szFiles) ? ';' : '|');
-	char szFileName[_MAX_PATH + 1];
+	char szFileName[_MAX_PATH_LEN];
 	for (int cseg=0; SCopySegment(szFiles, cseg, szFileName, cSeparator); cseg++)
 	{
 		// Search all entries

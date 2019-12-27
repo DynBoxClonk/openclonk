@@ -57,7 +57,7 @@ const char *GetFilename(const char *szPath)
 const char* GetFilenameOnly(const char *strFilename)
 {
 	// Get filename to static buffer
-	static char strBuffer[_MAX_PATH + 1];
+	static char strBuffer[_MAX_PATH_LEN];
 	SCopy(GetFilename(strFilename), strBuffer);
 	// Truncate extension
 	RemoveExtension(strBuffer);
@@ -146,7 +146,7 @@ void RealPath(const char *szFilename, char *pFullFilename)
 	free(wpath);
 #else
 	char *pSuffix = nullptr;
-	char szCopy[_MAX_PATH + 1];
+	char szCopy[_MAX_PATH_LEN];
 	for (;;)
 	{
 		// Try to convert to full filename. Note this might fail if the given file doesn't exist
@@ -709,7 +709,7 @@ bool DirectoryExists(const char *szFilename)
 {
 	// Ignore trailing slash or backslash, except when we are probing the
 	// root directory '/'.
-	char bufFilename[_MAX_PATH + 1];
+	char bufFilename[_MAX_PATH_LEN];
 	if (szFilename && szFilename[0])
 	{
 		unsigned int len = SLen(szFilename);

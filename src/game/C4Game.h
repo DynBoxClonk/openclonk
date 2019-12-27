@@ -104,7 +104,7 @@ public:
 	char PlayerFilenames[20*_MAX_PATH_LEN];
 	char DefinitionFilenames[20*_MAX_PATH_LEN];
 	char DirectJoinAddress[_MAX_PATH_LEN];
-	char DirectJoinTempFilename[_MAX_PATH + 1];
+	char DirectJoinTempFilename[_MAX_PATH_LEN];
 	std::unique_ptr<C4Network2Reference> pJoinReference;
 	int32_t StartupPlayerCount;
 	int32_t StartupTeamCount;

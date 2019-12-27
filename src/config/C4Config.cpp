@@ -789,7 +789,7 @@ bool C4Config::RemoveModule(const char *szPath, char *szModules)
 void C4Config::ExpandEnvironmentVariables(char *strPath, size_t iMaxLen)
 {
 #ifdef _WIN32
-	wchar_t buf[_MAX_PATH + 1];
+	wchar_t buf[_MAX_PATH_LEN];
 	ExpandEnvironmentStringsW(GetWideChar(strPath), buf, _MAX_PATH);
 	SCopy(StdStrBuf(buf).getData(), strPath, iMaxLen);
 #else // __linux__ or __APPLE___

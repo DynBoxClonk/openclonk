@@ -149,11 +149,11 @@ C4GroupSet C4Language::GetPackGroups(C4Group & hGroup)
 {
 	// Build a group set containing the provided group and
 	// alternative groups for cross-loading from a language pack
-	char strRelativePath[_MAX_PATH + 1];
-	char strTargetLocation[_MAX_PATH + 1];
-	char strPackPath[_MAX_PATH + 1];
-	char strPackGroupLocation[_MAX_PATH + 1];
-	char strAdvance[_MAX_PATH + 1];
+	char strRelativePath[_MAX_PATH_LEN];
+	char strTargetLocation[_MAX_PATH_LEN];
+	char strPackPath[_MAX_PATH_LEN];
+	char strPackGroupLocation[_MAX_PATH_LEN];
+	char strAdvance[_MAX_PATH_LEN];
 
 	// Store wanted target location
 	SCopy(Config.AtRelativePath(hGroup.GetFullName().getData()), strRelativePath, _MAX_PATH);

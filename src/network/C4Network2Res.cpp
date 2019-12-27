@@ -659,7 +659,7 @@ bool C4Network2Res::CalculateSHA()
 	// already present?
 	if (Core.hasFileSHA()) return true;
 	// get the file
-	char szStandalone[_MAX_PATH + 1];
+	char szStandalone[_MAX_PATH_LEN];
 	if (!GetStandalone(szStandalone, _MAX_PATH, false))
 		SCopy(szFile, szStandalone, _MAX_PATH);
 	// get the hash
@@ -1149,7 +1149,7 @@ bool C4Network2Res::OptimizeStandalone(bool fSilent)
 		// copy to temp file, if needed
 		if (!fTempFile && SEqual(szFile, szStandalone))
 		{
-			char szNewStandalone[_MAX_PATH + 1];
+			char szNewStandalone[_MAX_PATH_LEN];
 			if (!pParent->FindTempResFileName(szStandalone, szNewStandalone))
 				{ if (!fSilent) Log("OptimizeStandalone: could not find free name for temporary file!"); return false; }
 			if (!C4Group_CopyItem(szStandalone, szNewStandalone))

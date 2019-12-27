@@ -1951,7 +1951,7 @@ bool C4Game::QuickSave(const char *strFilename, const char *strTitle, bool fForc
 		{ Log(LoadResStr("IDS_GAME_FAILSAVEGAME")); return false; }
 
 	// Create savegame subfolder(s)
-	char strSaveFolder[_MAX_PATH + 1];
+	char strSaveFolder[_MAX_PATH_LEN];
 	for (uint32_t i = 0; i < SCharCount(DirectorySeparator, strFilename); i++)
 	{
 		SCopy(Config.AtUserDataPath(C4CFN_Savegames), strSaveFolder); AppendBackslash(strSaveFolder);

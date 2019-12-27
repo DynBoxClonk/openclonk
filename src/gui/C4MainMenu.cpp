@@ -74,7 +74,7 @@ bool C4MainMenu::ActivateNewPlayer(int32_t iPlayer)
 	for (DirectoryIterator iter(Config.General.UserDataPath); *iter; ++iter)
 		if (WildcardMatch("*.ocp", *iter))
 		{
-			char szFilename[_MAX_PATH_LEN], szCommand[_MAX_PATH+30+1];
+			char szFilename[_MAX_PATH_LEN], szCommand[_MAX_PATH_LEN+30];
 			SCopy(*iter, szFilename, _MAX_PATH);
 			if (DirectoryExists(szFilename)) continue;
 			if (::Players.FileInUse(szFilename)) continue;
@@ -712,8 +712,8 @@ bool C4MainMenu::MenuCommand(const char *szCommand, bool fIsCloseCommand)
 	// Save game
 	if (SEqual2(szCommand, "Save:Game:"))
 	{
-		char strFilename[_MAX_PATH + 1]; SCopySegment(szCommand, 2, strFilename, ':', _MAX_PATH);
-		char strTitle[_MAX_PATH + 1]; SCopy(szCommand + SCharPos(':', szCommand, 2) + 1, strTitle, _MAX_PATH);
+		char strFilename[_MAX_PATH_LEN]; SCopySegment(szCommand, 2, strFilename, ':', _MAX_PATH);
+		char strTitle[_MAX_PATH_LEN]; SCopy(szCommand + SCharPos(':', szCommand, 2) + 1, strTitle, _MAX_PATH);
 		Game.QuickSave(strFilename, strTitle);
 		ActivateSavegame(Player);
 		return true;

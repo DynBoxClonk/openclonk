@@ -609,7 +609,7 @@ bool C4Network2::RetrieveScenario(char *szScenario)
 		return false;
 
 	// create unpacked copy of dynamic data
-	char szTempDynamic[_MAX_PATH + 1];
+	char szTempDynamic[_MAX_PATH_LEN];
 	if (!ResList.FindTempResFileName(pDynamic->getFile(), szTempDynamic) ||
 	    !C4Group_CopyItem(pDynamic->getFile(), szTempDynamic) ||
 	    !C4Group_UnpackDirectory(szTempDynamic))
