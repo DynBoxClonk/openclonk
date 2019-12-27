@@ -477,7 +477,7 @@ bool C4UpdatePackage::DoUpdate(C4Group *pGrpFrom, C4GroupEx *pGrpTo, const char 
 	{
 		// try to open target group
 		C4GroupEx ItemGroupTo;
-		char strTempGroup[_MAX_PATH+1]; strTempGroup[0] = 0;
+		char strTempGroup[_MAX_PATH_LEN]; strTempGroup[0] = 0;
 		if (!ItemGroupTo.OpenAsChild(pGrpTo, strFileName, false, true))
 			return false;
 		// update children
@@ -689,7 +689,7 @@ bool C4UpdatePackage::MakeUpdate(const char *strFile1, const char *strFile2, con
 	return true;
 }
 
-extern char C4Group_TempPath[_MAX_PATH+1];
+extern char C4Group_TempPath[_MAX_PATH_LEN];
 
 bool C4UpdatePackage::MkUp(C4Group *pGrp1, C4Group *pGrp2, C4GroupEx *pUpGrp, bool *fModified)
 {

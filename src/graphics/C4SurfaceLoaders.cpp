@@ -93,7 +93,7 @@ bool C4Surface::Load(C4Group &hGroup, const char *szFilename, bool, bool fNoErrI
 		char strExtension[128 + 1]; SCopy(GetExtension(szFilename), strExtension, 128);
 		if (strExtension[0])
 		{
-			char scaled_name[_MAX_PATH+1];
+			char scaled_name[_MAX_PATH_LEN];
 			std::string wildcard(strBasename);
 			wildcard += ".*.";
 			wildcard += strExtension;
@@ -213,7 +213,7 @@ bool C4Surface::ReadPNG(CStdStream &hGroup, int iFlags)
 bool C4Surface::SavePNG(C4Group &hGroup, const char *szFilename, bool fSaveAlpha, bool fSaveOverlayOnly)
 {
 	// Using temporary file at C4Group temp path
-	char szTemp[_MAX_PATH+1];
+	char szTemp[_MAX_PATH_LEN];
 	SCopy(C4Group_GetTempPath(),szTemp);
 	SAppend(GetFilename(szFilename),szTemp);
 	MakeTempFilename(szTemp);

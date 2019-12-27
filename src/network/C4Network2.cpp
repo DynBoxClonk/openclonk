@@ -1774,7 +1774,7 @@ bool C4Network2::CreateDynamic(bool fInit)
 	// log
 	Log(LoadResStr("IDS_NET_SAVING"));
 	// compose file name
-	char szDynamicBase[_MAX_PATH+1], szDynamicFilename[_MAX_PATH+1];
+	char szDynamicBase[_MAX_PATH_LEN], szDynamicFilename[_MAX_PATH_LEN];
 	sprintf(szDynamicBase, Config.AtNetworkPath("Dyn%s"), GetFilename(Game.ScenarioFilename), _MAX_PATH);
 	if (!ResList.FindTempResFileName(szDynamicBase, szDynamicFilename))
 		Log(LoadResStr("IDS_NET_SAVE_ERR_CREATEDYNFILE"));

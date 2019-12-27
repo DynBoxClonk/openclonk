@@ -74,7 +74,7 @@ bool C4MainMenu::ActivateNewPlayer(int32_t iPlayer)
 	for (DirectoryIterator iter(Config.General.UserDataPath); *iter; ++iter)
 		if (WildcardMatch("*.ocp", *iter))
 		{
-			char szFilename[_MAX_PATH+1], szCommand[_MAX_PATH+30+1];
+			char szFilename[_MAX_PATH_LEN], szCommand[_MAX_PATH+30+1];
 			SCopy(*iter, szFilename, _MAX_PATH);
 			if (DirectoryExists(szFilename)) continue;
 			if (::Players.FileInUse(szFilename)) continue;
@@ -391,8 +391,8 @@ bool C4MainMenu::ActivateSavegame(int32_t iPlayer)
 	if (!Game.CanQuickSave()) return false;
 
 	// Menu symbol/init
-	char DirPath[_MAX_PATH+1];
-	char ScenName[_MAX_PATH+1]; *ScenName=0;
+	char DirPath[_MAX_PATH_LEN];
+	char ScenName[_MAX_PATH_LEN]; *ScenName=0;
 
 	InitRefSym(GfxR->fctMenu.GetPhase(0), LoadResStr("IDS_MENU_CPSAVEGAME"), iPlayer);
 	SetAlignment(C4MN_Align_Left | C4MN_Align_Bottom);

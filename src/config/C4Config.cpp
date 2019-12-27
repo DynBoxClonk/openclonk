@@ -517,7 +517,7 @@ void C4ConfigGeneral::DeterminePaths()
 	CreatePath(UserDataPath);
 }
 
-static char AtPathFilename[_MAX_PATH+1];
+static char AtPathFilename[_MAX_PATH_LEN];
 
 const char* C4Config::AtExePath(const char *szFilename)
 {

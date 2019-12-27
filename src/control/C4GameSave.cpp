@@ -306,7 +306,7 @@ void C4GameSave::WriteDescDefinitions(StdStrBuf &sBuf)
 	// Definition specs
 	if (Game.DefinitionFilenames[0])
 	{
-		char szDef[_MAX_PATH+1];
+		char szDef[_MAX_PATH_LEN];
 		// Desc
 		sBuf.Append(LoadResStr("IDS_DESC_DEFSPECS"));
 		// Get definition modules

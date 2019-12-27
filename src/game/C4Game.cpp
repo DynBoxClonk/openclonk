@@ -402,7 +402,7 @@ bool C4Game::Init()
 				return false;
 
 		// get scenario
-		char szScenario[_MAX_PATH+1];
+		char szScenario[_MAX_PATH_LEN];
 		SetInitProgress(6);
 		if (!Network.RetrieveScenario(szScenario)) return false;
 

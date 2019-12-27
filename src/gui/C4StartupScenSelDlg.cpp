@@ -571,14 +571,14 @@ bool C4ScenarioListLoader::Entry::RenameTo(const char *szNewName)
 	// some name sanity validation
 	if (!szNewName || !*szNewName) return false;
 	if (SEqual(szNewName, sName.getData())) return true;
-	char fn[_MAX_PATH+1];
+	char fn[_MAX_PATH_LEN];
 	SCopy(szNewName, fn, _MAX_PATH);
 	// generate new file name
 	MakeFilenameFromTitle(fn);
 	if (!*fn) return false;
 	const char *szExt = GetDefaultExtension();
 	if (szExt) { SAppend(".", fn, _MAX_PATH); SAppend(szExt, fn, _MAX_PATH); }
-	char fullfn[_MAX_PATH+1];
+	char fullfn[_MAX_PATH_LEN];
 	SCopy(sFilename.getData(), fullfn, _MAX_PATH);
 	char *fullfn_fn = GetFilename(fullfn);
 	SCopy(fn, fullfn_fn, _MAX_PATH - (fullfn_fn - fullfn));

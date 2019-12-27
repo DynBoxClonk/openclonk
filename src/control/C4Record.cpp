@@ -146,12 +146,12 @@ bool C4Record::Start(bool fInitial)
 		return false;
 
 	// open control record file
-	char szCtrlRecFilename[_MAX_PATH+1 + _MAX_FNAME];
+	char szCtrlRecFilename[_MAX_PATH_LEN + _MAX_FNAME];
 	sprintf(szCtrlRecFilename, "%s" DirSep C4CFN_CtrlRec, sFilename.getData());
 	if (!CtrlRec.Create(szCtrlRecFilename)) return false;
 
 	// open log file in record
-	char szLogRecFilename[_MAX_PATH+1 + _MAX_FNAME];
+	char szLogRecFilename[_MAX_PATH_LEN + _MAX_FNAME];
 	sprintf(szLogRecFilename, "%s" DirSep C4CFN_LogRec, sFilename.getData());
 	if (!LogRec.Create(szLogRecFilename)) return false;
 
@@ -1167,7 +1167,7 @@ bool C4Playback::StreamToRecord(const char *szStream, StdStrBuf *pRecordFile)
 	StdBuf InitialData = *chunkIter->pFileData;
 
 	// Put to temporary file and unpack
-	char szInitial[_MAX_PATH+1] = "~initial.tmp";
+	char szInitial[_MAX_PATH_LEN] = "~initial.tmp";
 	MakeTempFilename(szInitial);
 	if (!InitialData.SaveToFile(szInitial) ||
 	    !C4Group_UnpackDirectory(szInitial))
