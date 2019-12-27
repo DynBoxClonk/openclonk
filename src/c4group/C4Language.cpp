@@ -80,7 +80,7 @@ bool C4Language::Init()
 	{
 		// Look for available language packs in Language.ocg
 		C4Group *pPack;
-		char strPackFilename[_MAX_FNAME + 1], strEntry[_MAX_FNAME + 1];
+		char strPackFilename[_MAX_FNAME_LEN], strEntry[_MAX_FNAME_LEN];
 		if (PackDirectory.Open(langPath.getData()))
 		{
 			while (PackDirectory.FindNextEntry("*.ocg", strEntry))
@@ -307,7 +307,7 @@ namespace
 
 void C4Language::LoadInfos(C4Group &hGroup)
 {
-	char strEntry[_MAX_FNAME + 1];
+	char strEntry[_MAX_FNAME_LEN];
 	char *strTable;
 	// Look for language string tables
 	hGroup.ResetSearch();
@@ -398,7 +398,7 @@ bool C4Language::InitStringTable(const char *strCode)
 bool C4Language::LoadStringTable(C4Group &hGroup, const char *strCode)
 {
 	// Compose entry name
-	char strEntry[_MAX_FNAME + 1];
+	char strEntry[_MAX_FNAME_LEN];
 	sprintf(strEntry, "Language%s.txt", strCode); // ...should use C4CFN_Language here
 	// Load string table
 	if (!C4LangStringTable::GetSystemStringTable().Load(hGroup, strEntry))

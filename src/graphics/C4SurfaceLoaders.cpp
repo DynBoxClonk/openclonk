@@ -78,7 +78,7 @@ bool C4Surface::Load(C4Group &hGroup, const char *szFilename, bool, bool fNoErrI
 	int ScaleToSet = 1;
 	// Image is scaled?
 	StdStrBuf strFilename;
-	char strBasename[_MAX_FNAME + 1]; SCopy(szFilename, strBasename, _MAX_FNAME); RemoveExtension(strBasename);
+	char strBasename[_MAX_FNAME_LEN]; SCopy(szFilename, strBasename, _MAX_FNAME); RemoveExtension(strBasename);
 	int32_t extpos; int scale;
 	if (((extpos = SCharLastPos('.', strBasename)) > -1) && (sscanf(strBasename+extpos+1, "%d", &scale) == 1))
 	{

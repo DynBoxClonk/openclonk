@@ -115,7 +115,7 @@ bool C4Group_ApplyUpdate(C4Group &hGroup, unsigned long ParentProcessID)
 		if (hGroup.EntryCount() - hGroup.EntryCount(C4CFN_UpdateCore) - hGroup.EntryCount("*.ocu") > 0)
 		{
 			// Notice: AutoUpdate.txt is currently not processed...
-			char strEntry[_MAX_FNAME + 1] = "";
+			char strEntry[_MAX_FNAME_LEN] = "";
 			StdStrBuf strList;
 			printf("Updating binaries...\n");
 			hGroup.ResetSearch();
@@ -141,7 +141,7 @@ bool C4Group_ApplyUpdate(C4Group &hGroup, unsigned long ParentProcessID)
 	if (hGroup.FindEntry("*.ocu"))
 	{
 		// Process all children
-		char strEntry[_MAX_FNAME + 1] = "";
+		char strEntry[_MAX_FNAME_LEN] = "";
 		C4Group hChild;
 		hGroup.ResetSearch();
 		while (hGroup.FindNextEntry("*.ocu", strEntry))
@@ -731,7 +731,7 @@ bool C4UpdatePackage::MkUp(C4Group *pGrp1, C4Group *pGrp2, C4GroupEx *pUpGrp, bo
 			if (!pGrp1 || !pChildGrp1->OpenAsChild(pGrp1, strItemName))
 				{ delete pChildGrp1; pChildGrp1 = nullptr; }
 			// open group for update data
-			C4GroupEx UpdGroup; char strTempGroupName[_MAX_FNAME + 1];
+			C4GroupEx UpdGroup; char strTempGroupName[_MAX_FNAME_LEN];
 			strTempGroupName[0] = 0;
 			if (!UpdGroup.OpenAsChild(pUpGrp, strItemName))
 			{

@@ -112,7 +112,7 @@ bool C4Record::Start(bool fInitial)
 
 	// various infos
 	StdStrBuf sDemoFolder(C4CFN_Records);
-	char sScenName[_MAX_FNAME+ 1]; SCopy(GetFilenameOnly(Game.Parameters.Scenario.getFile()), sScenName, _MAX_FNAME);
+	char sScenName[_MAX_FNAME_LEN]; SCopy(GetFilenameOnly(Game.Parameters.Scenario.getFile()), sScenName, _MAX_FNAME);
 
 	// remove trailing numbers from scenario name (e.g. from savegames) - could we perhaps use C4S.Head.Origin instead...?
 	char *pScenNameEnd = sScenName + SLen(sScenName);
