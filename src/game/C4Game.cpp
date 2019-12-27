@@ -2391,7 +2391,7 @@ bool C4Game::InitScriptEngine()
 	C4Group &File = Application.SystemGroup;
 
 	// get scripts
-	char fn[_MAX_FNAME+1] = { 0 };
+	char fn[_MAX_FNAME_LEN] = { 0 };
 	File.ResetSearch();
 	while (File.FindNextEntry(C4CFN_ScriptFiles, fn, nullptr, !!fn[0]))
 	{
@@ -2865,12 +2865,12 @@ bool C4Game::LoadScenarioComponents()
 	if (ScenarioFile.EntryCount(C4CFN_Names))
 		Names.Load(ScenarioFile, C4CFN_Names);
 	// scenario sections
-	char fn[_MAX_FNAME+1] = { 0 };
+	char fn[_MAX_FNAME_LEN] = { 0 };
 	ScenarioFile.ResetSearch(); *fn=0;
 	while (ScenarioFile.FindNextEntry(C4CFN_ScenarioSections, fn, nullptr, !!*fn))
 	{
 		// get section name
-		char SctName[_MAX_FNAME+1];
+		char SctName[_MAX_FNAME_LEN];
 		int32_t iWildcardPos = SCharPos('*', C4CFN_ScenarioSections);
 		SCopy(fn + iWildcardPos, SctName, _MAX_FNAME);
 		RemoveExtension(SctName);
@@ -2892,7 +2892,7 @@ bool C4Game::LoadAdditionalSystemGroup(C4Group &parent_group)
 {
 	// called for scenario local and definition local System.ocg groups
 	C4Group SysGroup;
-	char fn[_MAX_FNAME+1] = { 0 };
+	char fn[_MAX_FNAME_LEN] = { 0 };
 	if (SysGroup.OpenAsChild(&parent_group, C4CFN_System))
 	{
 		C4LangStringTable *pSysGroupString = new C4LangStringTable();

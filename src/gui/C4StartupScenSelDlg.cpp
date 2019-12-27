@@ -1041,7 +1041,7 @@ bool C4ScenarioListLoader::SubFolder::DoLoadContents(C4ScenarioListLoader *pLoad
 	// initial progress estimate
 	if (!pLoader->DoProcessCallback(0, iEntryCount, nullptr)) return false;
 	// iterate through group contents
-	char ChildFilename[_MAX_FNAME+1]; StdStrBuf sChildFilename; int32_t iLoadCount=0;
+	char ChildFilename[_MAX_FNAME_LEN]; StdStrBuf sChildFilename; int32_t iLoadCount=0;
 	for (szSearchMask = szC4CFN_ScenarioFiles; szSearchMask;)
 	{
 		Group.ResetSearch();
@@ -1968,7 +1968,7 @@ void C4StartupScenSelDlg::UpdateAchievements()
 {
 	// Extract all achievements from activated player files and merge them
 	Achievements.Clear();
-	char PlayerFilename[_MAX_FNAME+1];
+	char PlayerFilename[_MAX_FNAME_LEN];
 	C4Group PlayerGrp;
 	for (int i = 0; SCopySegment(Config.General.Participants, i, PlayerFilename, ';', _MAX_FNAME, true); i++)
 	{

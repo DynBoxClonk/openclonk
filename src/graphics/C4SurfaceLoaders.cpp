@@ -28,7 +28,7 @@
 bool C4Surface::LoadAny(C4Group &hGroup, const char *szName, bool fOwnPal, bool fNoErrIfNotFound, int iFlags)
 {
 	// Entry name
-	char szFilename[_MAX_FNAME+1];
+	char szFilename[_MAX_FNAME_LEN];
 	SCopy(szName,szFilename,_MAX_FNAME);
 	char *szExt = GetExtension(szFilename);
 	if (!*szExt)
@@ -50,7 +50,7 @@ bool C4Surface::LoadAny(C4Group &hGroup, const char *szName, bool fOwnPal, bool 
 bool C4Surface::LoadAny(C4GroupSet &hGroupset, const char *szName, bool fOwnPal, bool fNoErrIfNotFound, int iFlags)
 {
 	// Entry name
-	char szFilename[_MAX_FNAME+1];
+	char szFilename[_MAX_FNAME_LEN];
 	SCopy(szName,szFilename,_MAX_FNAME);
 	char *szExt = GetExtension(szFilename);
 	C4Group * pGroup;

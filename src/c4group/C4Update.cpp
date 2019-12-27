@@ -531,7 +531,7 @@ bool C4UpdatePackage::DoGrpUpdate(C4Group *pUpdateData, C4GroupEx *pGrpTo)
 	if (pUpdateData->LoadEntry(C4CFN_UpdateEntries, &pData, nullptr, 1))
 	{
 		// delete all entries that do not appear in the entries list
-		char strItemName[_MAX_FNAME+1], strItemName2[_MAX_FNAME+1];
+		char strItemName[_MAX_FNAME_LEN], strItemName2[_MAX_FNAME_LEN];
 		pGrpTo->ResetSearch();
 		while (pGrpTo->FindNextEntry("*", strItemName))
 		{

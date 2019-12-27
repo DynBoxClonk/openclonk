@@ -182,7 +182,8 @@ bool RestartApplication(std::vector<const char *> parameters);
 #define _O_BINARY 0
 #define _MAX_PATH     PATH_MAX     // Max path length
 #define _MAX_PATH_LEN PATH_MAX + 1 // Max path length for array size
-#define _MAX_FNAME NAME_MAX
+#define _MAX_FNAME     NAME_MAX    // Max filename length
+#define _MAX_FNAME_LEN NAME_MAX + 1// Max filename length for array size
 
 bool CopyFile(const char *szSource, const char *szTarget, bool FailIfExists);
 #endif

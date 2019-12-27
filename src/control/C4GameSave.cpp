@@ -115,7 +115,7 @@ bool C4GameSave::SaveScenarioSections()
 	if (!Game.pScenarioSections) return true;
 	// prepare section filename
 	int iWildcardPos = SCharPos('*', C4CFN_ScenarioSections);
-	char fn[_MAX_FNAME+1];
+	char fn[_MAX_FNAME_LEN];
 	// save all modified sections
 	for (C4ScenarioSection *pSect = Game.pScenarioSections; pSect; pSect = pSect->pNext)
 	{
