@@ -51,7 +51,7 @@ public func SetInputSignal(object operator, object sender, bool value)
 	// Show the object being operated
 	if (operator && lib_mechanism.set_plr_view)
 	{
-		SetPlrView(operator->GetController(), this);
+		SetPlayerView(operator->GetController(), this);
 		if (lib_mechanism.temp_light)
 		{
 			lib_mechanism.temp_light->RemoveObject();
@@ -70,7 +70,7 @@ public func SetInputSignal(object operator, object sender, bool value)
  
  By default this is set to true.
  */
-public func SetPlrViewOnSignalChange(bool show)
+public func SetPlayerViewOnSignalChange(bool show)
 {
 	lib_mechanism.set_plr_view = show;
 }
@@ -81,7 +81,7 @@ public func SetPlrViewOnSignalChange(bool show)
 public func SaveScenarioObject(proplist props)
 {
 	if (!inherited(props, ...)) return false;
-	if (lib_mechanism.set_plr_view) props->AddCall("PlrView", this, "SetPlrViewOnSignalChange", lib_mechanism.set_plr_view);
+	if (lib_mechanism.set_plr_view) props->AddCall("PlrView", this, "SetPlayerViewOnSignalChange", lib_mechanism.set_plr_view);
 	return true;
 }
 
@@ -90,7 +90,7 @@ public func SaveScenarioObject(proplist props)
 public func Definition(proplist def)
 {
 	if (!def.EditorProps) def.EditorProps = {};
-	def.EditorProps.set_plr_view =  { Name = "$SetPlrView$", EditorHelp="$SetPlrViewDesc$", Type="bool", Set="SetPlrViewOnSignalChange" };
+	def.EditorProps.set_plr_view =  { Name = "$SetPlayerView$", EditorHelp="$SetPlayerViewDesc$", Type="bool", Set="SetPlayerViewOnSignalChange" };
 	return _inherited(def, ...);
 }
 

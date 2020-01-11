@@ -236,10 +236,10 @@ func Definition(def)
 		Players = Evaluator.PlayerList,
 		ID = Evaluator.Definition
 		} } );
-	AddEvaluator("Action", "$Player$", "$SetPlrView$", "$SetPlrViewHelp$", "plr_view", [def, def.EvalAct_PlrView], { Players={ Function="triggering_player_list" }, Target={ Function="action_object" } }, { Type="proplist", Display="({{Players}}, {{Target}})", EditorProps = {
+	AddEvaluator("Action", "$Player$", "$SetPlayerView$", "$SetPlayerViewHelp$", "plr_view", [def, def.EvalAct_PlrView], { Players={ Function="triggering_player_list" }, Target={ Function="action_object" } }, { Type="proplist", Display="({{Players}}, {{Target}})", EditorProps = {
 		Players = Evaluator.PlayerList,
 		Target = new Evaluator.Object { Name="$Target$", EditorHelp="$PlrViewTargetHelp$" },
-		Immediate = { Name="$ScrollMode$", EditorHelp="$SetPlrViewScrollModeHelp$", Type="enum", Priority=-10, Options = [
+		Immediate = { Name="$ScrollMode$", EditorHelp="$SetPlayerViewScrollModeHelp$", Type="enum", Priority=-10, Options = [
 			{ Name="$Smooth$" },
 			{ Value = true, Name="$Immediate$" }
 			] }
@@ -1207,7 +1207,7 @@ private func EvalAct_PlrView(proplist props, proplist context)
 	var target = EvaluateValue("Object", props.Target, context);
 	var immediate = props.Immediate;
 	if (!target) return;
-	for (var plr in players) SetPlrView(plr, target, immediate);
+	for (var plr in players) SetPlayerView(plr, target, immediate);
 }
 
 private func EvalAct_ObjectCallInt(proplist props, proplist context, func call_fn)

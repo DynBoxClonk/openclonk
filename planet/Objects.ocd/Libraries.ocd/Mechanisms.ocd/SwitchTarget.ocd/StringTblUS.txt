@@ -1,2 +1,2 @@
-SetPlrView=Show action
-SetPlrViewDesc=When the mechanism is operated by a player the player view focuses on that object.
+SetPlayerView=Show action
+SetPlayerViewDesc=When the mechanism is operated by a player the player view focuses on that object.

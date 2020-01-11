@@ -155,7 +155,7 @@ public func UpdateOberserverContainer()
 		for (var observer in FindObjects(Find_OCF(OCF_CrewMember), Find_Container(observer_container)))
 		{
 			var observer_plr = observer->GetOwner();
-			SetPlrView(observer_plr, view_cursor);
+			SetPlayerView(observer_plr, view_cursor);
 		}
 	}
 	return;
@@ -211,7 +211,7 @@ private func SetBestScore(int plr, int new_score)
 {
 	// Only set if it increases the player's best score.
 	if (new_score > GetBestScore(plr))
-		SetPlrExtraData(plr, GetScoreString(), new_score);
+		SetPlayerExtraData(plr, GetScoreString(), new_score);
 	// Also set league score if an improvement is made.
 	//if (new_score > GetLeaguePerformance(plrid)) TODO uncomment once available.
 	SetLeaguePerformance(new_score, plr);
@@ -220,7 +220,7 @@ private func SetBestScore(int plr, int new_score)
 
 private func GetBestScore(int plr)
 {
-	return GetPlrExtraData(plr, GetScoreString());
+	return GetPlayerExtraData(plr, GetScoreString());
 }
 
 private func GetScoreString() { return Format("Defense_%s_BestScore", GetScenTitle()); }
@@ -237,13 +237,13 @@ private func SetBestWave(int plr, int new_best_wave)
 {
 	// Only set if it increases the player's best wave.
 	if (new_best_wave > GetBestWave(plr))
-		SetPlrExtraData(plr, GetWaveString(), new_best_wave);
+		SetPlayerExtraData(plr, GetWaveString(), new_best_wave);
 	return;
 }
 
 private func GetBestWave(int plr)
 {
-	return GetPlrExtraData(plr, GetWaveString());
+	return GetPlayerExtraData(plr, GetWaveString());
 }
 
 private func GetWaveString() { return Format("Defense_%s_BestWave", GetScenTitle()); }

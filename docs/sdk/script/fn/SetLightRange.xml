@@ -46,7 +46,7 @@
       </example>
     </examples>
     <related>
-      <funclink>SetPlrView</funclink>
+      <funclink>SetPlayerView</funclink>
       <funclink>SetFoW</funclink>
       <funclink>SetLightColor</funclink>
     </related>

@@ -81,7 +81,7 @@
       <funclink>SetPlayerZoom</funclink>
       <funclink>GetPlayerZoomLimits</funclink>
       <funclink>SetPlayerViewLock</funclink>
-      <funclink>SetPlrView</funclink>
+      <funclink>SetPlayerView</funclink>
       <funclink>SetLightRange</funclink>
       <funclink>SetFoW</funclink>
     </related>

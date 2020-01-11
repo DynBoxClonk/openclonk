@@ -4,10 +4,10 @@
 <?xml-stylesheet type="text/xsl" href="../../../clonk.xsl"?>
 <funcs>
   <func>
-    <title>SetPlrView</title>
+    <title>SetPlayerView</title>
     <category>Player</category>
     <subcat>View</subcat>
-    <version>1.0 OC</version>
+    <version>1.0 OC<extversion>9.0 OC</extversion></version>
     <syntax>
       <rtype>bool</rtype>
       <params>
@@ -30,6 +30,7 @@
       </params>
     </syntax>
     <desc>Centers a player's view to the specified object. The view will follow this object until the next player command.</desc>
+    <remark>Prior to 9.0 OC this was known as SetPlrView.</remark>
     <examples>
       <example>
         <code>local enemy;
@@ -49,7 +50,7 @@ protected func Timer()
 	{
 		// search for an enemy crew member in a distance of max. 300 pixels, return the closest one
 		enemy = <funclink>FindObject</funclink>(<funclink>Find_OCF</funclink>(<funclink>OCF_CrewMember</funclink>),<funclink>Find_Distance</funclink>(300),<funclink>Find_Hostile</funclink>(GetOwner()),<funclink>Sort_Distance</funclink>());
-		SetPlrView(<funclink>GetOwner</funclink>(),this);
+		SetPlayerView(<funclink>GetOwner</funclink>(),this);
 		<funclink>SetLightRange</funclink>(100);
 	}
 	
@@ -66,12 +67,13 @@ protected func Timer()
       </example>
     </examples>
     <related>
-      <funclink>GetPlrView</funclink>
-      <funclink>GetPlrViewMode</funclink>
+      <funclink>GetPlayerView</funclink>
+      <funclink>GetPlayerViewMode</funclink>
       <funclink>SetLightRange</funclink>
       <funclink>SetFoW</funclink>
     </related>
   </func>
   <author>PeterW</author><date>2003-04</date>
   <author>Sven2</author><date>2015-12</date>
+  <author>Marky</author><date>2020-01</date>
 </funcs>

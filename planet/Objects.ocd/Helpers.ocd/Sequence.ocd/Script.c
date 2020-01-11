@@ -140,7 +140,7 @@ public func ReactivatePlayerControls(int plr)
 		SetCursor(plr, GetCrew(plr));
 	crew = GetCursor(plr);
 	if (crew)
-		SetPlrView(plr, crew);
+		SetPlayerView(plr, crew);
 	return true;
 }
 
@@ -217,7 +217,7 @@ public func SetViewTarget(object view_target)
 		for (var i = 0; i < GetPlayerCount(C4PT_User); ++i)
 		{
 			var plr = GetPlayerByIndex(i, C4PT_User);
-			SetPlrView(plr, GetCursor(plr));
+			SetPlayerView(plr, GetCursor(plr));
 		}
 	}
 	return true;
@@ -231,7 +231,7 @@ private func UpdateViewTarget(object view_target)
 	for (var i = 0; i < GetPlayerCount(C4PT_User); ++i)
 	{
 		var plr = GetPlayerByIndex(i, C4PT_User);
-		SetPlrView(plr, view_target);
+		SetPlayerView(plr, view_target);
 	}
 	return;
 }

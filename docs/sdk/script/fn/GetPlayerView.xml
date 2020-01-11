@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE funcs
+  SYSTEM '../../../clonk.dtd'>
+<?xml-stylesheet type="text/xsl" href="../../../clonk.xsl"?>
+<funcs>
+  <func>
+    <title>GetPlayerView</title>
+    <category>Player</category>
+    <subcat>View</subcat>
+    <version>1.0 OC<extversion>9.0 OC</extversion></version>
+    <syntax>
+      <rtype>object</rtype>
+      <params>
+        <param>
+          <type>int</type>
+          <name>player</name>
+          <desc>Number of the player whose view you want to determine.</desc>
+        </param>
+      </params>
+    </syntax>
+    <desc>Returns the object which is followed by a player's view. If the player view does not currently follow an object, the function returns <code>nil</code> (also see <funclink>GetPlayerViewMode</funclink>).</desc>
+    <remark>If player view has been set using (<funclink>SetPlayerView</funclink>), the view will follow the selected clonk (unless in view mode "Scroll", see <funclink>GetPlayerViewMode</funclink>). This can be determined using <funclink>GetCursor</funclink>.</remark>
+    <remark>Prior to 9.0 OC this was known as GetPlrView.</remark>
+    <related><funclink>SetPlayerView</funclink></related>
+  </func>
+  <author>PeterW</author><date>2003-06</date>
+  <author>Marky</author><date>2020-01</date>
+</funcs>
