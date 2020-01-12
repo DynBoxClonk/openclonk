@@ -470,7 +470,7 @@ private func InitializeKnowledge(int plr)
 			{
 				if (GetIndexOf(exceptlist, def) == -1)
 				{
-					GivePlrKnowledge(plr, def);
+					GivePlayerKnowledge(plr, def);
 				}
 			}
 		}
@@ -479,7 +479,7 @@ private func InitializeKnowledge(int plr)
 	{
 		for (def in starting_knowledge.Data)
 		{
-			GivePlrKnowledge(plr, def);
+			GivePlayerKnowledge(plr, def);
 		}
 	}
 	else

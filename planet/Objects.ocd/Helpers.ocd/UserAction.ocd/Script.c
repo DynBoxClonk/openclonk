@@ -232,7 +232,7 @@ func Definition(def)
 		Change = new Evaluator.Integer { Name="$Change$", EditorHelp="$DoWealthChangeHelp$" },
 		DoSound = new Evaluator.Boolean { Name="$Sound$", EditorHelp="$DoWealthSoundHelp$", Priority=-1 }
 		} } );
-	AddEvaluator("Action", "$Player$", "$PlrKnowledge$", "$PlrKnowledgeHelp$", "plr_knowledge", [def, def.EvalAct_PlrKnowledge], { Players={ Function="triggering_player_list" }, ID={ Function="def_constant" } }, { Type="proplist", Display="({{Players}}, {{ID}})", EditorProps = {
+	AddEvaluator("Action", "$Player$", "$PlayerKnowledge$", "$PlayerKnowledgeHelp$", "plr_knowledge", [def, def.EvalAct_PlayerKnowledge], { Players={ Function="triggering_player_list" }, ID={ Function="def_constant" } }, { Type="proplist", Display="({{Players}}, {{ID}})", EditorProps = {
 		Players = Evaluator.PlayerList,
 		ID = Evaluator.Definition
 		} } );
@@ -713,8 +713,8 @@ private func EvalObj_ActionObject(proplist props, proplist context) { return con
 private func EvalObj_TriggeringObject(proplist props, proplist context) { return context.triggering_object; }
 private func EvalObj_TriggeringClonk(proplist props, proplist context) { return context.triggering_clonk; }
 private func EvalObj_LastCreatedObject(proplist props, proplist context) { return context.last_created_object; }
-private func EvalPlr_Trigger(proplist props, proplist context) { return context.triggering_player; }
-private func EvalPlrList_Single(proplist props, proplist context, fn) { return [Call(fn, props, context)]; }
+private func EvalPlayer_Trigger(proplist props, proplist context) { return context.triggering_player; }
+private func EvalPlayerList_Single(proplist props, proplist context, fn) { return [Call(fn, props, context)]; }
 
 private func EvalCount(proplist props, proplist context, data_type)
 {
@@ -780,7 +780,7 @@ private func EvalObjList_FindObjectsInContainer(proplist props, proplist context
 	return result;
 }
 
-private func EvalPlrList_All(proplist props, proplist context, fn)
+private func EvalPlayerList_All(proplist props, proplist context, fn)
 {
 	var n = GetPlayerCount(C4PT_User);
 	var result = CreateArray(n);
@@ -1193,15 +1193,15 @@ private func EvalAct_DoWealth(proplist props, proplist context)
 	}
 }
 
-private func EvalAct_PlrKnowledge(proplist props, proplist context)
+private func EvalAct_PlayerKnowledge(proplist props, proplist context)
 {
 	var players = EvaluateValue("PlayerList", props.Players, context) ?? [];
 	var def = EvaluateValue("Definition", props.ID, context);
 	if (!def) return;
-	for (var plr in players) GivePlrKnowledge(plr, def);
+	for (var plr in players) GivePlayerKnowledge(plr, def);
 }
 
-private func EvalAct_PlrView(proplist props, proplist context)
+private func EvalAct_PlayerView(proplist props, proplist context)
 {
 	var players = EvaluateValue("PlayerList", props.Players, context) ?? [];
 	var target = EvaluateValue("Object", props.Target, context);

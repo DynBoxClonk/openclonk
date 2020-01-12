@@ -3,10 +3,10 @@
 
 	Library to control the players knowledge/plans:
      * GetPlrKnowledge(int player, id plan, int index, int category)
-     * HasPlrKnowledge(int player, id plan)
-     * SetPlrKnowledge(int player, id plan, bool remove)
-     * GivePlrKnowledge(int player, id plan)
-     * RemovePlrKnowledge(int player, id plan)
+     * HasPlayerKnowledge(int player, id plan)
+     * SetPlayerKnowledge(int player, id plan, bool remove)
+     * GivePlayerKnowledge(int player, id plan)
+     * RemovePlayerKnowledge(int player, id plan)
 
     Should be incorporated into a player management system later
 
@@ -29,17 +29,27 @@ global func GetPlrKnowledge(int player, id plan, int index, int category)
 	{
 		if (plan)
 		{
-			LogLegacyWarning("GetPlrKnowledge() using 'id' parameter", "HasPlrKnowledge()", VERSION_10_0_OC);
+			LogLegacyWarning("GetPlrKnowledge() using 'id' parameter", "HasPlayerKnowledge()", VERSION_10_0_OC);
 			return manager->HasKnowledge(plan);
 		}
 		else
 		{
+			LogLegacyWarning("GetPlrKnowledge() using 'index/category' parameter", "GetPlayerKnowledge()", VERSION_10_0_OC);
 			return manager->GetKnowledge(index, category);
 		}
 	}
 }
 
-global func HasPlrKnowledge(int player, id plan)
+global func GetPlayerKnowledge(int player, int index, int category)
+{
+	var manager = Library_PlayerKnowledge->GetKnowledgeManager(player);
+	if (manager)
+	{
+		return manager->GetKnowledge(index, category);
+	}
+}
+
+global func HasPlayerKnowledge(int player, id plan)
 {
 	var manager = Library_PlayerKnowledge->GetKnowledgeManager(player);
 	if (manager)
@@ -52,18 +62,18 @@ global func SetPlrKnowledge(int player, any plan, bool remove)
 {
 	if (remove)
 	{
-		LogLegacyWarning("SetPlrKnowledge() using 'bool remove' parameter", "RemovePlrKnowledge()", VERSION_10_0_OC);
-		return RemovePlrKnowledge(player, plan);
+		LogLegacyWarning("SetPlrKnowledge() using 'bool remove' parameter", "RemovePlayesrKnowledge()", VERSION_10_0_OC);
+		return RemovePlayerKnowledge(player, plan);
 	}
 	else
 	{
-		LogLegacyWarning("SetPlrKnowledge()", "GivePlrKnowledge()", VERSION_10_0_OC);
-		return GivePlrKnowledge(player, plan);
+		LogLegacyWarning("SetPlrKnowledge()", "GivePlayerKnowledge()", VERSION_10_0_OC);
+		return GivePlayerKnowledge(player, plan);
 	}
 }
 
 
-global func GivePlrKnowledge(int player, any plan)
+global func GivePlayerKnowledge(int player, any plan)
 {
 	// Do it for all players?
 	if (player == nil)
@@ -71,7 +81,7 @@ global func GivePlrKnowledge(int player, any plan)
 		var success = true;
 		for (var i = 0; i < GetPlayerCount(); ++i)
 		{
-			success &= GivePlrKnowledge(GetPlayerByIndex(i), plan);
+			success &= GivePlayerKnowledge(GetPlayerByIndex(i), plan);
 		}
 		return success;
 	}
@@ -82,7 +92,7 @@ global func GivePlrKnowledge(int player, any plan)
 		var success = true;
 		for (var type in plan)
 		{
-			success &= GivePlrKnowledge(player, type);
+			success &= GivePlayerKnowledge(player, type);
 		}
 		return success;
 	}
@@ -100,7 +110,7 @@ global func GivePlrKnowledge(int player, any plan)
 	return false;
 }
 
-global func RemovePlrKnowledge(int player, id plan)
+global func RemovePlayerKnowledge(int player, id plan)
 {
 	// Do it for all players?
 	if (player == nil)
@@ -108,7 +118,7 @@ global func RemovePlrKnowledge(int player, id plan)
 		var success = true;
 		for (var i = 0; i < GetPlayerCount(); ++i)
 		{
-			success &= RemovePlrKnowledge(GetPlayerByIndex(i), plan);
+			success &= RemovePlayerKnowledge(GetPlayerByIndex(i), plan);
 		}
 		return success;
 	}
@@ -119,7 +129,7 @@ global func RemovePlrKnowledge(int player, id plan)
 		var success = true;
 		for (var type in plan)
 		{
-			success &= RemovePlrKnowledge(player, type);
+			success &= RemovePlayerKnowledge(player, type);
 		}
 		return success;
 	}

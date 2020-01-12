@@ -198,9 +198,9 @@ protected func InitializePlayer(int plr)
 	// Set large zoom ranges for the player.
 	SetPlayerZoomByViewRange(plr, 1200, nil, PLRZOOM_LimitMax);
 	// Give the player knowledge for items in the inventor's lab.
-	GivePlrKnowledge(plr, WindBag);
-	GivePlrKnowledge(plr, WallKit);
-	GivePlrKnowledge(plr, Balloon);	
+	GivePlayerKnowledge(plr, WindBag);
+	GivePlayerKnowledge(plr, WallKit);
+	GivePlayerKnowledge(plr, Balloon);	
 	return;
 }
 
@@ -223,7 +223,7 @@ public func OnPlayerRespawn(int plr, object cp)
 }
 
 // Give the player a bonus when he reaches a new checkpoint for the first time and is behind the leader.
-public func GivePlrBonus(int plr, object cp)
+public func GivePlayerBonus(int plr, object cp)
 {
 	var crew = GetCrew(plr);
 	if (!crew)

@@ -22,14 +22,14 @@ global func GivePlayerAllKnowledge(int plr)
 // Gives the player specific knowledge as given in the knowledge array.
 global func GivePlayerSpecificKnowledge(int plr, array knowledge)
 {
-	GivePlrKnowledge(plr, knowledge);
+	GivePlayerKnowledge(plr, knowledge);
 	return;
 }
 
 // Gives the player specific knowledge as given in the knowledge array.
 global func RemovePlayerSpecificKnowledge(int plr, array knowledge)
 {
-	RemovePlrKnowledge(plr, knowledge);
+	RemovePlayerKnowledge(plr, knowledge);
 	return;
 }
 
@@ -48,7 +48,7 @@ global func GivePlayerBasicKnowledge(int plr)
 		// Some basic vehicles which aid in the settlement construction.
 		Lorry
 	];
-	GivePlrKnowledge(plr, knowledge);
+	GivePlayerKnowledge(plr, knowledge);
 	return;
 }
 
@@ -58,7 +58,7 @@ global func GivePlayerPumpingKnowledge(int plr)
 		// Stuff needed for pumping.
 		Pump, Pipe /*,LiquidTank TODO: add when graphics are done*/
 	];
-	GivePlrKnowledge(plr, knowledge);
+	GivePlayerKnowledge(plr, knowledge);
 	return;
 }
 
@@ -72,7 +72,7 @@ global func GivePlayerFarmingKnowledge(int plr)
 		// Processed goods.
 		Cloth, Flour, Bread
 	];
-	GivePlrKnowledge(plr, knowledge);
+	GivePlayerKnowledge(plr, knowledge);
 	return;
 }
 
@@ -86,7 +86,7 @@ global func GivePlayerWeaponryKnowledge(int plr)
 		// Artillery vehicles.
 		Catapult, Cannon
 	];
-	GivePlrKnowledge(plr, knowledge);
+	GivePlayerKnowledge(plr, knowledge);
 	return;
 }
 
@@ -96,7 +96,7 @@ global func GivePlayerArtilleryKnowledge(int plr)
 		// Stuff to set up artillery.
 		Armory, PowderKeg, Catapult, Cannon
 	];
-	GivePlrKnowledge(plr, knowledge);
+	GivePlayerKnowledge(plr, knowledge);
 	return;
 }
 
@@ -110,7 +110,7 @@ global func GivePlayerAdvancedKnowledge(int plr)
 		// Advanced items in inventors lab.
 		TeleGlove, WindBag, GrappleBow, Boompack, Balloon
 	];
-	GivePlrKnowledge(plr, knowledge);
+	GivePlayerKnowledge(plr, knowledge);
 	return;
 }
 
@@ -124,6 +124,6 @@ global func GivePlayerAirKnowledge(int plr)
 		// Airship and plane.
 		Airship, Airplane
 	];
-	GivePlrKnowledge(plr, knowledge);
+	GivePlayerKnowledge(plr, knowledge);
 	return;
 }

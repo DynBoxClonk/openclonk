@@ -110,7 +110,7 @@ func InitializePlayer(int plr)
 		}
 	}
 	
-	GivePlrKnowledge(plr, [Chest, Idol, Foundry, SteamEngine, ToolsWorkshop, WindGenerator, Flagpole, Sawmill, Elevator, Armory, ChemicalLab, Basement, Lorry, Pickaxe, Axe, Hammer, Shovel, Barrel, Dynamite, DynamiteBox, Loam, Bucket]);
+	GivePlayerKnowledge(plr, [Chest, Idol, Foundry, SteamEngine, ToolsWorkshop, WindGenerator, Flagpole, Sawmill, Elevator, Armory, ChemicalLab, Basement, Lorry, Pickaxe, Axe, Hammer, Shovel, Barrel, Dynamite, DynamiteBox, Loam, Bucket]);
 	
 	return true;
 }
@@ -125,9 +125,9 @@ func OnGoalsFulfilled()
 
 func GiveExtraPlans(int plr)
 {
-	GivePlrKnowledge(plr, Pump);
-	GivePlrKnowledge(plr, Pipe);
-	GivePlrKnowledge(plr, Catapult);
-	GivePlrKnowledge(plr, Cannon);
+	GivePlayerKnowledge(plr, Pump);
+	GivePlayerKnowledge(plr, Pipe);
+	GivePlayerKnowledge(plr, Catapult);
+	GivePlayerKnowledge(plr, Cannon);
 	return true;
 }
