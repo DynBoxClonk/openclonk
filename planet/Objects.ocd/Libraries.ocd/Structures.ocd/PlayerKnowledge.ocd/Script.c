@@ -2,7 +2,7 @@
 	Player Knowledge
 
 	Library to control the players knowledge/plans:
-     * GetPlrKnowledge(int player, id plan, int index, int category)
+     * GetPlayerKnowledge(int player, int index, int category)
      * HasPlayerKnowledge(int player, id plan)
      * SetPlayerKnowledge(int player, id plan, bool remove)
      * GivePlayerKnowledge(int player, id plan)
@@ -222,7 +222,7 @@ func SaveScenarioObject(proplist props)
 	var player = GetOwner();
 	for (var plan in knowledge)
 	{
-		props->Add("Knowledge", "SetPlrKnowledge(%d, %i)", player, plan);
+		props->Add("Knowledge", "GivePlayerKnowledge(%d, %i)", player, plan);
 	}
 	return false;
 }
