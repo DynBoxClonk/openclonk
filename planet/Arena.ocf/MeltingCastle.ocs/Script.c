@@ -145,7 +145,7 @@ public func OnPlayerRelaunch(int plr)
 		return EliminatePlayer(plr);
 }
 
-public func RelaunchPosition(int iPlr, int iTeam)
+public func RelaunchPosition(int player, int iTeam)
 {
 	if (!g_respawn_flags[iTeam]) return;
 	return [g_respawn_flags[iTeam]->GetX(), g_respawn_flags[iTeam]->GetY()];
