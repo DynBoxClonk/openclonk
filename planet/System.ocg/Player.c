@@ -5,15 +5,15 @@
 	@author timi, Maikel, Joern, Zapper, Randrian
 */
 
-// Returns the player number of plr_name, or none if there is no such player. (written by timi for CR/CE/CP)
+// Returns the player number of player_name, or none if there is no such player. (written by timi for CR/CE/CP)
 // documented in /docs/sdk/script/fn
-global func GetPlayerByName(string plr_name)
+global func GetPlayerByName(string player_name)
 {
 	// Loop through all players.
 	var i = GetPlayerCount();
 	while (i--)
 		// Does the player's name match the one searched for?
-		if (WildcardMatch(GetPlayerName(GetPlayerByIndex(i)), plr_name))
+		if (WildcardMatch(GetPlayerName(GetPlayerByIndex(i)), player_name))
 			// It does -> return player number.
 			return GetPlayerByIndex(i);
 	// There is no player with that name.
@@ -36,14 +36,14 @@ global func GetTeamByName(string team_name)
 
 // Returns the name of a player, including color markup using the player color.
 // documented in /docs/sdk/script/fn
-global func GetTaggedPlayerName(int plr)
+global func GetTaggedPlayerName(int player)
 {
-	var plr_name = GetPlayerName(plr);
-	if (!plr_name)
+	var player_name = GetPlayerName(player);
+	if (!player_name)
 		return;
-	var plr_color = MakeColorReadable(GetPlayerColor(plr));
-	var tagged_plr_name = Format("<c %x>%s</c>", plr_color, plr_name);
-	return tagged_plr_name;
+	var player_color = MakeColorReadable(GetPlayerColor(player));
+	var tagged_player_name = Format("<c %x>%s</c>", player_color, player_name);
+	return tagged_player_name;
 }
 
 // Returns the name of a team, including color markup using the team color.
@@ -94,35 +94,35 @@ global func GetPlayerInTeamCount(int team)
 // Set either player_type or team to nil to ignore that constraint.
 global func GetPlayers(int player_type, int team)
 {
-	var plr_list = [];
+	var player_list = [];
 	for (var index = 0; index < GetPlayerCount(player_type); index++)
 	{
-		var plr = GetPlayerByIndex(index, player_type);
-		if (team == nil || GetPlayerTeam(plr) == team)
-			PushBack(plr_list, plr);
+		var player = GetPlayerByIndex(index, player_type);
+		if (team == nil || GetPlayerTeam(player) == team)
+			PushBack(player_list, player);
 	}
-	return plr_list;
+	return player_list;
 }
 
 // Adds value to the account of iPlayer.
 // documented in /docs/sdk/script/fn
-global func DoWealth(int plr, int value)
+global func DoWealth(int player, int value)
 {
-	return SetWealth(plr, value + GetWealth(plr));
+	return SetWealth(player, value + GetWealth(player));
 }
 
 // checks whether two players are allied - that means they are not hostile and neither of them is NO_OWNER
-global func IsAllied(int plr1, int plr2, bool check_one_way_only /* whether to check the hostility only in one direction */)
+global func IsAllied(int player1, int player2, bool check_one_way_only /* whether to check the hostility only in one direction */)
 {
-	if (plr1 == NO_OWNER)
+	if (player1 == NO_OWNER)
 		return false;
-	if (plr2 == NO_OWNER)
+	if (player2 == NO_OWNER)
 		return false;
-	return !Hostile(plr1, plr2, check_one_way_only);
+	return !Hostile(player1, player2, check_one_way_only);
 }
 
-// Shows a message window to player for_plr.
-global func MessageWindow(string msg, int for_plr, id icon, string caption)
+// Shows a message window to player for_player.
+global func MessageWindow(string msg, int for_player, id icon, string caption)
 {
 	// Get icon.
 	if (!icon)
@@ -131,7 +131,7 @@ global func MessageWindow(string msg, int for_plr, id icon, string caption)
 	if (!caption)
 		caption = GetName();
 	// Create msg window as regular text
-	CustomMessage(Format("<c ffff00>%s</c>: %s", caption, msg), nil, for_plr, 0, 150, nil, GetDefaultMenuDecoration(), icon, MSG_HCenter);
+	CustomMessage(Format("<c ffff00>%s</c>: %s", caption, msg), nil, for_player, 0, 150, nil, GetDefaultMenuDecoration(), icon, MSG_HCenter);
 	return true;
 }
 
@@ -144,7 +144,7 @@ global func GetDefaultMenuDecoration()
 
 // Find a base of the given player. Use index to search through all bases.
 // documented in /docs/sdk/script/fn
-global func FindBase(int plr, int index)
+global func FindBase(int player, int index)
 {
-	return FindObjects(Find_Owner(plr), Find_Func("IsBase"))[index];
+	return FindObjects(Find_Owner(player), Find_Func("IsBase"))[index];
 }
