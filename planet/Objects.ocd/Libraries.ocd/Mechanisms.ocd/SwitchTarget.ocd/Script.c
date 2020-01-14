@@ -81,7 +81,7 @@ public func SetPlayerViewOnSignalChange(bool show)
 public func SaveScenarioObject(proplist props)
 {
 	if (!inherited(props, ...)) return false;
-	if (lib_mechanism.set_plr_view) props->AddCall("PlrView", this, "SetPlayerViewOnSignalChange", lib_mechanism.set_plr_view);
+	if (lib_mechanism.set_plr_view) props->AddCall("PlayerView", this, "SetPlayerViewOnSignalChange", lib_mechanism.set_plr_view);
 	return true;
 }
 

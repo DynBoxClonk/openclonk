@@ -687,7 +687,7 @@ private func SetEvalData(int winner)
 	if (winteam)
 		msg = Format("$MsgEvalTeamWon$", GetTeamName(winteam), TimeToString(time));
 	else
-		msg = Format("$MsgEvalPlrWon$", GetPlayerName(winner), TimeToString(time));
+		msg = Format("$MsgEvalPlayerWon$", GetPlayerName(winner), TimeToString(time));
 	AddEvaluationData(msg, 0);
 	// Individual data.
 	for (var i = 0; i < GetPlayerCount(); i++)
