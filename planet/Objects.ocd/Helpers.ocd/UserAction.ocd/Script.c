@@ -236,9 +236,9 @@ func Definition(def)
 		Players = Evaluator.PlayerList,
 		ID = Evaluator.Definition
 		} } );
-	AddEvaluator("Action", "$Player$", "$SetPlayerView$", "$SetPlayerViewHelp$", "plr_view", [def, def.EvalAct_PlrView], { Players={ Function="triggering_player_list" }, Target={ Function="action_object" } }, { Type="proplist", Display="({{Players}}, {{Target}})", EditorProps = {
+	AddEvaluator("Action", "$Player$", "$SetPlayerView$", "$SetPlayerViewHelp$", "plr_view", [def, def.EvalAct_PlayerView], { Players={ Function="triggering_player_list" }, Target={ Function="action_object" } }, { Type="proplist", Display="({{Players}}, {{Target}})", EditorProps = {
 		Players = Evaluator.PlayerList,
-		Target = new Evaluator.Object { Name="$Target$", EditorHelp="$PlrViewTargetHelp$" },
+		Target = new Evaluator.Object { Name="$Target$", EditorHelp="$PlayerViewTargetHelp$" },
 		Immediate = { Name="$ScrollMode$", EditorHelp="$SetPlayerViewScrollModeHelp$", Type="enum", Priority=-10, Options = [
 			{ Name="$Smooth$" },
 			{ Value = true, Name="$Immediate$" }
@@ -309,8 +309,8 @@ func Definition(def)
 	AddEvaluator("Player", nil, "$ControllerOfObject$", "$ControllerOfObjectHelp$", "owner", [def, def.EvalObjProp, Global.GetController], { }, new Evaluator.Object { }, "Object");
 	AddEvaluator("Player", nil, "$IteratedPlayer$", "$IteratedPlayerHelp$", "iterated_player", [def, def.EvalContextValue, "for_player"]);
 	// Player list evaluators
-	AddEvaluator("PlayerList", nil, "$TriggeringPlayer$", "$TriggeringPlayerHelp$", "triggering_player_list", [def, def.EvalPlrList_Single, def.EvalPlr_Trigger]);
-	AddEvaluator("PlayerList", nil, "$AllPlayers$", "$AllPlayersHelp$", "all_players", [def, def.EvalPlrList_All]);
+	AddEvaluator("PlayerList", nil, "$TriggeringPlayer$", "$TriggeringPlayerHelp$", "triggering_player_list", [def, def.EvalPlayerList_Single, def.EvalPlayer_Trigger]);
+	AddEvaluator("PlayerList", nil, "$AllPlayers$", "$AllPlayersHelp$", "all_players", [def, def.EvalPlayerList_All]);
 	// Boolean (condition) evaluators
 	AddEvaluator("Boolean", nil, ["$Constant$", ""], "$ConstantHelp$", "bool_constant", [def, def.EvalConstant], { Value = true }, { Type="bool", Name="$Value$" });
 	AddEvaluator("Boolean", "$Comparison$", "$CompareInteger$", "$ComparisonHelp$", "compare_int", [def, def.EvalComparison, "Integer"], { }, { Type="proplist", Display="{{LeftOperand}}{{Operator}}{{RightOperand}}", EditorProps = {
