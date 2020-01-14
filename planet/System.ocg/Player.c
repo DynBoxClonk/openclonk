@@ -12,10 +12,15 @@ global func GetPlayerByName(string player_name)
 	// Loop through all players.
 	var i = GetPlayerCount();
 	while (i--)
+	{
+		var player = GetPlayerByIndex(i);
 		// Does the player's name match the one searched for?
-		if (WildcardMatch(GetPlayerName(GetPlayerByIndex(i)), player_name))
+		if (WildcardMatch(GetPlayerName(player), player_name))
+		{
 			// It does -> return player number.
-			return GetPlayerByIndex(i);
+			return player;
+		}
+	}
 	// There is no player with that name.
 	return NO_OWNER;
 }
@@ -26,10 +31,15 @@ global func GetTeamByName(string team_name)
 	// Loop through all teams.
 	var i = GetTeamCount();
 	while (i--)
+	{
+		var team = GetTeamByIndex(i);
 		// Does the team's name match the one searched for?
-		if (WildcardMatch(GetTeamName(GetTeamByIndex(i)), team_name))
+		if (WildcardMatch(GetTeamName(team), team_name))
+		{
 			// It does -> return team number.
-			return GetTeamByIndex(i);
+			return team;
+		}
+	}
 	// There is no team with that name.
 	return NO_OWNER;
 }
@@ -40,7 +50,9 @@ global func GetTaggedPlayerName(int player)
 {
 	var player_name = GetPlayerName(player);
 	if (!player_name)
+	{
 		return;
+	}
 	var player_color = MakeColorReadable(GetPlayerColor(player));
 	var tagged_player_name = Format("<c %x>%s</c>", player_color, player_name);
 	return tagged_player_name;
@@ -51,7 +63,9 @@ global func GetTaggedTeamName(int team)
 {
 	var team_name = GetTeamName(team);
 	if (!team_name)
+	{
 		return;
+	}
 	var team_color = MakeColorReadable(GetTeamColor(team));
 	var tagged_team_name = Format("<c %x>%s</c>", team_color, team_name);
 	return tagged_team_name;
@@ -85,8 +99,12 @@ global func GetPlayerInTeamCount(int team)
 {
 	var count = 0;
 	for (var index = 0; index < GetPlayerCount(); index++)
+	{
 		if (GetPlayerTeam(GetPlayerByIndex(index)) == team)
+		{
 			count++;
+		}
+	}
 	return count;
 }
 
@@ -99,7 +117,9 @@ global func GetPlayers(int player_type, int team)
 	{
 		var player = GetPlayerByIndex(index, player_type);
 		if (team == nil || GetPlayerTeam(player) == team)
+		{
 			PushBack(player_list, player);
+		}
 	}
 	return player_list;
 }
@@ -114,10 +134,10 @@ global func DoWealth(int player, int value)
 // checks whether two players are allied - that means they are not hostile and neither of them is NO_OWNER
 global func IsAllied(int player1, int player2, bool check_one_way_only /* whether to check the hostility only in one direction */)
 {
-	if (player1 == NO_OWNER)
+	if (player1 == NO_OWNER || player2 == NO_OWNER)
+	{
 		return false;
-	if (player2 == NO_OWNER)
-		return false;
+	}
 	return !Hostile(player1, player2, check_one_way_only);
 }
 
@@ -125,11 +145,9 @@ global func IsAllied(int player1, int player2, bool check_one_way_only /* whethe
 global func MessageWindow(string msg, int for_player, id icon, string caption)
 {
 	// Get icon.
-	if (!icon)
-		icon = GetID();
+	icon = icon ?? GetID();
 	// Get caption.
-	if (!caption)
-		caption = GetName();
+	caption = caption ?? GetName();
 	// Create msg window as regular text
 	CustomMessage(Format("<c ffff00>%s</c>: %s", caption, msg), nil, for_player, 0, 150, nil, GetDefaultMenuDecoration(), icon, MSG_HCenter);
 	return true;
