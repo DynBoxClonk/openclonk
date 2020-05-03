@@ -171,7 +171,7 @@ private func Execute()
 private func ExecutePlayer(int plr, array environments)
 {
 	var cursor = GetCursor(plr);
-	if (!cursor) cursor = GetPlrView(plr);
+	if (!cursor) cursor = GetPlayerView(plr);
 	// Update active state of all player environments
 	if (cursor)
 	{

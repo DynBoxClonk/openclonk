@@ -20,7 +20,7 @@
     <desc>Retrieves extra data stored in the player file using <funclink>SetCrewExtraData</funclink>.</desc>
     <remark>For details, see <funclink>SetCrewExtraData</funclink>.</remark>
     <related>
-      <funclink>GetPlrExtraData</funclink>
+      <funclink>GetPlayerExtraData</funclink>
       <funclink>SetCrewExtraData</funclink>
     </related>
   </func>

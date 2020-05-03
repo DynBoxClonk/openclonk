@@ -101,7 +101,7 @@ private func RecoverItem(object clonk, id item_id)
 }
 
 // Gamecall from parkour goal, on reaching a bonus cp.
-protected func GivePlrBonus(int plr, object cp)
+protected func GivePlayerBonus(int plr, object cp)
 {
 	// No bonus.
 	return;

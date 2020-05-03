@@ -37,7 +37,7 @@ public func GiveAllKnowledge(int plr)
 {
 	var index, def;
 	while (def = GetDefinition(index++))
-		GivePlrKnowledge(plr, def);
+		GivePlayerKnowledge(plr, def);
 	return;
 }
 

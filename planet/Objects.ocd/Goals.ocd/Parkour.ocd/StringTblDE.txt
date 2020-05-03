@@ -25,7 +25,7 @@ MsgCaptionNone=Parkour without checkpoints.
 MsgBestTime=%s has set a new personal best time of %s.
 
 #Evaluation data
-MsgEvalPlrWon=%s has won the parkour in %s.
+MsgEvalPlayerWon=%s has won the parkour in %s.
 MsgEvalTeamWon=The team %s has won the parkour in %s.
 MsgEvalPlayerX=You have cleared %d out of %d checkpoints.
 MsgEvalPlayerAll=You have cleared all checkpoints.

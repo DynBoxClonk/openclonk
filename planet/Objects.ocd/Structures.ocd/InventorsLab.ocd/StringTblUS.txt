@@ -1,4 +1,4 @@
-NoPlrKnowledge=No construction plans
+NoPlayerKnowledge=No construction plans
 Construction=Construction
 Production=Production
 Name=Inventor's lab

@@ -11,21 +11,21 @@ func Initialize()
 	Butterfly->Place(1);
 }
 
-private func InitializePlayer(iPlr)
+private func InitializePlayer(player)
 {
-	SetFoW(0, iPlr);
-	SetWealth(10, iPlr);
-	var crew = GetCrew(iPlr);
+	SetFoW(0, player);
+	SetWealth(10, player);
+	var crew = GetCrew(player);
 	crew->SetPosition(10, 300);
 	crew->CreateContents(Shovel);
 	crew->CreateContents(Hammer);
 	crew->CreateContents(Rock, 3);
 }
 
-func RelaunchPlayer(int iPlr)
+func RelaunchPlayer(int player)
 {
-	var pclonk = CreateObject(Clonk, 10, 300, iPlr);
-	pclonk->MakeCrewMember(iPlr);
-	SetCursor(iPlr, pclonk);
+	var pclonk = CreateObject(Clonk, 10, 300, player);
+	pclonk->MakeCrewMember(player);
+	SetCursor(player, pclonk);
 	pclonk->CreateContents(Shovel);
 }

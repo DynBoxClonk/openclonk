@@ -135,7 +135,7 @@ static long FnGetPlayerColor(C4PropList * _this, long player_nr)
 }
 
 // undocumented!
-static Nillable<long> FnGetPlrClonkSkin(C4PropList * _this, long player_nr)
+static Nillable<long> FnGetPlayerClonkSkin(C4PropList * _this, long player_nr)
 {
 	C4Player *player = ::Players.Get(player_nr);
 	if (player)
@@ -999,7 +999,7 @@ static bool FnSetHostility(C4PropList * _this, long player_nr1, long player_nr2,
 	return true;
 }
 
-static bool FnSetPlrView(C4PropList * _this, long player_nr, C4Object *target, bool immediate_position)
+static bool FnSetPlayerView(C4PropList * _this, long player_nr, C4Object *target, bool immediate_position)
 {
 	if (!ValidPlr(player_nr))
 	{
@@ -1009,7 +1009,7 @@ static bool FnSetPlrView(C4PropList * _this, long player_nr, C4Object *target, b
 	return true;
 }
 
-static long FnGetPlrViewMode(C4PropList * _this, long player_nr)
+static long FnGetPlayerViewMode(C4PropList * _this, long player_nr)
 {
 	if (!ValidPlr(player_nr))
 	{
@@ -1031,7 +1031,7 @@ static void FnResetCursorView(C4PropList * _this, long player_nr, bool immediate
 	}
 }
 
-static C4Object *FnGetPlrView(C4PropList * _this, long player_nr)
+static C4Object *FnGetPlayerView(C4PropList * _this, long player_nr)
 {
 	C4Player *player = ::Players.Get(player_nr);
 	if (!player || player->ViewMode != C4PVM_Target)
@@ -2018,7 +2018,7 @@ static long FnGetTime(C4PropList * _this)
 	return C4TimeMilliseconds::Now().AsInt();
 }
 
-static C4Value FnSetPlrExtraData(C4PropList * _this, int player_nr, C4String * DataName, const C4Value & Data)
+static C4Value FnSetPlayerExtraData(C4PropList * _this, int player_nr, C4String * DataName, const C4Value & Data)
 {
 	const char * strDataName = FnStringPar(DataName);
 	// do not allow data type C4V_Array or C4V_C4Object
@@ -2048,7 +2048,7 @@ static C4Value FnSetPlrExtraData(C4PropList * _this, int player_nr, C4String * D
 	return Data;
 }
 
-static C4Value FnGetPlrExtraData(C4PropList * _this, int player_nr, C4String * DataName)
+static C4Value FnGetPlayerExtraData(C4PropList * _this, int player_nr, C4String * DataName)
 {
 	const char *strDataName = FnStringPar(DataName);
 	C4Player* pPlayer = ::Players.Get(player_nr);
@@ -3036,7 +3036,7 @@ void InitGameFunctionMap(C4AulScriptEngine *pEngine)
 	F(GetPlayerName);
 	F(GetPlayerType);
 	F(GetPlayerColor);
-	F(GetPlrClonkSkin);
+	F(GetPlayerClonkSkin);
 	F(CreateObject);
 	F(CreateObjectAbove);
 	F(CreateConstruction);
@@ -3049,10 +3049,10 @@ void InitGameFunctionMap(C4AulScriptEngine *pEngine)
 	F(Music);
 	F(MusicLevel);
 	F(SetPlayList);
-	F(SetPlrView);
-	F(GetPlrViewMode);
+	F(SetPlayerView);
+	F(GetPlayerViewMode);
 	F(ResetCursorView);
-	F(GetPlrView);
+	F(GetPlayerView);
 	F(GetWealth);
 	F(SetWealth);
 	F(DoPlayerScore);
@@ -3199,8 +3199,8 @@ void InitGameFunctionMap(C4AulScriptEngine *pEngine)
 	F(GetPlayerVal);
 	F(GetPlayerInfoCoreVal);
 	F(GetMaterialVal);
-	F(SetPlrExtraData);
-	F(GetPlrExtraData);
+	F(SetPlayerExtraData);
+	F(GetPlayerExtraData);
 	F(PV_Linear);
 	F(PV_Random);
 	F(PV_Direction);

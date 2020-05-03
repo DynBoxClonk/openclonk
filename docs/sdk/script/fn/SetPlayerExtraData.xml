@@ -4,9 +4,9 @@
 <?xml-stylesheet type="text/xsl" href="../../../clonk.xsl"?>
 <funcs>
   <func>
-    <title>SetPlrExtraData</title>
+    <title>SetPlayerExtraData</title>
     <category>Player</category>
-    <version>1.0 OC<extversion>2.0 OC</extversion></version>
+    <version>1.0 OC<extversion>2.0 OC</extversion><extversion>9.0 OC</extversion></version>
     <syntax>
       <rtype>any</rtype>
       <params>
@@ -30,27 +30,29 @@
     <desc>With this function additional data can be saved in player's file. This can be used to preserve values across scenarios, for example for RPGs or highscores. If successful, the saved value is returned.</desc>
     <remark>No objects or arrays may be saved.</remark>
     <remark>Because all scenarios use the same storage, the name for the data should be prefixed with the scenario name or your developer id.</remark>
+    <remark>Prior to 9.0 OC this was known as SetPlrExtraData.</remark>
     <examples>
       <example>
         <code>func SaveWealth()
 {
   for(var i=0; i&lt;<funclink>GetPlayerCount</funclink>(); i++)
-    SetPlrExtraData(i, &quot;MySzen_Wealth&quot;, <funclink>GetWealth</funclink>(i));
+    SetPlayerExtraData(i, &quot;MySzen_Wealth&quot;, <funclink>GetWealth</funclink>(i));
 }
 
 func Initialize()
 {
   for(var i=0; i&lt;<funclink>GetPlayerCount</funclink>(); i++)
-    <funclink>SetWealth</funclink>(i, <funclink>GetPlrExtraData</funclink>(i, &quot;MySzen_Wealth&quot;));
+    <funclink>SetWealth</funclink>(i, <funclink>GetPlayerExtraData</funclink>(i, &quot;MySzen_Wealth&quot;));
 }
   </code>
         <text>The first function saves the wealth with the name "MySzen_Wealth" into the player's file. It should be called on periodically or on the end of the round. If the round is restarted, the wealth is restored in Initialize.</text>
       </example>
     </examples>
     <related>
-      <funclink>GetPlrExtraData</funclink>
+      <funclink>GetPlayerExtraData</funclink>
       <funclink>SetCrewExtraData</funclink>
     </related>
   </func>
   <author>PeterW</author><date>2002-01</date>
+  <author>Marky</author><date>2020-01</date>
 </funcs>

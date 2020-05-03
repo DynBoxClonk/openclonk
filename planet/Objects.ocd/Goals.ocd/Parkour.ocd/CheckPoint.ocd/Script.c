@@ -315,7 +315,7 @@ protected func CheckForClonks()
 		if (cp_mode & PARKOUR_CP_Check)
 		{
 			var team_clear = !ClearedByTeam(team);
-			ClearCPForPlr(plr, is_first_clear);
+			ClearCPForPlayer(plr, is_first_clear);
 			if (ClearedByTeam(team) && team_clear)
 				cp_con->AddTeamClearedCP(team, this); // Notify parkour goal.
 		}
@@ -338,7 +338,7 @@ protected func CheckForClonks()
 		}
 		// Check bonus.
 		if (cp_mode & PARKOUR_CP_Bonus)
-			GameCall("GivePlrBonus", plr, this);
+			GameCall("GivePlayerBonus", plr, this);
 		// User callback
 		if (is_first_clear) UserAction->EvaluateAction(on_first_cleared, this, clonk, plr);
 		UserAction->EvaluateAction(on_cleared, this, clonk, plr);
@@ -353,7 +353,7 @@ private func OnPlayerRespawn(object clonk, int plr)
 }
 
 // Clear this checkpoint for the player, and possibly its team members.
-private func ClearCPForPlr(int plr, bool is_first_clear)
+private func ClearCPForPlayer(int plr, bool is_first_clear)
 {
 	if (!(cp_mode & PARKOUR_CP_Check))	
 		return;

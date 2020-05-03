@@ -1,4 +1,4 @@
-NoPlrKnowledge=Keine Baupläne vorhanden
+NoPlayerKnowledge=Keine Baupläne vorhanden
 Construction=Konstruktion
 Production=Produktion
 Name=Schiffswerft

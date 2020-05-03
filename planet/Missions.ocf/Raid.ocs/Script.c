@@ -80,11 +80,11 @@ func InitializePlayer(int plr)
 	// Ensure flag has owner
 	if (g_flagpole && g_flagpole->GetOwner()<0) g_flagpole->SetOwner(plr);
 	// Late join stuff
-	if (g_pyrit_spoken) GivePlrKnowledge(plr, Airplane);
+	if (g_pyrit_spoken) GivePlayerKnowledge(plr, Airplane);
 	// Join intro listening or regular scenario
 	SetPlayerViewLock(plr, true);
 	JoinPlayer(plr);
-	GivePlrKnowledge(plr, [Foundry, ToolsWorkshop, WindGenerator, Flagpole, Sawmill, Elevator, ChemicalLab, Lorry, Pickaxe, Axe, Hammer, Shovel, Barrel, Dynamite, DynamiteBox, Loam, Bucket, GoldBar, Metal, Pipe, WallKit, WindGenerator]);
+	GivePlayerKnowledge(plr, [Foundry, ToolsWorkshop, WindGenerator, Flagpole, Sawmill, Elevator, ChemicalLab, Lorry, Pickaxe, Axe, Hammer, Shovel, Barrel, Dynamite, DynamiteBox, Loam, Bucket, GoldBar, Metal, Pipe, WallKit, WindGenerator]);
 	
 	// Scenario init
 	if (!g_is_initialized) g_is_initialized = DoInit(plr);

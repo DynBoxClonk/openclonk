@@ -33,6 +33,30 @@ global func GetPlayerByID(int plr_id)
 	return plr_id;
 }
 
+global func GetPlrClonkSkin(int plr_id)
+{
+	LogLegacyWarning("GetPlrClonkSkin", "GetPlayerClonkSkin", VERSION_10_0_OC);
+	return GetPlayerClonkSkin(plr_id, ...);
+}
+
+global func GetPlrExtraData(int plr_id, string name)
+{
+	LogLegacyWarning("GetPlrExtraData", "GetPlayerExtraData", VERSION_10_0_OC);
+	return GetPlayerExtraData(plr_id, name);
+}
+
+global func GetPlrView(int plr_id)
+{
+	LogLegacyWarning("GetPlrView", "GetPlayerView", VERSION_10_0_OC);
+	return GetPlayerView(plr_id);
+}
+
+global func GetPlrViewMode(int plr_id)
+{
+	LogLegacyWarning("GetPlrViewMode", "GetPlayerViewMode", VERSION_10_0_OC);
+	return GetPlayerViewMode(plr_id);
+}
+
 global func PlaceAnimal(id animal_id)
 {
 	LogLegacyWarning("PlaceAnimal", "id->Place()", VERSION_10_0_OC);
@@ -56,6 +80,18 @@ global func SetNextMission(string filename, string title, string description)
 {
 	LogLegacyWarning("SetNextMission", "SetNextScenario", VERSION_10_0_OC);
 	return SetNextScenario(filename, title, description);
+}
+
+global func SetPlrView(int plr_id, object target, bool immediate)
+{
+	LogLegacyWarning("SetPlrView", "SetPlayerView", VERSION_10_0_OC);
+	return SetPlayerView(plr_id, target, immediate);
+}
+
+global func SetPlrExtraData(int plr_id, string name, any data)
+{
+	LogLegacyWarning("SetPlrExtraData", "SetPlayerExtraData", VERSION_10_0_OC);
+	return SetPlayerExtraData(plr_id, name, data);
 }
 
 global func SetBridgeActionData()

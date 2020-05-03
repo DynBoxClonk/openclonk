@@ -163,8 +163,8 @@ protected func InitializePlayer(int plr)
 		flag->SetOwner(plr);
 	
 	// Knowledge to construct bow and arrow.
-	GivePlrKnowledge(plr, Bow);
-	GivePlrKnowledge(plr, Arrow);
+	GivePlayerKnowledge(plr, Bow);
+	GivePlayerKnowledge(plr, Arrow);
 	
 	// Add an interaction to call the airship.
 	Helper_CallAirship->Create(clonk, Dialogue->FindByName("Pilot")->GetDialogueTarget(), FindObject(Find_ID(Airship)));

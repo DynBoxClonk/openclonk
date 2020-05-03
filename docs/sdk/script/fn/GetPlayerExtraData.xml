@@ -4,9 +4,9 @@
 <?xml-stylesheet type="text/xsl" href="../../../clonk.xsl"?>
 <funcs>
   <func>
-    <title>GetPlrExtraData</title>
+    <title>GetPlayerExtraData</title>
     <category>Player</category>
-    <version>1.0 OC</version>
+    <version>1.0 OC<extversion>9.0 OC</extversion></version>
     <syntax>
       <rtype>any</rtype>
       <params>
@@ -22,12 +22,14 @@
         </param>
       </params>
     </syntax>
-    <desc>This commands retrieves extra data stored in the player file by <funclink>SetPlrExtraData</funclink>.</desc>
-    <remark>For details see <funclink>SetPlrExtraData</funclink>.</remark>
+    <desc>This commands retrieves extra data stored in the player file by <funclink>SetPlayerExtraData</funclink>.</desc>
+    <remark>For details see <funclink>SetPlayerExtraData</funclink>.</remark>
+    <remark>Prior to 9.0 OC this was known as GetPlrExtraData.</remark>
     <related>
-      <funclink>SetPlrExtraData</funclink>
+      <funclink>SetPlayerExtraData</funclink>
       <funclink>GetCrewExtraData</funclink>
     </related>
   </func>
   <author>PeterW</author><date>2002-01</date>
+  <author>Marky</author><date>2020-01</date>
 </funcs>

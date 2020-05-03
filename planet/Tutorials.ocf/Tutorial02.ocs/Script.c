@@ -380,7 +380,7 @@ global func FxTutorialFragileBridgeTimer()
 		guide->AddGuideMessage("$MsgTutorialFragileBridge$");
 		guide->ShowGuideMessage();
 		// Stop the controls of the clonk for a few seconds.
-		DisablePlrControls(clonk->GetOwner());
+		DisablePlayerControls(clonk->GetOwner());
 		clonk->SetComDir(COMD_Stop);
 		var effect = AddEffect("TutorialWaitForBridge", nil, 100, 5);
 		effect.plr = clonk->GetOwner();
@@ -397,7 +397,7 @@ global func FxTutorialWaitForBridgeTimer(object target, proplist effect, int tim
 		guide->AddGuideMessage(Format("$MsgTutorialMakeLoamBridge$", use));
 		guide->ShowGuideMessage();
 		// Start the controls of the clonk again.
-		EnablePlrControls(effect.plr);
+		EnablePlayerControls(effect.plr);
 		return FX_Execute_Kill;
 	}
 	return FX_OK;

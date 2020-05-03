@@ -194,8 +194,8 @@ protected func InitializePlayer(int plr)
 		flag->SetOwner(plr);
 	
 	// Knowledge to construct bow and arrow.
-	GivePlrKnowledge(plr, Pipe);
-	GivePlrKnowledge(plr, WallKit);
+	GivePlayerKnowledge(plr, Pipe);
+	GivePlayerKnowledge(plr, WallKit);
 	
 	// Standard player zoom for tutorials, player is not allowed to zoom in/out.
 	SetPlayerViewLock(plr, true);

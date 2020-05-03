@@ -31,7 +31,7 @@
     <desc>Moves the view of a player permanently by a given offset. Calling the function again will set a new offset. Calling the function with 0,0 parameters will reset to normal, centered view.
     Returns false if the given player is invalid and true otherwise.</desc>
     <related>
-      <funclink>SetPlrView</funclink>
+      <funclink>SetPlayerView</funclink>
       <funclink>ShakeViewport</funclink>
     </related>
   </func>

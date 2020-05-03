@@ -27,7 +27,7 @@
     <remark>Because all scripts use the same storage in the crew member, the name for the data should be prefixed with the scenario or object name or your developer id.</remark>
     <related>
       <funclink>GetCrewExtraData</funclink>
-      <funclink>SetPlrExtraData</funclink>
+      <funclink>SetPlayerExtraData</funclink>
     </related>
   </func>
   <author>Sven2</author><date>2006-02</date>

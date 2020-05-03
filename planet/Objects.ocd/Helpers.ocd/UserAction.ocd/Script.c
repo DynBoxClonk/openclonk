@@ -232,14 +232,14 @@ func Definition(def)
 		Change = new Evaluator.Integer { Name="$Change$", EditorHelp="$DoWealthChangeHelp$" },
 		DoSound = new Evaluator.Boolean { Name="$Sound$", EditorHelp="$DoWealthSoundHelp$", Priority=-1 }
 		} } );
-	AddEvaluator("Action", "$Player$", "$PlrKnowledge$", "$PlrKnowledgeHelp$", "plr_knowledge", [def, def.EvalAct_PlrKnowledge], { Players={ Function="triggering_player_list" }, ID={ Function="def_constant" } }, { Type="proplist", Display="({{Players}}, {{ID}})", EditorProps = {
+	AddEvaluator("Action", "$Player$", "$PlayerKnowledge$", "$PlayerKnowledgeHelp$", "plr_knowledge", [def, def.EvalAct_PlayerKnowledge], { Players={ Function="triggering_player_list" }, ID={ Function="def_constant" } }, { Type="proplist", Display="({{Players}}, {{ID}})", EditorProps = {
 		Players = Evaluator.PlayerList,
 		ID = Evaluator.Definition
 		} } );
-	AddEvaluator("Action", "$Player$", "$SetPlrView$", "$SetPlrViewHelp$", "plr_view", [def, def.EvalAct_PlrView], { Players={ Function="triggering_player_list" }, Target={ Function="action_object" } }, { Type="proplist", Display="({{Players}}, {{Target}})", EditorProps = {
+	AddEvaluator("Action", "$Player$", "$SetPlayerView$", "$SetPlayerViewHelp$", "plr_view", [def, def.EvalAct_PlayerView], { Players={ Function="triggering_player_list" }, Target={ Function="action_object" } }, { Type="proplist", Display="({{Players}}, {{Target}})", EditorProps = {
 		Players = Evaluator.PlayerList,
-		Target = new Evaluator.Object { Name="$Target$", EditorHelp="$PlrViewTargetHelp$" },
-		Immediate = { Name="$ScrollMode$", EditorHelp="$SetPlrViewScrollModeHelp$", Type="enum", Priority=-10, Options = [
+		Target = new Evaluator.Object { Name="$Target$", EditorHelp="$PlayerViewTargetHelp$" },
+		Immediate = { Name="$ScrollMode$", EditorHelp="$SetPlayerViewScrollModeHelp$", Type="enum", Priority=-10, Options = [
 			{ Name="$Smooth$" },
 			{ Value = true, Name="$Immediate$" }
 			] }
@@ -309,8 +309,8 @@ func Definition(def)
 	AddEvaluator("Player", nil, "$ControllerOfObject$", "$ControllerOfObjectHelp$", "owner", [def, def.EvalObjProp, Global.GetController], { }, new Evaluator.Object { }, "Object");
 	AddEvaluator("Player", nil, "$IteratedPlayer$", "$IteratedPlayerHelp$", "iterated_player", [def, def.EvalContextValue, "for_player"]);
 	// Player list evaluators
-	AddEvaluator("PlayerList", nil, "$TriggeringPlayer$", "$TriggeringPlayerHelp$", "triggering_player_list", [def, def.EvalPlrList_Single, def.EvalPlr_Trigger]);
-	AddEvaluator("PlayerList", nil, "$AllPlayers$", "$AllPlayersHelp$", "all_players", [def, def.EvalPlrList_All]);
+	AddEvaluator("PlayerList", nil, "$TriggeringPlayer$", "$TriggeringPlayerHelp$", "triggering_player_list", [def, def.EvalPlayerList_Single, def.EvalPlayer_Trigger]);
+	AddEvaluator("PlayerList", nil, "$AllPlayers$", "$AllPlayersHelp$", "all_players", [def, def.EvalPlayerList_All]);
 	// Boolean (condition) evaluators
 	AddEvaluator("Boolean", nil, ["$Constant$", ""], "$ConstantHelp$", "bool_constant", [def, def.EvalConstant], { Value = true }, { Type="bool", Name="$Value$" });
 	AddEvaluator("Boolean", "$Comparison$", "$CompareInteger$", "$ComparisonHelp$", "compare_int", [def, def.EvalComparison, "Integer"], { }, { Type="proplist", Display="{{LeftOperand}}{{Operator}}{{RightOperand}}", EditorProps = {
@@ -713,8 +713,8 @@ private func EvalObj_ActionObject(proplist props, proplist context) { return con
 private func EvalObj_TriggeringObject(proplist props, proplist context) { return context.triggering_object; }
 private func EvalObj_TriggeringClonk(proplist props, proplist context) { return context.triggering_clonk; }
 private func EvalObj_LastCreatedObject(proplist props, proplist context) { return context.last_created_object; }
-private func EvalPlr_Trigger(proplist props, proplist context) { return context.triggering_player; }
-private func EvalPlrList_Single(proplist props, proplist context, fn) { return [Call(fn, props, context)]; }
+private func EvalPlayer_Trigger(proplist props, proplist context) { return context.triggering_player; }
+private func EvalPlayerList_Single(proplist props, proplist context, fn) { return [Call(fn, props, context)]; }
 
 private func EvalCount(proplist props, proplist context, data_type)
 {
@@ -780,7 +780,7 @@ private func EvalObjList_FindObjectsInContainer(proplist props, proplist context
 	return result;
 }
 
-private func EvalPlrList_All(proplist props, proplist context, fn)
+private func EvalPlayerList_All(proplist props, proplist context, fn)
 {
 	var n = GetPlayerCount(C4PT_User);
 	var result = CreateArray(n);
@@ -1193,21 +1193,21 @@ private func EvalAct_DoWealth(proplist props, proplist context)
 	}
 }
 
-private func EvalAct_PlrKnowledge(proplist props, proplist context)
+private func EvalAct_PlayerKnowledge(proplist props, proplist context)
 {
 	var players = EvaluateValue("PlayerList", props.Players, context) ?? [];
 	var def = EvaluateValue("Definition", props.ID, context);
 	if (!def) return;
-	for (var plr in players) GivePlrKnowledge(plr, def);
+	for (var plr in players) GivePlayerKnowledge(plr, def);
 }
 
-private func EvalAct_PlrView(proplist props, proplist context)
+private func EvalAct_PlayerView(proplist props, proplist context)
 {
 	var players = EvaluateValue("PlayerList", props.Players, context) ?? [];
 	var target = EvaluateValue("Object", props.Target, context);
 	var immediate = props.Immediate;
 	if (!target) return;
-	for (var plr in players) SetPlrView(plr, target, immediate);
+	for (var plr in players) SetPlayerView(plr, target, immediate);
 }
 
 private func EvalAct_ObjectCallInt(proplist props, proplist context, func call_fn)

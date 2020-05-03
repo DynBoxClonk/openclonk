@@ -261,7 +261,7 @@ protected func InitializePlayer(int plr)
 	SetWealth(plr, 25);
 	
 	// Player controls disabled at the start.
-	DisablePlrControls(plr);
+	DisablePlayerControls(plr);
 	
 	// Add an effect to the clonk to track the goal.
 	var track_goal = AddEffect("TrackGoal", nil, 100, 2);
@@ -294,7 +294,7 @@ protected func InitializePlayer(int plr)
 private func OnFinishedTutorialIntro(int plr)
 {
 	// enable crew
-	EnablePlrControls(plr);
+	EnablePlayerControls(plr);
 	
 	// start the wipf
 	FindObject(Find_ID(Wipf))->StartMoving();
@@ -325,7 +325,7 @@ global func FxGoalOutroStart(object target, proplist effect, int temp)
 	guide->ShowGuideMessage();
 		
 	// Halt clonk and disable player controls.	
-	DisablePlrControls(effect.plr);
+	DisablePlayerControls(effect.plr);
 	target->SetComDir(COMD_Stop);
 	
 	// Find wipf and enter it into the clonk.	
@@ -352,7 +352,7 @@ global func FxGoalOutroStop(object target, proplist effect, int reason, bool tem
 		return FX_OK;
 		
 	// Enable player controls again.
-	EnablePlrControls(effect.plr);
+	EnablePlayerControls(effect.plr);
 	// Enable wipf activity.
 	var wipf = FindObject(Find_ID(Wipf));
 	if (wipf)

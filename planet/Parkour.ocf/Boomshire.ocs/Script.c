@@ -56,9 +56,9 @@ private func InitializePlayer(int plr)
 }
 
 // Gamecall from Race-goal, on respawning.
-public func OnPlayerRespawn(int iPlr, object cp)
+public func OnPlayerRespawn(int player, object cp)
 {
-	var clonk = GetCrew(iPlr);
+	var clonk = GetCrew(player);
 	clonk->CreateContents(WindBag);
 }
 

@@ -131,7 +131,7 @@ public func ToggleBackground(object menu) // Change transparency of background
 			value = 0;
 	}
 
-	SetPlrExtraData(owner, ExtraData_Settings_Transparency, value);
+	SetPlayerExtraData(owner, ExtraData_Settings_Transparency, value);
 	menu->ReopenWithSetting("BackgroundTransparency", value);
 }
 
@@ -152,7 +152,7 @@ public func ToggleText(object menu) // Hide text captions
 			value = 0;
 	}
 
-	SetPlrExtraData(owner, ExtraData_Settings_HideText, value);
+	SetPlayerExtraData(owner, ExtraData_Settings_HideText, value);
 	menu->ReopenWithSetting("TextHidden", value);
 }
 
@@ -173,7 +173,7 @@ public func ToggleSaturation(object menu) // Desaturate the menu
 			value = 0;
 	}
 
-	SetPlrExtraData(owner, ExtraData_Settings_Saturation, value);
+	SetPlayerExtraData(owner, ExtraData_Settings_Saturation, value);
 	menu->ReopenWithSetting("Saturation", value);
 }
 
@@ -189,8 +189,8 @@ public func Init(object menu)
 	// Set background transparency setting
 	if (menu.BackgroundTransparency == nil)
 	{
-		if (GetPlrExtraData(owner, ExtraData_Settings_Transparency) != nil)
-			menu.BackgroundTransparency = GetPlrExtraData(owner, ExtraData_Settings_Transparency);
+		if (GetPlayerExtraData(owner, ExtraData_Settings_Transparency) != nil)
+			menu.BackgroundTransparency = GetPlayerExtraData(owner, ExtraData_Settings_Transparency);
 		else
 			menu.BackgroundTransparency = 0;
 	}
@@ -198,8 +198,8 @@ public func Init(object menu)
 	// Set caption display setting
 	if (menu.TextHidden == nil)
 	{
-		if (GetPlrExtraData(owner, ExtraData_Settings_HideText) != nil)
-			menu.TextHidden = GetPlrExtraData(owner, ExtraData_Settings_HideText);
+		if (GetPlayerExtraData(owner, ExtraData_Settings_HideText) != nil)
+			menu.TextHidden = GetPlayerExtraData(owner, ExtraData_Settings_HideText);
 		else
 			menu.TextHidden = 0;
 	}
@@ -207,8 +207,8 @@ public func Init(object menu)
 	// Set saturation setting
 	if (menu.Saturation == nil)
 	{
-		if (GetPlrExtraData(owner, ExtraData_Settings_Saturation) != nil)
-			menu.Saturation = GetPlrExtraData(owner, ExtraData_Settings_Saturation);
+		if (GetPlayerExtraData(owner, ExtraData_Settings_Saturation) != nil)
+			menu.Saturation = GetPlayerExtraData(owner, ExtraData_Settings_Saturation);
 		else
 			menu.Saturation = 0;
 	}
