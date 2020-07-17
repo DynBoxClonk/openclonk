@@ -80,6 +80,7 @@ public:
 	virtual C4Object const * GetObject() const;
 	virtual C4Effect * GetEffect();
 	virtual C4Player * GetPlayer();
+	virtual C4Team * GetTeam();
 	virtual C4PropListNumbered * GetPropListNumbered();
 	virtual class C4MapScriptLayer * GetMapScriptLayer();
 	virtual class C4MapScriptMap * GetMapScriptMap();

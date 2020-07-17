@@ -115,6 +115,13 @@ bool C4Value::FnCnvPlayer() const
 	return false;
 }
 
+bool C4Value::FnCnvTeam() const
+{
+	// try casting
+	if (Data.PropList->GetTeam()) return true;
+	return false;
+}
+
 bool C4Value::WarnAboutConversion(C4V_Type Type, C4V_Type vtToType)
 {
 	switch (vtToType)
@@ -632,6 +639,7 @@ C4V_Type C4Value::GetTypeEx() const
 	// Return type including types derived from prop list types (such as C4V_Def)
 	if (Type == C4V_PropList)
 	{
+		if (FnCnvTeam()) return C4V_Team;
 		if (FnCnvPlayer()) return C4V_Player;
 		if (FnCnvEffect()) return C4V_Effect;
 		if (FnCnvObject()) return C4V_Object;

@@ -29,6 +29,7 @@
 #include "control/C4PlayerInfo.h"
 #include "control/C4Record.h"
 #include "control/C4RoundResults.h"
+#include "control/C4TeamScript.h"
 #include "editor/C4Console.h"
 #include "game/C4Application.h"
 #include "game/C4FullScreen.h"
@@ -2990,6 +2991,7 @@ bool C4Game::InitScriptEngine()
 	InitGameFunctionMap(&ScriptEngine);
 	::MapScript.InitFunctionMap(&ScriptEngine);
 	C4PlayerScript::RegisterWithEngine(&ScriptEngine);
+	C4TeamScript::RegisterWithEngine(&ScriptEngine);
 
 	// system functions: check if system group is open
 	if (!Application.OpenSystemGroup())

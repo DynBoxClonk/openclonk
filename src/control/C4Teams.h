@@ -19,6 +19,7 @@
 #define INC_C4Teams
 
 #include "lib/C4InputValidation.h"
+#include "script/C4PropList.h"
 
 // constant used by lobby to indicate invisible, random team
 const int32_t TEAMID_Unknown = -1;
@@ -27,7 +28,7 @@ const int32_t TEAMID_Unknown = -1;
 const int32_t TEAMID_New = -1;
 
 // one player team
-class C4Team
+class C4Team : public C4PropList
 {
 private:
 	// std::vector...
@@ -53,7 +54,7 @@ protected:
 	friend class C4TeamList;
 
 public:
-	C4Team()  { *Name=0; }
+	C4Team();
 	~C4Team() { Clear(); }
 
 	void Clear();
@@ -82,6 +83,13 @@ public:
 
 	// this assigns a team color if it's still zero
 	void RecheckColor(C4TeamList &rForList);
+
+	// Handle custom proplist properties
+	C4Team * GetTeam() override { return this; } // Required by template magic
+
+private:
+	// Register script functions to the proplist by setting this prototype
+	static C4PropList* GetPropListPrototype(const char *name);
 };
 
 // global team list

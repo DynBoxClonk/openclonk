@@ -474,6 +474,8 @@ set(OC_CLONK_SOURCES
 	src/control/C4RoundResults.h
 	src/control/C4Teams.cpp
 	src/control/C4Teams.h
+	src/control/C4TeamScript.cpp
+	src/control/C4TeamScript.h
 	src/editor/C4Console.cpp
 	src/editor/C4ConsoleGUICommon.h
 	src/editor/C4ConsoleGUI.h

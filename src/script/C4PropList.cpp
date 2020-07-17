@@ -718,6 +718,12 @@ C4Player * C4PropList::GetPlayer()
 	return nullptr;
 }
 
+C4Team * C4PropList::GetTeam()
+{
+	if (GetPrototype()) return GetPrototype()->GetTeam();
+	return nullptr;
+}
+
 template<> template<>
 unsigned int C4Set<C4Property>::Hash<const C4String *>(C4String const * const & e)
 {

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE funcs
+  SYSTEM '../../../clonk.dtd'>
+<?xml-stylesheet type="text/xsl" href="../../../clonk.xsl"?>
+<funcs>
+  <func>
+    <title>GetTeam</title>
+    <category>Teams</category>
+    <version>9.0 OC</version>
+    <syntax>
+      <rtype>proplist</rtype>
+      <params>
+        <param>
+          <type>int</type>
+          <name>team</name>
+          <desc>ID of the team to get.</desc>
+        </param>
+      </params>
+    </syntax>
+    <desc>Returns the team proplist. If the specified team number is invalid, <code>nil</code> is returned.</desc>
+    <text>
+      <table>
+        <caption id="PropertiesTable">Team Properties</caption>
+        <rowh>
+          <col>Name</col>
+          <col>Data type</col>
+          <col>Description</col>
+        </rowh>
+      </table>
+    </text>
+  </func>
+  <author>Marky</author><date>2020-07</date>
+</funcs>

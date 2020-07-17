@@ -39,6 +39,7 @@ enum C4V_Type
 	C4V_Def,
 	C4V_Effect,
 	C4V_Player,
+	C4V_Team,
 };
 // last C4V_Type that doesn't vanish in Denumerate
 #define C4V_Last ((int) C4V_Array)
@@ -185,6 +186,7 @@ public:
 		case C4V_Def:      return (Type == C4V_PropList && FnCnvDef()) || Type == C4V_Nil || (Type == C4V_Int && !*this);
 		case C4V_Effect:   return (Type == C4V_PropList && FnCnvEffect()) || Type == C4V_Nil || (Type == C4V_Int && !*this);
 		case C4V_Player:   return (Type == C4V_PropList && FnCnvPlayer()) || Type == C4V_Nil || (Type == C4V_Int && !*this);
+		case C4V_Team:     return (Type == C4V_PropList && FnCnvTeam()) || Type == C4V_Nil || (Type == C4V_Int && !*this);
 		default: assert(!"C4Value::CheckParConversion: impossible conversion target"); return false;
 		}
 	}
@@ -204,6 +206,7 @@ public:
 		case C4V_Def:      return Type == C4V_PropList && FnCnvDef();
 		case C4V_Effect:   return Type == C4V_PropList && FnCnvEffect();
 		case C4V_Player:   return Type == C4V_PropList && FnCnvPlayer();
+		case C4V_Team:   return Type == C4V_PropList && FnCnvTeam();
 		default: assert(!"C4Value::CheckConversion: impossible conversion target"); return false;
 		}
 	}
@@ -234,6 +237,7 @@ private:
 	bool FnCnvDef() const;
 	bool FnCnvEffect() const;
 	bool FnCnvPlayer() const;
+	bool FnCnvTeam() const;
 	void LogDeletedObjectWarning(C4PropList *);
 
 	// Prevent unintended type conversions

@@ -23,9 +23,15 @@
 #include "lib/C4Random.h"
 #include "player/C4Player.h"
 #include "player/C4PlayerList.h"
+#include "script/C4AulDefFunc.h"
 
 // ---------------------------------------------------------------
 // C4Team
+
+C4Team::C4Team() : C4PropList(GetPropListPrototype("_Team"))
+{
+	*Name=0;
+}
 
 C4Team::C4Team(const C4Team &rCopy)
 		: piPlayers(new int32_t[rCopy.GetPlayerCount()]),
@@ -247,6 +253,21 @@ bool C4Team::HasWon() const
 				}
 	}
 	return fHasWon;
+}
+
+C4PropList* C4Team::GetPropListPrototype(const char *name)
+{
+	C4Value temp;
+	if (!::ScriptEngine.GetGlobalConstant(name, &temp))
+	{
+		throw NeedTeamContext(FormatString("Global constant %s not defined", name).getData());
+	}
+	C4PropList * p = temp.getPropList();
+	if (!p)
+	{
+		throw NeedTeamContext(FormatString("Global constant %s is not a proplist anymore", name).getData());
+	}
+	return p;
 }
 
 // ---------------------------------------------------------------

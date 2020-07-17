@@ -92,6 +92,14 @@ public:
 	NeedPlayerContext(const char *function) : C4AulExecError(FormatString("%s: must be called from player context", function).getData()) {}
 };
 
+// Yet some other functions are callable in team context only.
+// This exception gets thrown if they are called from anywhere else.
+class NeedTeamContext : public C4AulExecError
+{
+public:
+	NeedTeamContext(const char *function) : C4AulExecError(FormatString("%s: must be called from team context", function).getData()) {}
+};
+
 // Then there's functions that don't care, but need either defn or object context.
 // This exception gets thrown if those are called from global scripts.
 class NeedNonGlobalContext : public C4AulExecError
@@ -129,6 +137,17 @@ template <> struct ThisImpl<C4Player>
 			return player;
 		else
 			throw NeedPlayerContext(func->GetName());
+	}
+};
+template <> struct ThisImpl<C4Team>
+{
+	static C4Team* Conv(C4PropList* _this, C4AulFunc* func)
+	{
+		C4Team* team = _this ? _this->GetTeam() : nullptr;
+		if (team)
+			return team;
+		else
+			throw NeedTeamContext(func->GetName());
 	}
 };
 
@@ -216,6 +235,11 @@ template <> struct C4ValueConv<C4Player *>
 {
 	static constexpr C4V_Type Type = C4V_Player;
 	inline static C4Player *_FromC4V(C4Value &v) { C4PropList * p = v._getPropList(); return p ? p->GetPlayer() : nullptr; }
+};
+template <> struct C4ValueConv<C4Team *>
+{
+	static constexpr C4V_Type Type = C4V_Team;
+	inline static C4Team *_FromC4V(C4Value &v) { C4PropList * p = v._getPropList(); return p ? p->GetTeam() : nullptr; }
 };
 template <> struct C4ValueConv<C4Def *>
 {
