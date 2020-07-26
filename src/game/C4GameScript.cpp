@@ -2197,7 +2197,14 @@ static bool FnSetPreSend(C4PropList * _this, long iToVal, C4String *pNewName)
 
 static C4PropList *FnGetTeam(C4PropList * _this, long team_nr)
 {
-	return Game.Teams.GetTeamByID(team_nr);
+	// Return a proplist that can be converted to point to
+	// the actual team via templates. 
+	C4Team *team = Game.Teams.GetTeamByID(team_nr);
+	if (team)
+	{
+		return team->GetTeamProperties();
+	}
+	return nullptr;
 }
 
 // undocumented!

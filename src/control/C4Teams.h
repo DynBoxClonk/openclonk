@@ -27,8 +27,24 @@ const int32_t TEAMID_Unknown = -1;
 // constant used by InitScenarioPlayer() to indicate creation of a new team
 const int32_t TEAMID_New = -1;
 
+// Host for C4TeamScript, a proplist that can be converted to a pointer to its team
+class C4TeamProperties : public C4PropList
+{
+	private:
+	 C4Team* Team;
+	 C4TeamProperties();
+
+	public:
+	 C4TeamProperties(C4Team* team);
+	 C4Team * GetTeam() override { return Team; } // Required by template magic
+
+private:
+	// Register script functions to the proplist by setting this prototype
+	static C4PropList* GetPropListPrototype(const char *name);
+};
+
 // one player team
-class C4Team : public C4PropList
+class C4Team
 {
 private:
 	// std::vector...
@@ -50,6 +66,7 @@ protected:
 	uint32_t dwClr{0}; // team color
 	StdCopyStrBuf sIconSpec; // icon drawing specification for offline or runtime team selection dialog
 	int32_t iMaxPlayer{0}; // maximum number of players allowed in this team - 0 for infinite
+	C4TeamProperties *TeamProperties;
 
 	friend class C4TeamList;
 
@@ -85,11 +102,7 @@ public:
 	void RecheckColor(C4TeamList &rForList);
 
 	// Handle custom proplist properties
-	C4Team * GetTeam() override { return this; } // Required by template magic
-
-private:
-	// Register script functions to the proplist by setting this prototype
-	static C4PropList* GetPropListPrototype(const char *name);
+	C4PropList * GetTeamProperties();
 };
 
 // global team list

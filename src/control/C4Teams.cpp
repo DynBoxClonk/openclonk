@@ -20,17 +20,40 @@
 
 #include "c4group/C4Components.h"
 #include "control/C4GameControl.h"
+#include "control/C4TeamScript.h"
 #include "lib/C4Random.h"
 #include "player/C4Player.h"
 #include "player/C4PlayerList.h"
 #include "script/C4AulDefFunc.h"
+#include "script/C4PropList.h"
+
+C4TeamProperties::C4TeamProperties(C4Team* team) : C4PropList(GetPropListPrototype(C4TeamScript::PROTOTYPE_NAME_SCRIPT))
+{
+	Team = team;
+}
+
+C4PropList* C4TeamProperties::GetPropListPrototype(const char *name)
+{
+	C4Value temp;
+	if (!::ScriptEngine.GetGlobalConstant(name, &temp))
+	{
+		throw NeedTeamContext(FormatString("Global constant %s not defined", name).getData());
+	}
+	C4PropList * p = temp.getPropList();
+	if (!p)
+	{
+		throw NeedTeamContext(FormatString("Global constant %s is not a proplist anymore", name).getData());
+	}
+	return p;
+}
 
 // ---------------------------------------------------------------
 // C4Team
 
-C4Team::C4Team() : C4PropList(GetPropListPrototype("_Team"))
+C4Team::C4Team()
 {
 	*Name=0;
+	TeamProperties = nullptr;
 }
 
 C4Team::C4Team(const C4Team &rCopy)
@@ -45,6 +68,7 @@ C4Team::C4Team(const C4Team &rCopy)
 	// copy players
 	for (int32_t i = 0; i < iPlayerCount; i++)
 		piPlayers[i] = rCopy.GetIndexedPlayer(i);
+	TeamProperties = rCopy.TeamProperties;
 }
 
 void C4Team::Clear()
@@ -52,7 +76,22 @@ void C4Team::Clear()
 	delete [] piPlayers; piPlayers = nullptr;
 	iPlayerCount = iPlayerCapacity = iMaxPlayer = 0;
 	iID = 0; *Name=0;
+	TeamProperties = nullptr;
 	sIconSpec.Clear();
+}
+
+C4PropList* C4Team::GetTeamProperties()
+{
+	// The proplist needs to be instantiated at runtime:
+	// Teams are created before the scenario is started,
+	// and the script engine does not contain the prototype
+	// for the team proplist yet, so instead the property is
+	// instantiated on demand at runtime.
+	if (TeamProperties == nullptr)
+	{
+		TeamProperties = new C4TeamProperties(this);
+	}
+	return TeamProperties;
 }
 
 void C4Team::AddPlayer(C4PlayerInfo &rInfo, bool fAdjustPlayer)
@@ -253,21 +292,6 @@ bool C4Team::HasWon() const
 				}
 	}
 	return fHasWon;
-}
-
-C4PropList* C4Team::GetPropListPrototype(const char *name)
-{
-	C4Value temp;
-	if (!::ScriptEngine.GetGlobalConstant(name, &temp))
-	{
-		throw NeedTeamContext(FormatString("Global constant %s not defined", name).getData());
-	}
-	C4PropList * p = temp.getPropList();
-	if (!p)
-	{
-		throw NeedTeamContext(FormatString("Global constant %s is not a proplist anymore", name).getData());
-	}
-	return p;
 }
 
 // ---------------------------------------------------------------
