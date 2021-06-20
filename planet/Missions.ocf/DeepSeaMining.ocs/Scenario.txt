@@ -6,7 +6,6 @@ Difficulty=30
 MissionAccess=S2Crash
 
 [Definitions]
-Definition1=Objects.ocd
 Definition2=Decoration.ocd\Misc.ocd\Hat.ocd
 Definition3=Decoration.ocd\Clonk.ocd\AltSkins.ocd
 
@@ -14,31 +13,6 @@ Definition3=Decoration.ocd\Clonk.ocd\AltSkins.ocd
 Rules=Rule_TeamAccount=1;Rule_BuyAtFlagpole=1;
 Goals=Goal_BuildCrystalCommunicator=1;
 ValueOverloads=Ruby=10;Amethyst=10
-
-# WARNING: When changing player properties, remember to also adjust SectIntro.ocg/Scenario.txt!
-[Player1]
-Wealth=25
-Crew=Clonk=1
-BaseMaterial=Bread=25;
-BaseProduction=Bread=25;
-
-[Player2]
-Wealth=25
-Crew=Clonk=1
-BaseMaterial=Bread=25;
-BaseProduction=Bread=25;
-
-[Player3]
-Wealth=25
-Crew=Clonk=1
-BaseMaterial=Bread=25;
-BaseProduction=Bread=25;
-
-[Player4]
-Wealth=25
-Crew=Clonk=1
-BaseMaterial=Bread=25;
-BaseProduction=Bread=25;
 
 [Landscape]
 Sky=Clouds2

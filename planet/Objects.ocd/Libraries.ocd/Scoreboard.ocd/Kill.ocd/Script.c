@@ -28,26 +28,24 @@ protected func Initialize()
 
 protected func InitializePlayer(int plr)
 {
-	var plrid = GetPlayerID(plr);
 	// init scoreboard for player
-	score_kill_list[plrid] = 0;
+	score_kill_list[plr] = 0;
 	Scoreboard->NewPlayerEntry(plr);
 	return _inherited(plr, ...);
 }
 
 protected func OnClonkDeath(object clonk, int killer)
 {
-	var plr = clonk->GetOwner();
-	var plrid = GetPlayerID(killer);
+	var owner = clonk->GetOwner();
 	// Only if killer exists and has not committed suicide.
-	if (killer == plr || killer == NO_OWNER)
+	if (killer == owner || killer == NO_OWNER)
 		return _inherited(clonk, killer, ...);
 	// Only if killer and victim are on different teams.
-	if (GetPlayerTeam(killer) && GetPlayerTeam(killer) == GetPlayerTeam(plr))
+	if (GetPlayerTeam(killer) && GetPlayerTeam(killer) == GetPlayerTeam(owner))
 		return _inherited(clonk, killer, ...);
 	// Modify scoreboard kill count entry for killer.
-	score_kill_list[plrid]++;
-	Scoreboard->SetPlayerData(killer, "kills", score_kill_list[plrid]);
+	score_kill_list[killer]++;
+	Scoreboard->SetPlayerData(killer, "kills", score_kill_list[killer]);
 	return _inherited(clonk, killer, ...);
 }
 
@@ -60,23 +58,20 @@ protected func RemovePlayer(int plr)
 
 public func SetKillCount(int plr, int value)
 {
-	var plrid = GetPlayerID(plr);
-	score_kill_list[plrid] = value;
-	Scoreboard->SetPlayerData(plr, "kills", score_kill_list[plrid]);
+	score_kill_list[plr] = value;
+	Scoreboard->SetPlayerData(plr, "kills", score_kill_list[plr]);
 	return;
 }
 
 public func GetKillCount(int plr)
 {
-	var plrid = GetPlayerID(plr);
-	return score_kill_list[plrid];
+	return score_kill_list[plr];
 }
 
 public func DoKillCount(int plr, int value)
 {
-	var plrid = GetPlayerID(plr);
-	score_kill_list[plrid] += value;
-	Scoreboard->SetPlayerData(plr, "kills", score_kill_list[plrid]);
+	score_kill_list[plr] += value;
+	Scoreboard->SetPlayerData(plr, "kills", score_kill_list[plr]);
 	return;
 }
 
