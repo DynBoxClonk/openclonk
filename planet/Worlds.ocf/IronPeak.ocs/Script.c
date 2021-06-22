@@ -83,16 +83,16 @@ protected func InitializePlayer(proplist plr)
 	plr->SetViewLocked(true);
 	
 	// Give the player basic knowledge.
-	GivePlayerBasicKnowledge(plr);
-	GivePlayerSpecificKnowledge(plr, [Ropeladder]);
+	plr->GiveBasicKnowledge();
+	plr->GiveKnowledge([Ropeladder]);
 	
 	// Give the player the elementary base materials and some tools.
 	GivePlayerElementaryBaseMaterial(plr);
 	GivePlayerToolsBaseMaterial(plr);
 		
 	// Ensure mimimum player wealth.
-	var add_wealth = Max(0, 20 + 20 * amount - GetWealth(plr));
-	DoWealth(plr, add_wealth);
+	var add_wealth = Max(0, 20 + 20 * amount - plr->GetWealth());
+	plr->DoWealth(add_wealth);
 	
 	// Initialize the intro sequence if not yet started.
 	if (!intro_init)

@@ -1185,7 +1185,7 @@ private func EvalAct_DoWealth(proplist props, proplist context)
 	var change = EvaluateValue("Integer", props.Change, context);
 	if (player != NO_OWNER && change)
 	{
-		SetWealth(player, GetWealth(player) + change);
+		player->SetWealth(player->GetWealth() + change);
 		var do_sound = EvaluateValue("Boolean", props.DoSound, context);
 		if (do_sound)
 		{
@@ -1199,7 +1199,7 @@ private func EvalAct_PlrKnowledge(proplist props, proplist context)
 	var players = EvaluateValue("PlayerList", props.Players, context) ?? [];
 	var def = EvaluateValue("Definition", props.ID, context);
 	if (!def) return;
-	for (var plr in players) GivePlrKnowledge(plr, def);
+	for (var plr in players) plr->GiveKnowledge(def);
 }
 
 private func EvalAct_PlrView(proplist props, proplist context)
@@ -1499,7 +1499,7 @@ private func EvalInt_Distance(proplist props, proplist context)
 	return Distance(pA[0], pA[1], pB[0], pB[1]);
 }
 
-private func EvalInt_Wealth(proplist props, proplist context) { return GetWealth(EvaluatePlayer(props.Player, context)); }
+private func EvalInt_Wealth(proplist props, proplist context) { return EvaluatePlayer(props.Player, context)->GetWealth(); }
 
 private func EvalInt_PosCoord(proplist props, proplist context, int idx) { return EvaluatePosition(props.Position, context)[idx]; }
 

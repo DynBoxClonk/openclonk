@@ -269,7 +269,7 @@ public func DoPlayerStart(proplist plr)
 	++is_handling_player_spawn;
 	
 	// Give wealth
-	SetWealth(plr, starting_wealth);
+	plr->SetWealth(starting_wealth);
 	
 	// Set base material
 	InitializeBaseMaterial(plr);
@@ -470,7 +470,7 @@ private func InitializeKnowledge(proplist plr)
 			{
 				if (GetIndexOf(exceptlist, def) == -1)
 				{
-					GivePlrKnowledge(plr, def);
+					plr->GiveKnowledge(def);
 				}
 			}
 		}
@@ -479,7 +479,7 @@ private func InitializeKnowledge(proplist plr)
 	{
 		for (def in starting_knowledge.Data)
 		{
-			GivePlrKnowledge(plr, def);
+			plr->GiveKnowledge(def);
 		}
 	}
 	else

@@ -23,25 +23,25 @@ public func OnlyRichSurvives()
 	var teamwithmostwealth = -1;
 	
 	// Check for the wealthiest player
-	for (var i = 0; i < GetPlayerCount(); i++)
+	for (var player in GetPlayers())
 	{
-		var pwealth = GetWealth(GetPlayerByIndex(i));
+		var pwealth = player->GetWealth();
 		if (pwealth > mostwealth)
 		{
 			mostwealth = pwealth;
-			teamwithmostwealth = GetPlayerByIndex(i)->GetTeam();
+			teamwithmostwealth = player->GetTeam();
 		}
 	}
 	
 	// Check if there's a stalemate
 	// Players in another team than the winning one with most wealth means there's a stalemate
 	var onlyoneteam = true;
-	for (var i = 0; i < GetPlayerCount(); i++)
+	for (var player in GetPlayers())
 	{
-		var pwealth = GetWealth(GetPlayerByIndex(i));
+		var pwealth = player->GetWealth();
 		if (pwealth == mostwealth)
 		{
-			if (GetPlayerByIndex(i)->GetTeam() != teamwithmostwealth)
+			if (player->GetTeam() != teamwithmostwealth)
 			{
 				// Stalemate detected
 				stalematecheck_ok = false;
@@ -52,12 +52,12 @@ public func OnlyRichSurvives()
 	}
 	
 	// No stalemate, eliminate Players that lost
-	for (var i = 0; i < GetPlayerCount(); i++)
+	for (var player in GetPlayers())
 	{
-		var pwealth = GetWealth(GetPlayerByIndex(i));
+		var pwealth = player->GetWealth();
 		if (pwealth < mostwealth)
 		{
-			GetPlayerByIndex(i)->Eliminate();
+			player->Eliminate();
 		}
 	}
 	

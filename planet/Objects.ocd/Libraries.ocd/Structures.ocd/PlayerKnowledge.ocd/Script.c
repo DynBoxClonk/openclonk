@@ -2,159 +2,159 @@
 	Player Knowledge
 
 	Library to control the players knowledge/plans:
-     * GetPlrKnowledge(proplist player, id plan, int index, int category)
-     * HasPlrKnowledge(proplist player, id plan)
-     * SetPlrKnowledge(proplist player, id plan, bool remove)
-     * GivePlrKnowledge(proplist player, id plan)
-     * RemovePlrKnowledge(proplist player, id plan)
+     * GetKnowledge(proplist player, id plan, int index, int category)
+     * HasKnowledge(proplist player, id plan)
+     * GiveKnowledge(proplist player, id plan)
+     * RemoveKnowledge(proplist player, id plan)
 
-    Should be incorporated into a player management system later
 
-	@author Marky
+	@author Marky, Maikel
 */
 
 /* --- Properties --- */
 
-// Local variables to store the player's knowledge.
-local knowledge = [];
-
-
-
-/* --- Global interface --- */
-
-global func GetPlrKnowledge(proplist player, id plan, int index, int category)
+protected func Definition(def type)
 {
-	var manager = Library_PlayerKnowledge->GetKnowledgeManager(player);
-	if (manager)
-	{
-		if (plan)
-		{
-			LogLegacyWarning("GetPlrKnowledge() using 'id' parameter", "HasPlrKnowledge()", VERSION_10_0_OC);
-			return manager->HasKnowledge(plan);
-		}
-		else
-		{
-			return manager->GetKnowledge(index, category);
-		}
-	}
+	AddProperties(Player, {
+		GetKnowledgeData = type.GetKnowledgeData,
+		GetKnowledge = type.GetKnowledge,
+		GiveKnowledge = type.GiveKnowledge,
+		HasKnowledge = type.HasKnowledge,
+		RemoveKnowledge = type.RemoveKnowledge,
+		// Specifics
+		GiveAllKnowledge = type.GiveAllKnowledge,
+		GiveBasicKnowledge = type.GiveBasicKnowledge,
+		GivePumpingKnowledge = type.GivePumpingKnowledge,
+		GiveFarmingKnowledge = type.GiveFarmingKnowledge,
+		GiveWeaponryKnowledge = type.GiveWeaponryKnowledge,
+		GiveArtilleryKnowledge = type.GiveArtilleryKnowledge,
+		GiveAdvancedKnowledge = type.GiveAdvancedKnowledge,
+		GiveAirKnowledge = type.GiveAirKnowledge
+		});
 }
 
-global func HasPlrKnowledge(proplist player, id plan)
+/* --- Specific Knowledge --- */
+
+// Provides global functions to give players knowledge for scenarios.
+
+ 
+// Gives the player plans for all constructible or producible objects.
+public func GiveAllKnowledge()
 {
-	var manager = Library_PlayerKnowledge->GetKnowledgeManager(player);
-	if (manager)
-	{
-		return manager->HasKnowledge(plan);
-	}
+	GiveBasicKnowledge();
+	GivePumpingKnowledge();
+	GiveFarmingKnowledge();
+	GiveWeaponryKnowledge();
+	GiveArtilleryKnowledge();
+	GiveAdvancedKnowledge();
+	GiveAirKnowledge();
+	return;
 }
 
-global func SetPlrKnowledge(proplist player, any plan, bool remove)
+// Gives the player plans according to basic knowledge.
+public func GiveBasicKnowledge()
 {
-	if (remove)
-	{
-		LogLegacyWarning("SetPlrKnowledge() using 'bool remove' parameter", "RemovePlrKnowledge()", VERSION_10_0_OC);
-		return RemovePlrKnowledge(player, plan);
-	}
-	else
-	{
-		LogLegacyWarning("SetPlrKnowledge()", "GivePlrKnowledge()", VERSION_10_0_OC);
-		return GivePlrKnowledge(player, plan);
-	}
+	var knowledge = [
+		// Basic structures for a settlement and production of tools and explosives.
+		Flagpole, Basement, WindGenerator, SteamEngine, Compensator, Sawmill, Foundry, Elevator, ToolsWorkshop, ChemicalLab, Chest, WoodenBridge,
+		// Basic tools for mining and tree chopping and loam production.
+		Shovel, Hammer, Axe, Pickaxe, Barrel, Bucket, Torch, Lantern,
+		// The basic resources.
+		Metal, Loam, GoldBar,
+		// Some of the basic explosives.
+		Dynamite, DynamiteBox,
+		// Some basic vehicles which aid in the settlement construction.
+		Lorry
+	];
+	GiveKnowledge(knowledge);
+	return;
 }
 
-
-global func GivePlrKnowledge(proplist player, any plan)
+public func GivePumpingKnowledge()
 {
-	// Do it for all players?
-	if (player == nil)
-	{
-		var success = true;
-		for (var i = 0; i < GetPlayerCount(); ++i)
-		{
-			success &= GivePlrKnowledge(GetPlayerByIndex(i), plan);
-		}
-		return success;
-	}
-
-	// Do it for several plans?
-	if (GetType(plan) == C4V_Array)
-	{
-		var success = true;
-		for (var type in plan)
-		{
-			success &= GivePlrKnowledge(player, type);
-		}
-		return success;
-	}
-	else
-	{
-		AssertTypeOneOf(C4V_Def, plan, "plan");
-	}
-
-	// Default handling for one player
-	var manager = Library_PlayerKnowledge->GetKnowledgeManager(player);
-	if (manager)
-	{
-		return manager->GiveKnowledge(plan);
-	}
-	return false;
+	GiveKnowledge([
+		// Stuff needed for pumping.
+		Pump, Pipe /*,LiquidTank TODO: add when graphics are done*/
+	]);
+	return;
 }
 
-global func RemovePlrKnowledge(proplist player, any plan)
+public func GiveFarmingKnowledge()
 {
-	// Do it for all players?
-	if (player == nil)
-	{
-		var success = true;
-		for (var i = 0; i < GetPlayerCount(); ++i)
-		{
-			success &= RemovePlrKnowledge(GetPlayerByIndex(i), plan);
-		}
-		return success;
-	}
-	
-	// Do it for several plans?
-	if (GetType(plan) == C4V_Array)
-	{
-		var success = true;
-		for (var type in plan)
-		{
-			success &= RemovePlrKnowledge(player, type);
-		}
-		return success;
-	}
-	else
-	{
-		AssertTypeOneOf(C4V_Def, plan, "plan");
-	}
-
-	// Default handling for one player
-	var manager = Library_PlayerKnowledge->GetKnowledgeManager(player);
-	if (manager)
-	{
-		return manager->RemoveKnowledge(plan);
-	}
-	return false;
+	GiveKnowledge([
+		// Structures needed to process farming materials.
+		Kitchen, Loom, Windmill,
+		// Basic tools for farming.
+		Sickle,
+		// Processed goods.
+		Cloth, Flour, Bread
+	]);
+	return;
 }
 
-
-/* --- Definition Interface --- */
-
-func GetKnowledgeManager(proplist player)
+public func GiveWeaponryKnowledge()
 {
-	var manager = FindObject(Find_ID(Library_PlayerKnowledge), Find_AnyLayer(),  Find_Owner(player));
-	if (!manager)
-	{
-		manager = CreateObject(Library_PlayerKnowledge, 0, 0, player);
-	}
-	return manager;
+	GiveKnowledge([
+		// Armory to construct the weapons.
+		Armory,
+		// Weapons and explosives.
+		Bow, Arrow, FireArrow, BombArrow, Club, Sword, Javelin, Shield, Blunderbuss, LeadBullet, IronBomb, GrenadeLauncher, PowderKeg, Helmet, SmokeBomb,
+		// Artillery vehicles.
+		Catapult, Cannon
+	]);
+	return;
 }
+
+public func GiveArtilleryKnowledge()
+{
+	GiveKnowledge([
+		// Stuff to set up artillery.
+		Armory, PowderKeg, Catapult, Cannon
+	]);
+	return;
+}
+
+public func GiveAdvancedKnowledge()
+{
+	GiveKnowledge([
+		// Inventors lab to construct the items.
+		InventorsLab, Loom,
+		// Advanced items in tools workshop and needed materials.
+		Ropeladder, MetalBarrel, PowderKeg, WallKit, Cloth, DivingHelmet,
+		// Advanced items in inventors lab.
+		TeleGlove, WindBag, GrappleBow, Boompack, Balloon
+	]);
+	return;
+}
+
+public func GiveAirKnowledge()
+{
+	GiveKnowledge([
+		// Shipyard to construct the vehicles.
+		Shipyard, Loom,
+		// Materials needed.
+		Cloth,
+		// Airship and plane.
+		Airship, Airplane
+	]);
+	return;
+}
+
 
 /* --- Object Interface --- */
 
+public func GetKnowledgeData()
+{
+	if (this.Data.Knowledge == nil)
+	{
+		this.Data.Knowledge = [];
+	}
+	return this.Data.Knowledge;
+}
 
 public func GetKnowledge(int index, int category)
 {
+	var knowledge = GetKnowledgeData();
 	if (category)
 	{
 		var nr = -1;
@@ -180,7 +180,7 @@ public func GetKnowledge(int index, int category)
 
 public func HasKnowledge(id plan)
 {
-	return IsValueInArray(knowledge, plan);
+	return IsValueInArray(GetKnowledgeData(), plan);
 }
 
 public func GiveKnowledge(any plan)
@@ -189,20 +189,48 @@ public func GiveKnowledge(any plan)
 	{
 		return false;
 	}
+	// Do it for several plans?
+	if (GetType(plan) == C4V_Array)
+	{
+		var success = true;
+		for (var type in plan)
+		{
+			success &= GiveKnowledge(type);
+		}
+		return success;
+	}
+	else
+	{
+		AssertTypeOneOf(C4V_Def, plan, "plan");
+	}
 	if (!HasKnowledge(plan))
 	{
-		PushBack(knowledge, plan);
+		PushBack(GetKnowledgeData(), plan);
 	}
 	return true;
 }
 
-public func RemoveKnowledge(id plan)
+public func RemoveKnowledge(any plan)
 {
 	if (plan == nil)
 	{
 		return false;
 	}
-	return RemoveArrayValue(knowledge, plan);
+	// Do it for several plans?
+	if (GetType(plan) == C4V_Array)
+	{
+		var success = true;
+		for (var type in plan)
+		{
+			success &= RemoveKnowledge(type);
+		}
+		return success;
+	}
+	else
+	{
+		AssertTypeOneOf(C4V_Def, plan, "plan");
+	}
+	return RemoveArrayValue(GetKnowledgeData(), plan);
 }
 
 // Do not save object, but save the callbacks
@@ -210,9 +238,9 @@ public func RemoveKnowledge(id plan)
 func SaveScenarioObject(proplist props)
 {
 	var player = GetOwner();
-	for (var plan in knowledge)
+	for (var plan in player->GetKnowledgeData())
 	{
-		props->Add("Knowledge", "SetPlrKnowledge(%d, %i)", player, plan);
+		props->Add("Knowledge", "GetPlayer(%d)->GiveKnowledge(%i)", player.ID, plan);
 	}
 	return false;
 }

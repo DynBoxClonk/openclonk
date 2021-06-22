@@ -82,8 +82,8 @@ protected func InitializePlayer(proplist plr)
 	}
 	
 	// Give the player basic knowledge.
-	GivePlayerBasicKnowledge(plr);
-	GivePlayerSpecificKnowledge(plr, [InventorsLab, Ropeladder, MetalBarrel, PowderKeg, GrappleBow, WallKit, Pipe, Pump, TeleGlove, WindBag]);
+	plr->GiveBasicKnowledge();
+	plr->GiveKnowledge([InventorsLab, Ropeladder, MetalBarrel, PowderKeg, GrappleBow, WallKit, Pipe, Pump, TeleGlove, WindBag]);
 	
 	// Give the player the elementary base materials and some tools.
 	GivePlayerElementaryBaseMaterial(plr);
@@ -94,8 +94,8 @@ protected func InitializePlayer(proplist plr)
 	SetBaseProduction(plr, Cloth, 5);
 	
 	// Ensure mimimum player wealth.
-	var add_wealth = Max(0, 75 - 25 * SCENPAR_Difficulty - GetWealth(plr));
-	DoWealth(plr, add_wealth);
+	var add_wealth = Max(0, 75 - 25 * SCENPAR_Difficulty - plr->GetWealth());
+	plr->DoWealth(add_wealth);
 	
 	// Initialize the intro sequence if not yet started.
 	if (!intro_init)

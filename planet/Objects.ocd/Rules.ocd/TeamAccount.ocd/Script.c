@@ -14,37 +14,38 @@ protected func Initialize()
 	return;
 }
 
+protected func Definition(def type)
+{
+	Player.SetWealth_inherited = Player.SetWealth;
+	Player.SetWealth = type.SetWealth;
+}
+
 // Only SetWealth needs to be overloaded, DoWealth just uses that.
-global func SetWealth(proplist plr, int wealth)
+func SetWealth(int wealth)
 {
 	// Only if team account rule is activated.
 	if (!FindObject(Find_ID(Rule_TeamAccount)))
-		return _inherited(plr, wealth, ...);
-		
-	// Only for valid players.
-	if (plr == NO_OWNER || !plr->GetName())
-		return _inherited(plr, wealth, ...);
+		return this->SetWealth_inherited(wealth, ...);
 		
 	// Also set wealth of all allies.
 	for (var i = 0; i < GetPlayerCount(); i++)
 	{
 		var to_plr = GetPlayerByIndex(i);
-		if (to_plr != plr && !to_plr->Hostile(plr))
-			_inherited(to_plr, wealth, ...);
+		if (to_plr != this && !to_plr->Hostile(this))
+			to_plr->SetWealth_inherited(wealth, ...);
 	}
 
-	return _inherited(plr, wealth, ...);
+	return this->SetWealth_inherited(wealth, ...);
 }
 
 protected func InitializePlayer(proplist plr)
 {
 	// Find an ally and add this wealth.
-	for (var i = 0; i < GetPlayerCount(); i++)
+	for (var to_plr in GetPlayers())
 	{
-		var to_plr = GetPlayerByIndex(i);
 		if (to_plr != plr && !to_plr->Hostile(plr))
 		{
-			DoWealth(to_plr, GetWealth(plr));
+			to_plr->DoWealth(plr->GetWealth());
 			break;
 		}
 	}	
@@ -66,7 +67,7 @@ protected func OnTeamSwitch(proplist player, int new_team, int old_team)
 		if (!player->Hostile(GetPlayerByIndex(i)))
 			count++;		
 	}
-	//var share = GetWealth(player) / count;
+	//var share = player->GetWealth() / count;
 
 	// Add player to new team, i.e. add his wealth.
 	// TODO Implement
