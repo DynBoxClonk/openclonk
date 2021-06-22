@@ -1,23 +1,9 @@
 /**
 	Legacy.c
-	Contains legacy code that will be removed after some time.
+	Contains warnings for legacy code that will be removed after some time.
 	
 	@author Marky
 */
-
-static const VERSION_10_0_OC = "10.0";
-
-/* -- Player number conversion -- */
-
-global func GetPlayerLegacy(any player)
-{
-	if (GetType(player) == C4V_Int)
-	{
-		LogLegacyWarning("player number", "player proplist version", VERSION_10_0_OC);
-		return GetPlayer(player);
-	}
-	return player;
-}
 
 /* -- Internal helpers -- */
 
