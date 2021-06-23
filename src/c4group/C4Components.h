@@ -37,7 +37,7 @@
 
 #define C4CFN_ScenarioSections "Sect*.ocg"
 
-#define C4CFN_Objects         "Objects.ocd"
+#define C4CFN_Objects         "System.ocd"
 
 #define C4CFN_ScenarioCore    "Scenario.txt"
 #define C4CFN_ScenarioParameterDefs "ParameterDefs.txt"
