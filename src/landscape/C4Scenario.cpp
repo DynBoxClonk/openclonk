@@ -341,20 +341,28 @@ bool C4SDefinitions::GetModules(StdStrBuf *psOutModules) const
 	if (LocalOnly) { psOutModules->Copy(""); return true; }
 	// Scan for any valid entries
 	bool fSpecified = false;
-	int32_t cnt=0;
-	for (; cnt<C4S_MaxDefinitions; cnt++)
+	for (int32_t cnt = 0; cnt < C4S_MaxDefinitions; cnt++)
+	{
 		if (Definition[cnt][0])
+		{
 			fSpecified = true;
+		}
+	}
 	// No valid entries
 	if (!fSpecified) return false;
 	// Compose entry list
 	psOutModules->Copy("");
-	for (cnt=0; cnt<C4S_MaxDefinitions; cnt++)
+	for (int32_t cnt = 0; cnt < C4S_MaxDefinitions; cnt++)
+	{
 		if (Definition[cnt][0])
 		{
-			if (psOutModules->getLength()) psOutModules->AppendChar(';');
+			if (psOutModules->getLength())
+			{
+				psOutModules->AppendChar(';');
+			}
 			psOutModules->Append(Definition[cnt]);
 		}
+	}
 	// Done
 	return true;
 }
@@ -379,19 +387,20 @@ std::list<const char *> C4SDefinitions::GetModulesAsList() const
 
 void C4SDefinitions::SetModules(const char *szList, const char *szRelativeToPath, const char *szRelativeToPath2)
 {
-	int32_t cnt;
-
 	// Empty list: local only
 	if (!SModuleCount(szList))
 	{
 		LocalOnly=true;
-		for (cnt=0; cnt<C4S_MaxDefinitions; cnt++) Definition[cnt][0]=0;
+		for (int32_t cnt = 0; cnt < C4S_MaxDefinitions; cnt++)
+		{
+			Definition[cnt][0] = 0;
+		}
 		return;
 	}
 
 	// Set list
 	LocalOnly=false;
-	for (cnt=0; cnt<C4S_MaxDefinitions; cnt++)
+	for (int32_t cnt = 0; cnt < C4S_MaxDefinitions; cnt++)
 	{
 		SGetModule(szList,cnt,Definition[cnt],_MAX_PATH);
 		// Make relative path
@@ -419,10 +428,10 @@ void C4SDefinitions::CompileFunc(StdCompiler *pComp)
 {
 	pComp->Value(mkNamingAdapt(LocalOnly,               "LocalOnly",             false));
 	pComp->Value(mkNamingAdapt(AllowUserChange,         "AllowUserChange",       false));
-	pComp->Value(mkNamingAdapt(mkStringAdaptMA(Definition[0]), "Definition1", C4CFN_Objects));
+	pComp->Value(mkNamingAdapt(mkStringAdaptMA(Definition[0]), "Definition0", C4CFN_Objects));
 	for (int32_t i = 1; i < C4S_MaxDefinitions; i++)
 	{
-		pComp->Value(mkNamingAdapt(mkStringAdaptMA(Definition[i]), FormatString("Definition%i", i+1).getData(), ""));
+		pComp->Value(mkNamingAdapt(mkStringAdaptMA(Definition[i]), FormatString("Definition%i", i).getData(), ""));
 	}
 	pComp->Value(mkNamingAdapt(SkipDefs,                "SkipDefs",              C4IDList()));
 }
