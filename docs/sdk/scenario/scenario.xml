@@ -326,9 +326,9 @@
         <col>If LocalOnly is 1, only definitions local to the scenario file will be load.</col>
       </row>
       <row>
-        <col>Definition1 to 9</col>
+        <col>Definition0 to 10</col>
         <col>String(s)</col>
-        <col>With Definition<em>x</em> entries you can specify which object definition packs (ocd) are to be loaded with this scenario. The specified files must be available in the Clonk directory. If files are specified here, manual pack selection in the menu system is disabled.</col>
+        <col>With Definition<em>x</em> entries you can specify which object definition packs (ocd) are to be loaded with this scenario. The specified files must be available in the Clonk directory. If files are specified here, manual pack selection in the menu system is disabled. The pack System.ocd is loaded as Definition0 by default.</col>
       </row>
       <row>
         <col>SkipDefs</col>
@@ -340,4 +340,5 @@
   <author>Sven2</author><date>2002-04</date>
   <author>Newton</author><date>2010-02</date>
   <author>Marky</author><date>2019-12</date>
+  <author>Marky</author><date>2021-06</date>
 </doc>

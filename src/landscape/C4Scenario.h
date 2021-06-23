@@ -84,7 +84,7 @@ public:
 };
 
 
-const int32_t C4S_MaxDefinitions = 10;
+const int32_t C4S_MaxDefinitions = 11;
 
 class C4SDefinitions
 {
