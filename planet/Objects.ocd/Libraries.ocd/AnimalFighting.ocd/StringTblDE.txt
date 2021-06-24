@@ -1,0 +1,2 @@
+Name=Kampfverhalten
+Description=Lässt Tiere vor Feinden fliehen, oder sie bekämpfen.

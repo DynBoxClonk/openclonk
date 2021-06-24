@@ -1,0 +1,3 @@
+Name=Monster
+Description=Friedliebende grüne Zeitgenossen.
+DeadDesc=Totes

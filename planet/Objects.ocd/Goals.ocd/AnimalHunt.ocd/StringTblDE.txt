@@ -1,0 +1,5 @@
+Name=Jagd
+
+MsgGoalAnimalHunt=Die folgenden Tiere (und ihre Eier bzw. Nester) müssen erlegt werden.
+MsgGoalFulfilled=Alle Tiere erlegt.
+MsgGoalRemaining=|{{%i}} %d übrig.

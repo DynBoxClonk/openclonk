@@ -1,0 +1,17 @@
+[Material]
+Name=Gold
+Shape=Rough
+Density=70
+Friction=100
+BlastFree=1
+Blast2Object=Gold
+Blast2ObjectRatio=100
+MaxAirSpeed=100
+MaxSlide=1
+Placement=50
+TextureOverlay=gold
+LightEmit=0,8,8
+LightSpot=8,16,8
+LightAngle=230
+MinShapeOverlap=10
+

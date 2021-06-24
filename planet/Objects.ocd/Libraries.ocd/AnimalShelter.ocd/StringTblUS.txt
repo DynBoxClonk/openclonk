@@ -1,0 +1,2 @@
+Name=Animal shelter
+Description=Lets animals find and or build shelter.

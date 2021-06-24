@@ -1,0 +1,5 @@
+MsgBuy=Buy
+MsgSell=Sell
+MsgRemoveFlag=Remove flag
+DescRemoveFlag=Removes the flag, such that this no longer serves as a home base.
+MsgBaseControl=Home base

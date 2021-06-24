@@ -1,0 +1,2 @@
+Name=Nahrungssuche
+Description=Steuert das Essverhalten von Tieren

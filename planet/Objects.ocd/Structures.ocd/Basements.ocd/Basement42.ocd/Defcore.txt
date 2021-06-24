@@ -1,0 +1,15 @@
+[DefCore]
+id=Basement42
+Version=8,0
+Category=C4D_Structure
+Width=42
+Height=8
+Offset=-21,-4
+Value=1
+Mass=10
+SolidMask=0,0,42,8,0,0
+Vertices=2
+VertexX=-18,18
+VertexY=-5,-5
+VertexFriction=100,100
+Construction=1

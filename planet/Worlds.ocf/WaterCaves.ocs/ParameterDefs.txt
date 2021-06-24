@@ -1,0 +1,95 @@
+################################################################
+#
+# Generic parameters
+#
+################################################################
+
+[ParameterDef]
+Name=$DifficultyName$
+Description=$DifficultyDesc$
+ID=Difficulty
+Default=2
+
+
+	[Options]
+		
+		[Option]
+		Name=$DiffEasyName$
+		Description=$DiffEasyDesc$
+		Value=1
+		
+		[Option]
+		Name=$DiffNormalName$
+		Description=$DiffNormalDesc$
+		Value=2
+		
+		[Option]
+		Name=$DiffHardName$
+		Description=$DiffHardDesc$
+		Value=3
+		
+[ParameterDef]
+Name=$MapSizeName$
+Description=$MapSizeDesc$
+ID=MapSize
+Default=2
+
+	[Options]
+
+#		[Option]
+#		Name=$MapSmallName$
+#		Description=$MapSmallDesc$
+#		Value=1
+
+		[Option]
+		Name=$MapAverageName$
+		Description=$MapAverageDesc$
+		Value=2
+		
+#		[Option]
+#		Name=$MapLargeName$
+#		Description=$MapLargeDesc$
+#		Value=3
+
+[ParameterDef]
+Name=$PowerNeedName$
+Description=$PowerNeedDesc$
+ID=PowerNeed
+Default=1
+
+	[Options]
+
+		[Option]
+		Name=$PowerNeedYesName$
+		Description=$PowerNeedYesDesc$
+		Value=1
+		
+		[Option]
+		Name=$PowerNeedNoName$
+		Description=$PowerNeedNoDesc$
+		Value=2
+
+################################################################
+#
+# Scenario parameters
+#
+################################################################
+
+
+[ParameterDef]
+Name=$ScenarioGoalName$
+Description=$ScenarioGoalDesc$
+ID=Goal
+Default=1
+
+	[Options]
+
+		[Option]
+		Name=$GoalMineCrystalName$
+		Description=$GoalName$$GoalMineCrystalDesc$
+		Value=1
+
+		[Option]
+		Name=$GoalMineGoldName$
+		Description=$GoalName$$GoalMineGoldDesc$
+		Value=2

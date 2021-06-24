@@ -1,0 +1,6 @@
+Name=Chemiefabrik
+Description=Zur Herstellung von Sprengstoffen.
+
+NoPlrKnowledge=Keine Baupläne vorhanden
+Construction=Konstruktion
+Production=Produktion

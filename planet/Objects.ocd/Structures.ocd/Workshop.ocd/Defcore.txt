@@ -1,0 +1,17 @@
+[DefCore]
+id=ClassicWorkshop
+Version=8,0
+Category=C4D_Structure
+Width=72
+Height=50
+Offset=-36,-25
+Value=200
+Mass=4500
+Vertices=4
+VertexX=-21,14,-33,30
+VertexY=-19,-19,24,24
+VertexFriction=50,50,100,100
+Entrance=0,5,20,20
+Exclusive=1
+Construction=1
+Rotate=1

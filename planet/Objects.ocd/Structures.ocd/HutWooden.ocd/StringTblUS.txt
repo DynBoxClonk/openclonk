@@ -1,0 +1,4 @@
+Name=Wooden cabin
+Description=A somewhat sturdier home base with solid basement.
+TxtBuy=Buy
+TxtSell=Sell

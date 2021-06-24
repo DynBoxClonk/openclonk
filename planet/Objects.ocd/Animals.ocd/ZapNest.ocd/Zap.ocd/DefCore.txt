@@ -1,0 +1,13 @@
+[DefCore]
+id=Zap
+Version=8,0
+Category=C4D_Living
+Width=2
+Height=2
+Offset=-1,-1
+Vertices=1
+VertexFriction=100
+Value=1
+Mass=1
+Picture=12,0,64,64
+HideInCreator=true

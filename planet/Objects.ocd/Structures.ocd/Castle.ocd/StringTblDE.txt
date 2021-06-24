@@ -1,0 +1,7 @@
+Name=Burg
+Description=Eine große und sichere Heimatbasis mit Aufstiegsturm, um Fahrzeuge auf die Plattform zu schaffen.
+
+
+CastleDefense=Verteidiger
+DefenseInfo=In der Burg können bis zu drei Verteidiger untergebracht werden. Hat ein Clonk einen Bogen, dann zählt er als Verteidiger und bedient sich an den Pfeilen der Waffenkammer der Burg. Die eigenen Pfeile des Clonks werden dabei nicht verbraucht.
+DefenderInfo=%s verteidigt die Burg. Er hat:|%d/%d Pfeile|%d% Energie

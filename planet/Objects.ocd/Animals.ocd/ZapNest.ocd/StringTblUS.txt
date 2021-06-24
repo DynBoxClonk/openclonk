@@ -1,0 +1,2 @@
+Name=Zap nest
+Description=Very fragile. Releases zaps when dropped.

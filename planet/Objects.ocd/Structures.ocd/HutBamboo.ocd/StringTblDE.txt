@@ -1,0 +1,3 @@
+Name=Bambushütte
+Description=Das kleinste und leichteste Gebäude, das als Heimatbasis dienen kann. Leider sehr anfällig für gegnerische Angriffe.
+

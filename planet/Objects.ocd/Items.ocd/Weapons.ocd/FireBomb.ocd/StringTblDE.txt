@@ -1,0 +1,3 @@
+Name=Brandbombe
+Description=Leicht entzündend.
+

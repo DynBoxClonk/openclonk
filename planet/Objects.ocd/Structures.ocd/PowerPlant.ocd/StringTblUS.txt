@@ -1,0 +1,6 @@
+Name=Power plant
+Description=Turns coal, oil, or wood into energy.
+
+MsgConnectedPipe=Connected pipe.
+MsgPipeProhibited=Source pipes cannot be connected to the power plant.
+MsgHasPipes=The power plant already has a pipe.

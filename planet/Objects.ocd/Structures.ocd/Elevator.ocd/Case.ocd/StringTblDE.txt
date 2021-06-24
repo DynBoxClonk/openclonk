@@ -1,0 +1,4 @@
+﻿Name=Fahrstuhlkorb
+Description=[Oben] / [Unten] zum Fahren.
+
+TxtDrillshaft=Schachtbohrung

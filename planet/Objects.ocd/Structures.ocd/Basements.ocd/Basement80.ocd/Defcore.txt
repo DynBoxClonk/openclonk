@@ -1,0 +1,15 @@
+[DefCore]
+id=Basement80
+Version=8,0
+Category=C4D_Structure
+Width=80
+Height=8
+Offset=-40,-4
+Value=1
+Mass=10
+SolidMask=0,0,80,8,0,0
+Vertices=2
+VertexX=-38,34
+VertexY=-5,-5
+VertexFriction=100,100
+Construction=1

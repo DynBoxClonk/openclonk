@@ -1,0 +1,7 @@
+Name=Fish
+Description=Harmless ocean dweller.
+
+TxtMovement=Move
+TxtDrop=Drop item
+TxtLeave=Retransform
+TxtEmbowel=Exploit

@@ -1,0 +1,2 @@
+Name=Erdklumpen
+Description=Kann ausgegraben werden und zerbröckelt zu Erde bei Aufprall.

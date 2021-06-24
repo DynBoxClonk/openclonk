@@ -1,0 +1,7 @@
+Himmelsinseln
+
+Jeder Spieler lebt auf einer kleinen, frei schwebenden Insel.
+
+Ein falscher Tritt kann hier den sicheren Tod bedeuten. Beim Abbau von Ressourcen ist daher höchste Vorsicht geboten.
+
+Zum Bauen wird Baumaterial benötigt und Maschinen wie der Fahrstuhl oder das Sägewerk benötigen Energie, die mit Windrädern erzeugt und dann über Leitungen an die Verbraucher transportiert werden kann.

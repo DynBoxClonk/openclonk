@@ -1,0 +1,4 @@
+Name=Toter Vogel
+Description=Der Vogel ist tot.
+
+TxtEmbowel=Zerlegen

@@ -1,0 +1,6 @@
+Name=Kraftwerk
+Description=Energieerzeugung mit fossilen Brennstoffen. Verarbeitet Kohle, Öl und Holz.
+
+MsgConnectedPipe=Rohr angeschlossen.
+MsgPipeProhibited=Zuflussrohre können nicht an das Kraftwerk angeschlossen werden.
+MsgHasPipes=Das Kraftwerk hat schon ein Rohr.

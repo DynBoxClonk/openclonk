@@ -1,0 +1,2 @@
+Name=Monster egg
+Description=Home of the baby monsters.

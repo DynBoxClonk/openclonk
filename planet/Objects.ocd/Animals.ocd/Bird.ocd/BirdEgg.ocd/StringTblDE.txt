@@ -1,0 +1,3 @@
+Name=Vogelei
+Description=Herberge des Vogelnachwuchses.
+TxtEat=Essen

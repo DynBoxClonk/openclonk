@@ -1,0 +1,17 @@
+[DefCore]
+id=FireMonster
+Version=8,0
+Category=C4D_Living
+Width=48
+Height=34
+Offset=-24,-17
+Value=35
+Mass=100
+Vertices=7
+VertexX=-1,1,0,-6,-2,7,2
+VertexY=-7,-7,12,-3,6,-3,6
+VertexCNAT=5,6,8,1,1,2,2
+VertexFriction=100,100,100,100,100,100
+Float=1
+StretchGrowth=1
+IncompleteActivity=1

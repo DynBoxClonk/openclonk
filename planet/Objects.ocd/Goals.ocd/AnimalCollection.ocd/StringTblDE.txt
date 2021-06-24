@@ -1,0 +1,7 @@
+Name=Tiere fangen
+
+MsgGoalFulfilled=Alle Tiere wurden verkauft.
+MsgGoalAnimalRescue=Die folgenden Tiere müssen eingefangen und verkauft werden.
+MsgGoalRescueWithDeathsLot=|{{%i}} %d, und %d davon dürfen sterben.
+MsgGoalRescueWithDeathsOne=|{{%i}} %d, und %d davon darf sterben.
+MsgGoalRescueNoDeaths=|{{%i}} %d, und keines davon darf sterben.

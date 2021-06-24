@@ -1,0 +1,2 @@
+Name=Benutzbares Objekt
+Description=Das Objekt kann mit [Werfen] benutzt werden.

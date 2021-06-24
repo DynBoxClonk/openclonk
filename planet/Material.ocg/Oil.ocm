@@ -1,0 +1,11 @@
+[Material]
+Name=Oil
+Density=25
+Instable=1
+MaxAirSpeed=25
+MaxSlide=10000
+WindDrift=30
+Inflammable=1
+Corrode=100
+Placement=10
+TextureOverlay=Oil

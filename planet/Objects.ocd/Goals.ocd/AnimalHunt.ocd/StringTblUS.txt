@@ -1,0 +1,5 @@
+Name=Hunt
+
+MsgGoalAnimalHunt=The following animals (and their eggs, nests, lairs) have to be eliminated.
+MsgGoalFulfilled=All animals are eliminated.
+MsgGoalRemaining=|{{%i}} %d remaining.

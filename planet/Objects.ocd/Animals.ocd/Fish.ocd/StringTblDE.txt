@@ -1,0 +1,7 @@
+Name=Fisch
+Description=Kleiner Bewohner des Meeres.
+
+TxtMovement=Bewegen
+TxtDrop=Gegenstand fallen lassen
+TxtLeave=Zurückverwandeln
+TxtEmbowel=Verwerten

@@ -1,0 +1,2 @@
+Name=Crystal
+Description=Holds a magical energy charge.
