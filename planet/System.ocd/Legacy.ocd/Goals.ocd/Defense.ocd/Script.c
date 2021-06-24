@@ -255,7 +255,7 @@ private func GetWaveString() { return Format("Defense_%s_BestWave", GetScenTitle
 
 local FxWaveControl = new Effect
 {
-	Construction = func(int enemy_plr)
+	Construction = func(proplist enemy_plr)
 	{
 		// Check if enemy player is correct.
 		if (enemy_plr == nil || enemy_plr == NO_OWNER)

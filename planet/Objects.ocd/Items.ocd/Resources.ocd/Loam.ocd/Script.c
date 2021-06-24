@@ -256,7 +256,7 @@ private func GetPercentRemaining()
 	return 100 - 100 * this.loamused / this.BridgeLength;
 }
 
-public func CalcValue(object in_base, int for_player)
+public func CalcValue(object in_base, proplist for_player)
 {
 	return GetDefValue() * GetPercentRemaining() / 100;
 }

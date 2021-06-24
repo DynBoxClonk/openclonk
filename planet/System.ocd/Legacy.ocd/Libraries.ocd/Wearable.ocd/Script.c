@@ -159,7 +159,7 @@ local FxWearing = new Effect {
 		this.attach = Target->AttachMesh(this.item, this.identifier, attachment_bone, attachment_transform, attachment_flags);
 	},
 
-	Damage = func(int damage, int cause, int by_player)
+	Damage = func(int damage, int cause, proplist by_player)
 	{
 		if (!this.item) return damage;
 

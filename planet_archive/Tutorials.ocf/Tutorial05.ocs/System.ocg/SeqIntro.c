@@ -2,7 +2,7 @@
 
 #appendto Sequence
 
-public func Intro_Init(int for_plr)
+public func Intro_Init(proplist for_plr)
 {
 	this.plr = for_plr;
 	this.head = Dialogue->FindByName("VillageHead")->GetDialogueTarget();

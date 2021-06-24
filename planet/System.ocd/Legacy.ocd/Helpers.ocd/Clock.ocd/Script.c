@@ -74,9 +74,9 @@ public func SetTime(int to_time)
 
 // Creates a countdown for a duration in second for a given player.
 // If for_plr == nil the clock is visible for all players.
-// The game call OnCountdownFinished(int for_plr) is made when the clock runs out.
+// The game call OnCountdownFinished(proplist for_plr) is made when the clock runs out.
 // The same call will be made to the callback object if given.
-public func CreateCountdown(int total_time, int for_plr, object callback_obj, bool show_inscreen)
+public func CreateCountdown(int total_time, proplist for_plr, object callback_obj, bool show_inscreen)
 {
 	if (this != GUI_Clock)
 		return;
@@ -97,7 +97,7 @@ public func CreateCountdown(int total_time, int for_plr, object callback_obj, bo
 }
 
 // Removes the current countdown for the given player.
-public func RemoveCountdown(int for_plr)
+public func RemoveCountdown(proplist for_plr)
 {
 	if (this != GUI_Clock)
 		return;
@@ -107,7 +107,7 @@ public func RemoveCountdown(int for_plr)
 	return;
 }
 
-protected func FxIntCountdownStart(object target, proplist effect, int temporary, int total_time, int for_plr, object callback_obj, bool show_inscreen)
+protected func FxIntCountdownStart(object target, proplist effect, int temporary, int total_time, proplist for_plr, object callback_obj, bool show_inscreen)
 {
 	if (temporary)
 		return FX_OK;

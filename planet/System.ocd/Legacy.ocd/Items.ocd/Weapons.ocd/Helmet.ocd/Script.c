@@ -27,7 +27,7 @@ public func ControlUse(object clonk)
 }
 
 // Helmet effect: 20% less damage
-func OnDamage(int damage, int cause, int by_player)
+func OnDamage(int damage, int cause, proplist by_player)
 {
 	// Do nothing on energy gained
 	if (damage > 0) return damage;

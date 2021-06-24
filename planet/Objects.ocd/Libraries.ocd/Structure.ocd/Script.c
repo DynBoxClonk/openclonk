@@ -13,7 +13,7 @@ local IsDisabled = false;
 static const STRUCTURE_Destruction_Con = 30;
 
 
-public func Damage(int change, int cause, int cause_player)
+public func Damage(int change, int cause, proplist cause_player)
 {
 	// Only do stuff if the object has the HitPoints property.
 	if (this)
@@ -88,7 +88,7 @@ protected func OnStructureDestroyed()
 	}
 }
 
-protected func Incineration(int by_player)
+protected func Incineration(proplist by_player)
 {
 	StructureDestroyed();
 	

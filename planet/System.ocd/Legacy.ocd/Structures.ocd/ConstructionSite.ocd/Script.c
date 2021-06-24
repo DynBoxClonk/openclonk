@@ -336,7 +336,7 @@ private func GetMissingComponents()
 	return missing_material;
 }
 
-private func StartConstructing(int by_player)
+private func StartConstructing(proplist by_player)
 {
 	if (!definition || !full_material)
 		return;
@@ -392,7 +392,7 @@ private func CreateConstructionSite()
 	return site;
 }
 
-private func StartConstructionEffect(object site, int by_player)
+private func StartConstructionEffect(object site, proplist by_player)
 {
 	// Object provides custom construction effects?
 	if (!site->~DoConstructionEffects(this))

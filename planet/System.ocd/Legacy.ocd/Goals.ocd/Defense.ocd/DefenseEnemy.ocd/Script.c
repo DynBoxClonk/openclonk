@@ -31,7 +31,7 @@
 /*-- Enemy Launching --*/
 
 // Definition call which can be used to launch an enemy.
-public func LaunchEnemy(proplist prop_enemy, int wave_nr, int enemy_plr)
+public func LaunchEnemy(proplist prop_enemy, int wave_nr, proplist enemy_plr)
 {
 	if (GetType(this) != C4V_Def)
 		Log("WARNING: LaunchEnemy(%v, %d, %d) not called from definition context but from %v.", prop_enemy, wave_nr, enemy_plr, this);
@@ -421,7 +421,7 @@ local BomberPlane = new DefaultEnemy
 /*-- Wave Launching --*/
 
 // Definition call which can be used to launch an attack wave.
-public func LaunchWave(proplist prop_wave, int wave_nr, int enemy_plr)
+public func LaunchWave(proplist prop_wave, int wave_nr, proplist enemy_plr)
 {
 	if (GetType(this) != C4V_Def)
 		Log("WARNING: LaunchWave(%v, %d, %d) not called from definition context but from %v.", prop_wave, wave_nr, enemy_plr, this);

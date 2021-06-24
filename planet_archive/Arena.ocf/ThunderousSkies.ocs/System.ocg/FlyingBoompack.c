@@ -3,7 +3,7 @@
 #appendto Boompack
 
 
-func Fall(int from_plr) 
+func Fall(proplist from_plr) 
 {
  	SetOwner(from_plr);
  	SetController(from_plr);
