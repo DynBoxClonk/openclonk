@@ -1,8 +1,8 @@
 
 global func EliminateAllPlayers()
 {
-	for (var i = 0; i < GetPlayerCount(); ++i)
+	for (var player in GetPlayers())
 	{
-		EliminatePlayer(GetPlayerByIndex(i));
+		player->Eliminate();
 	}
 }

@@ -74,7 +74,7 @@ private func FxIntAnimalActivityReproduction( object target, proplist effect)
 	if (!AnimalReproductionCustom())
 	{
 		// standard reproduction
-		var pChild = CreateConstruction(GetID(), 0, 0, -1, AnimalReproductionBirthSize());
+		var pChild = CreateConstruction(GetID(), 0, 0, NO_OWNER, AnimalReproductionBirthSize());
 		pChild->~AnimalBirth();
 	}
 	//return true;

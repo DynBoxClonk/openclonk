@@ -10,7 +10,7 @@ protected func Initialize()
 {
 }
 
-protected func InitializePlayer(int player)
+protected func InitializePlayer(proplist player)
 {
 	StartTest();
 	return;

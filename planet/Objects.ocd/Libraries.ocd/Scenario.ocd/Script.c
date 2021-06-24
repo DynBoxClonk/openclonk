@@ -12,7 +12,7 @@ public func Initialize()
 	Init_Material();
 }
 
-public func InitializePlayer(int player)
+public func InitializePlayer(proplist player)
 {
 	Player_InitialKnowledge(player);
 	Player_StartingMaterial(player);
@@ -37,10 +37,10 @@ private func Init_Material(){ }
 
 /* -- Player specific stuff -- */
 
-private func Player_InitialKnowledge(int player){ }
-private func Player_StartingMaterial(int player){ }
+private func Player_InitialKnowledge(proplist player){ }
+private func Player_StartingMaterial(proplist player){ }
 
-private func Player_StartingEquipment(int player)
+private func Player_StartingEquipment(proplist player)
 {
 	var crew_members = FindObjects(Find_Owner(player), Find_OCF(OCF_CrewMember));
 	for (var i = 0; i < GetLength(crew_members); ++i)
@@ -50,7 +50,7 @@ private func Player_StartingEquipment(int player)
 	}
 }
 
-private func Player_StartingEquipmentForCrewMember(int player, object crew, int crew_index)
+private func Player_StartingEquipmentForCrewMember(proplist player, object crew, int crew_index)
 {
 	// Fill with your own equipment
 }

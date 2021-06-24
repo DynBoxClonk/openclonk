@@ -71,7 +71,7 @@ private func Init_Material()
 	Gold->PlaceInEarth(3, relative, level);
 }
 
-private func Player_InitialKnowledge(int player)
+private func Player_InitialKnowledge(proplist player)
 {
 	var needs_power = !FindObject(Find_ID(Rule_NoPowerNeed));
 
@@ -93,9 +93,9 @@ private func Player_InitialKnowledge(int player)
 	GivePlayerChemicalKnowledge(player);
 }
 
-private func Player_StartingMaterial(int player)
+private func Player_StartingMaterial(proplist player)
 {
-	SetWealth(player, 100);
+	player->SetWealth(100);
 	
 	var loc_lake = Loc_InRect(LandscapeWidth() / 2 - 150, 0, 300, LandscapeHeight());
 	var homeBase = ClassicHutWooden->PlaceHomebase(player, {location = Loc_And(Loc_Sky(), Loc_Not(loc_lake))});

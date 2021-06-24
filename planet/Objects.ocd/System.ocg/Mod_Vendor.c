@@ -11,7 +11,7 @@ private func EjectAllContents()
 public func AllowSellMenuEntries(){ return true;}
 
 
-private func GetSellableContents(int wealth_player, object container)
+private func GetSellableContents(proplist wealth_player, object container)
 {
 	// Defaults
 	var inventory = [];

@@ -57,14 +57,14 @@ private func Init_Animals()
 	ZapNest->PlaceInEarth(4, 11, level, 10);
 }
 
-private func Player_StartingMaterial(int player)
+private func Player_StartingMaterial(proplist player)
 {
-	SetWealth(player, 70);
+	player->SetWealth(70);
 	ClassicHutWooden->PlaceHomebase(player);
 }
 
 
-private func Player_InitialKnowledge(int player)
+private func Player_InitialKnowledge(proplist player)
 {
 	var needs_power = !FindObject(Find_ID(Rule_NoPowerNeed));
 	

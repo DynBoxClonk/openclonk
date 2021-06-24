@@ -12,7 +12,7 @@
  Sets the minimum amount of base material that a player has.
  Does nothing if the player already has more than this amount.
  */
-global func SetBaseMaterialAtLeast(int player, id material, int amount)
+global func SetBaseMaterialAtLeast(proplist player, id material, int amount)
 {
 	return SetBaseMaterial(player, material, Max(amount, GetBaseMaterial(player, material)));
 }
@@ -22,7 +22,7 @@ global func SetBaseMaterialAtLeast(int player, id material, int amount)
  Sets the minimum amount of base production that a player has.
  Does nothing if the player already has more than this amount.
  */
-global func SetBaseProductionAtLeast(int player, id material, int amount)
+global func SetBaseProductionAtLeast(proplist player, id material, int amount)
 {
 	return SetBaseProduction(player, material, Max(amount, GetBaseMaterial(player, material)));
 }
@@ -35,7 +35,7 @@ global func SetBaseProductionAtLeast(int player, id material, int amount)
  on objects having been placed), and after
  the players were given knowledge (because it relies on the knowledge).
  */
-global func GivePlayerHomebaseMaterial(int player)
+global func GivePlayerHomebaseMaterial(proplist player)
 {
 	// --- Initialize the lists
 	var material_list = {};
@@ -78,7 +78,7 @@ global func GivePlayerHomebaseMaterial(int player)
 		}
 		
 		// Tools get auto-produced if you do not have the knowledge
-		if (!GetPlrKnowledge(player, tool) || !GetPlrKnowledge(player, ClassicWorkshop))
+		if (!player->HasKnowledge(tool) || !player->HasKnowledge(ClassicWorkshop))
 		{
 			material_list[tool_name] = Max(material_list[tool_name], 1);
 		}
@@ -96,14 +96,14 @@ global func GivePlayerHomebaseMaterial(int player)
 	// --- Everything else that can be produced is determined by the individual knowledge
 	var index = 0;
 	var categories = C4D_Structure | C4D_Vehicle | C4D_Object;
-	for (var knowledge = GetPlrKnowledge(player, nil, index, categories); !!knowledge; knowledge = GetPlrKnowledge(player, nil, ++index, categories))
+	for (var knowledge = player->GetKnowledge(index, categories); !!knowledge; knowledge = player->GetKnowledge(++index, categories))
 	{
 		knowledge->~UpdatePlayerHomebaseMaterial(player);
 	}
 }
 
 
-global func  ConfigurePlayerHomebaseMaterial(int player, proplist materials, int production)
+global func  ConfigurePlayerHomebaseMaterial(proplist player, proplist materials, int production)
 {
 	// Update the home base material
 	for (var material_name in GetProperties(materials))

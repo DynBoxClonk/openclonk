@@ -43,13 +43,13 @@ private func Init_Material(int map_size)
 	Loam->PlaceInEarth(1, relative, percentage);
 }
 
-private func Player_StartingMaterial(int player)
+private func Player_StartingMaterial(proplist player)
 {
-	SetWealth(player, 50 - (SCENPAR_Difficulty - 1) * 25); // 50; 25; 0
+	player->SetWealth(50 - (SCENPAR_Difficulty - 1) * 25); // 50; 25; 0
 	ClassicHutWooden->PlaceHomebase(player);
 }
 
-private func Player_InitialKnowledge(int player)
+private func Player_InitialKnowledge(proplist player)
 {
 	var needs_power = !FindObject(Find_ID(Rule_NoPowerNeed));
 	

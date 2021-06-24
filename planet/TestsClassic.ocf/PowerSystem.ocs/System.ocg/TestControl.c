@@ -1,7 +1,7 @@
 /**
 	Test Control
 	Unit tests control. Invokes tests by calling the  global
-    function Test*_OnStart(int player) and iterate through all 
+    function Test*_OnStart(proplist player) and iterate through all 
 	tests. The test is completed once Test*_Completed() returns
 	true. Then Test*_OnFinished() is called, to be able to reset 
 	the scenario for the next test.
@@ -13,7 +13,7 @@
 	@author Maikel
 */
 
-global func StartTests(int player)
+global func StartTests(proplist player)
 {
 	var effect = AddEffect("IntTestControl", nil, 100, 2);
 	effect.testnr = 1;

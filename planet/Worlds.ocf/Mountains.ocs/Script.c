@@ -49,13 +49,13 @@ private func Init_Material()
 }
 
 
-private func Player_StartingMaterial(int player)
+private func Player_StartingMaterial(proplist player)
 {
-	SetWealth(player, 50);
+	player->SetWealth(50);
 	ClassicHutStone->PlaceHomebase(player);
 }
 
-private func Player_InitialKnowledge(int player)
+private func Player_InitialKnowledge(proplist player)
 {
 	var needs_power = !FindObject(Find_ID(Rule_NoPowerNeed));
 

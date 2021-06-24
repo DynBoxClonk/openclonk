@@ -40,6 +40,16 @@ public func GetInteractionMenus(object clonk)
 {
 	var menus = _inherited(clonk) ?? [];
 
+	var color;
+	if (GetOwner())
+	{
+		color = GetOwner()->GetColor();
+	}
+	else
+	{
+		color = RGB(100, 100, 100);
+	}
+
 	// only open the menus if ready
 	var base_menu =
 	{
@@ -48,7 +58,7 @@ public func GetInteractionMenus(object clonk)
 		callback = "OnBaseControlSelection",
 		callback_hover = "OnBaseControlHover",
 		callback_target = this,
-		BackgroundColor = GetPlayerColor(GetOwner()),
+		BackgroundColor = color,
 		Priority = 60
 	};
 	PushBack(menus, base_menu);
@@ -129,8 +139,13 @@ protected func OnStructureDestroyed()
 
 /* --- Placement --- */
 
-public func PlaceHomebase(int player, proplist settings, proplist area)
+public func PlaceHomebase(proplist player, proplist settings, proplist area)
 {
+	if (player == NO_OWNER)
+	{
+		return;
+	}
+
 	// Defaults, these are hard-coded here.
 	settings = settings ?? {};
 	settings.max_tries = 1000;
@@ -154,7 +169,7 @@ public func PlaceHomebase(int player, proplist settings, proplist area)
 		}
 		
 		// Let the first crew exit
-		GetHiRank(player)->SetCommand("Exit");
+		player->GetHiRank()->SetCommand("Exit");
 		return homebase;
 	}
 	else

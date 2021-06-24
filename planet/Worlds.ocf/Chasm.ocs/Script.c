@@ -77,9 +77,9 @@ private func Init_Material()
 }
 
 
-private func Player_StartingMaterial(int player)
+private func Player_StartingMaterial(proplist player)
 {
-	SetWealth(player, 80);
+	player->SetWealth(80);
 	
 	var trees = FindObjects(Find_Func("IsTree"));
 	var start = trees[Random(GetLength(trees))];
@@ -90,7 +90,7 @@ private func Player_StartingMaterial(int player)
 	}
 }
 
-private func Player_StartingEquipmentForCrewMember(int player, object crew, int crew_index)
+private func Player_StartingEquipmentForCrewMember(proplist player, object crew, int crew_index)
 {
 	_inherited(player, crew, crew_index);
 
@@ -101,7 +101,7 @@ private func Player_StartingEquipmentForCrewMember(int player, object crew, int 
 	}
 }
 
-private func Player_InitialKnowledge(int player)
+private func Player_InitialKnowledge(proplist player)
 {
 	var needs_power = !FindObject(Find_ID(Rule_NoPowerNeed));
 

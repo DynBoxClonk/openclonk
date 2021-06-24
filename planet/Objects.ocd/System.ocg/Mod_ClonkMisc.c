@@ -1,6 +1,6 @@
 #appendto Clonk
 
-private func Recruitment(int player)
+private func Recruitment(proplist player)
 {
 	// For better ambience
 	SetLightColor(RGB(180, 180, 150));

@@ -15,11 +15,14 @@ global func FireEvent(string event, object target)
 {
 	var i = GetEffectCount("EventListener", target, nil); // get all listeners
 	
-	var listener;
 	while (i--)
-		if (listener = GetEffect("EventListener", target, i))
-		if (listener.eventName == event)
+	{
+		var listener = GetEffect("EventListener", target, i);
+		if (listener && listener.eventName == event)
+		{
 			EffectCall(target, listener, "OnEvent", this);
+		}
+	}
 }
 
 /**
@@ -62,13 +65,16 @@ global func HasEventListener(string event, object target)
 	
 	if (event == nil && i > 0)
 		return true;
-	
-	var listener;
+
 	while (i--)
-		if (listener = GetEffect("EventListener", target, i))
-			if (listener.eventName == event)
+	{
+		var listener = GetEffect("EventListener", target, i);
+		if (listener && listener.eventName == event)
+		{
 				return true;
-	
+		}
+	}
+
 	return false;
 }
 

@@ -312,10 +312,15 @@ private func ExecuteRanged(proplist ai)
 				return true;
 		}
 	}
-
 	// Path not free or out of range. Just wait for enemy to come...
-	var new_target;
-	if (!Random(3)) if (new_target = FindTarget(ai)) ai.target = new_target;
+	if (!Random(3))
+	{
+		var new_target = FindTarget(ai);
+		if (new_target)
+		{
+			ai.target = new_target;
+		}
+	}
 	// go to another window
 	ai.castle_window = CASTLE_Windows[Random(GetLength(CASTLE_Windows))];
 	return true;

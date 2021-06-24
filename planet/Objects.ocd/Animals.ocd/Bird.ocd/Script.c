@@ -485,7 +485,7 @@ public func BirdStartBuildNest(self, tree)
       else
           SetDir(DIR_Right);
 
-      ai.shelter = CreateConstruction(BirdNest, (-GetID()->GetDefWidth()+2*GetID()->GetDefWidth()*GetDir())/2, +5, -1, 30);
+      ai.shelter = CreateConstruction(BirdNest, (-GetID()->GetDefWidth()+2*GetID()->GetDefWidth()*GetDir())/2, +5, NO_OWNER, 30);
 
       ai.shelter.tree = tree;
       ai.shelter->SetAction("Be", tree);

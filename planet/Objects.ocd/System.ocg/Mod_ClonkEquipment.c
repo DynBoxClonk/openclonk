@@ -6,7 +6,7 @@
 
 local starting_equipment = [];
 
-private func Recruitment(int player)
+private func Recruitment(proplist player)
 {
 	// Starting equipment
 	EnsureHasContents(Shovel);

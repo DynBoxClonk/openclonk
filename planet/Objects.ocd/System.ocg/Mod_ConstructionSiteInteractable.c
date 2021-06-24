@@ -3,7 +3,10 @@
 // Players can put materials into the construction site
 func IsInteractable(object clonk)
 {
-	if (clonk) return !Hostile(GetOwner(), clonk->GetOwner());
+	if (clonk && GetOwner())
+	{
+		return !GetOwner()->Hostile(clonk->GetOwner());
+	}
 	return true;
 }
 

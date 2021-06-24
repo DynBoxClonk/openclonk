@@ -21,7 +21,7 @@ private func Destruction()
 private func Fertilize(id type, int breedTime)
 {
 	//Log("Fertilize %v %d", type, breedTime);
-	var child = CreateConstruction(type, 0, 0, -1, Max(10, type->~AnimalReproductionBirthSize()));
+	var child = CreateConstruction(type, 0, 0, NO_OWNER, Max(10, type->~AnimalReproductionBirthSize()));
 	if (child)
 	{
 		child->ForceEnter(this);

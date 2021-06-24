@@ -108,7 +108,7 @@ public func IsFulfilled()
 
 
 // Shows or hides a message window with information.
-public func GetDescription(int player)
+public func GetDescription(proplist player)
 {
 	var message;
 	if (IsFulfilled())
@@ -151,7 +151,7 @@ public func GetDescription(int player)
 }
 
 // Shows or hides a message window with information.
-public func Activate(int player)
+public func Activate(proplist player)
 {
 	// If goal message open -> hide it.
 	if (GetEffect("GoalMessage", this))
@@ -174,7 +174,7 @@ private func GetMessageIcon(id animal)
 
 private func FxGoalMessageStart() {}
 
-public func GetShortDescription(int player)
+public func GetShortDescription(proplist player)
 {
 	// Show animal image. Displays the one with least deaths remaining or least to catch.
 	var remaining = [];

@@ -2,13 +2,13 @@ protected func Initialize()
 {
 }
 
-protected func InitializePlayer(int player)
+protected func InitializePlayer(proplist player)
 {
 	StartTest(player);
 	return;
 }
 
-global func StartTest(int player)
+global func StartTest(proplist player)
 {
 	var passed = true;
 	
@@ -30,7 +30,7 @@ global func StartTest(int player)
 
 
 
-global func Test1(int player)
+global func Test1(proplist player)
 {
 	var passed = true;
 	var seller = CreateObjectAbove(ClassicHutWooden, GetCrew(player)->GetX(), GetCrew(player)->GetY() + 10, player);
@@ -66,7 +66,7 @@ global func Test1(int player)
 }
 
 
-global func Test2(int player)
+global func Test2(proplist player)
 {
 	var passed = true;
 	var base = CreateObjectAbove(ClassicHutWooden, GetCrew(player)->GetX(), GetCrew(player)->GetY() + 10, player);
@@ -76,7 +76,7 @@ global func Test2(int player)
 	Log("---------------------");
 	Log("Test: Buy a clonk");
 	
-	SetWealth(player, ClassicClonk->GetValue());
+	player->SetWealth(ClassicClonk->GetValue());
 
 	var clonk = base->DoBuy(ClassicClonk, player, player, base);
 	
@@ -96,7 +96,7 @@ global func Test2(int player)
 }
 
 
-global func Test3(int player)
+global func Test3(proplist player)
 {
 	var passed = true;
 	var base = CreateObjectAbove(ClassicHutWooden, GetCrew(player)->GetX(), GetCrew(player)->GetY() + 10, player);
@@ -118,10 +118,10 @@ global func Test3(int player)
 }
 
 
-global func TestSellBarrel(int player, object seller, id def, id liquid, int fill_level, int expected_profit)
+global func TestSellBarrel(proplist player, object seller, id def, id liquid, int fill_level, int expected_profit)
 {
 	var passed = true;
-	SetWealth(player, 0);
+	player->SetWealth(0);
 
 	var barrel = seller->CreateContents(def);
 	liquid->CreateLiquid(fill_level, barrel); //barrel->SetLiquidContainer(liquid, fill_level);
@@ -132,7 +132,7 @@ global func TestSellBarrel(int player, object seller, id def, id liquid, int fil
 	var test = profit == expected_profit; passed &= test;
 	Log(" - Selling %v barrel, filled 100%: profit = %d, expected %d; passed: %v", liquid, profit, expected_profit, test);	
 
-	SetWealth(player, 0);
+	player->SetWealth(0);
 	
 	test = (barrel == nil); passed &= test;
 	Log("  * Barrel got removed: %v", test);

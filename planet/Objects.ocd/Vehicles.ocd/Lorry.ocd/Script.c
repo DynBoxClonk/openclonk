@@ -14,7 +14,7 @@ public func IsToolProduct() { return true;}
 
 /*-- Knowledge --*/
 
-private func UpdatePlayerHomebaseMaterial(int player)
+private func UpdatePlayerHomebaseMaterial(proplist player)
 {
 	// The player may buy a lorry, if he could also produce one
 	ConfigurePlayerHomebaseMaterial(player, {ClassicLorry = 1}, 0);

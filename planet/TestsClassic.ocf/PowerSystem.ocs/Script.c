@@ -14,7 +14,7 @@ protected func Initialize()
 	return;
 }
 
-protected func InitializePlayer(int player)
+protected func InitializePlayer(proplist player)
 {
 	// Set zoom to full map size.
 	SetPlayerZoomByViewRange(player, LandscapeWidth(), nil, PLRZOOM_Direct);
@@ -49,7 +49,7 @@ protected func InitializePlayer(int player)
 	return;
 }
 
-protected func RemovePlayer(int player)
+protected func RemovePlayer(proplist player)
 {
 	// Remove script player.
 	if (GetPlayerType(player) == C4PT_Script)
@@ -64,7 +64,7 @@ protected func RemovePlayer(int player)
 /*-- Power Tests --*/
 
 // Test for power plant fueled by oil barrels.
-global func Test1_OnStart(int player)
+global func Test1_OnStart(proplist player)
 {
 	// Power source: one power plant.
 	var engine = CreateObjectAbove(ClassicPowerPlant, 100, 160, player);
@@ -98,7 +98,7 @@ global func Test1_OnFinished()
 }
 
 // Test for power plant fueled by oil field and pump.
-global func Test2_OnStart(int player)
+global func Test2_OnStart(proplist player)
 {
 	// Oil field
 	DrawMaterialQuad("Oil", 144, 168, 208 + 1, 168, 208 + 1, 304, 144, 304, true);

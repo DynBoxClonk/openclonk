@@ -110,15 +110,19 @@ local FxHomeBaseHeal = new Effect
 		// Full energy? Stop too.
 		if (Target->GetEnergy() >= Target->GetMaxEnergy()) return FX_Execute_Kill;
 		var owner = Base->GetOwner();
+		if (owner == NO_OWNER)
+		{
+			return FX_OK;
+		}
 		var rate = Base->GetHealRate();
 	
 		// No energy left? Buy some
 		if (Base.library_homebase.healing_capacity < rate)
 		{
 			var cost = Base->GetHealCost();
-			if (GetWealth(owner) >= cost)
+			if (owner->GetWealth() >= cost)
 			{
-				DoWealth(owner, -cost);
+				owner->DoWealth(-cost);
 				Base->Sound("UI::UnCash?", {player = owner});
 				Base.library_homebase.healing_capacity += Base->GetHeal();
 			}
@@ -126,8 +130,9 @@ local FxHomeBaseHeal = new Effect
 		// Some energy in the storage? heal clonk
 		if (Base.library_homebase.healing_capacity >= rate)
 		{
-			Target->DoEnergy(rate, 1, FX_Call_EngBaseRefresh, owner + 1);
+			Target->DoEnergy(rate, 1, FX_Call_EngBaseRefresh, owner);
 			Base.library_homebase.healing_capacity -= rate;
 		}
+		return FX_OK;
 	},
 };

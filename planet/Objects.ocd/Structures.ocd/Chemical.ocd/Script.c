@@ -25,7 +25,7 @@ func NoConstructionFlip(){ return true; } // not supported
 
 /*-- Knowledge --*/
 
-private func UpdatePlayerHomebaseMaterial(int player)
+private func UpdatePlayerHomebaseMaterial(proplist player)
 {
 	// Add sulphur if it cannot be dug out
 	if (!GetMaterialCount(Material("Sulphur")))

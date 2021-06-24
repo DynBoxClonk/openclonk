@@ -1,12 +1,12 @@
 #appendto Barrel
 
 
-public func CalcValue(object in_base, int for_player)
+public func CalcValue(object in_base, proplist for_player)
 {
 	return GetDefValue();
 }
 
-public func QueryOnSell(int for_player, object in_base)
+public func QueryOnSell(proplist for_player, object in_base)
 {
 	if (Contents() && in_base)
 	{
