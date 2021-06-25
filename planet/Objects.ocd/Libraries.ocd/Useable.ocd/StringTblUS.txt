@@ -1,0 +1,2 @@
+Name=Useable object
+Description=The object can be used by pressing [Throw].

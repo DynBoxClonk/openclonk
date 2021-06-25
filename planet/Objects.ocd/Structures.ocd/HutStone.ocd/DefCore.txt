@@ -1,0 +1,17 @@
+[DefCore]
+Version=8,0
+id=ClassicHutStone
+Category=C4D_Structure
+Width=60
+Height=50
+Offset=-30,-25
+Vertices=4
+VertexX=14,-28,-24,25
+VertexY=-17,1,22,22
+VertexFriction=50,50,100,100
+Value=45
+Mass=1500
+Picture=0,0,60,50
+Entrance=2,4,17,21
+Exclusive=1
+Construction=1

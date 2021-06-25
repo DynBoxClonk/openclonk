@@ -1,0 +1,15 @@
+[DefCore]
+id=TFlint
+Version=8,0
+Category=C4D_Object
+Width=6
+Height=6
+Offset=-3,-3
+Vertices=2
+VertexX=-2,2
+VertexY=1,-1
+VertexFriction=20
+Value=5
+Mass=10
+Projectile=1
+Fragile=1

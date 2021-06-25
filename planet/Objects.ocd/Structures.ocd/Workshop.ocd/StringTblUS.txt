@@ -1,0 +1,6 @@
+Name=Workshop
+Description=Factory for vehicles and heavy weapons.
+
+NoPlrKnowledge=No construction plans
+Construction=Construction
+Production=Production

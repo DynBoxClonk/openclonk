@@ -1,0 +1,2 @@
+Name=Fire monster egg
+Description=Fire monsters lay eggs, too.

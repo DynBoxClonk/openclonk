@@ -1,0 +1,31 @@
+map Caves {
+  mat=Earth; 
+	overlay{algo=bozo; turbulence=100; a=-9; mat=Rock; invert=1;};
+	overlay{algo=bozo; turbulence=100; a=5; mat=Earth; tex=earth_spongy;};
+	overlay{algo=rndchecker; turbulence=100; a=10; mat=Sand;};
+	overlay{algo=rndchecker; turbulence=100; a=8; mat=Granite;};
+	overlay{algo=rndchecker; turbulence=1000;}
+	  &overlay {algo=bozo; turbulence=250; mat=Earth; tex=earth_root;};
+  	overlay{x=6;y=6;wdt=88;hgt=90;turbulence=10000; mat=Tunnel; loosebounds=1;
+ 	// Water at the bottom
+ 	overlay{x=-6; y=80; wdt=112; mat=Water;};
+	// Islands in the middle ...
+	overlay{algo=rndchecker; hgt=90; turbulence=300; zoomX=50; zoomY=10; mat=Earth; loosebounds=1;
+		// ... with materials inside
+		overlay{algo=bozo; turbulence=1000; a=5; mat=Earth; tex=earth_spongy;};
+		overlay{algo=rndchecker; turbulence=1000; a=10; mat=Crystal;};
+		overlay{algo=bozo; turbulence=1000; a=-9; mat=Rock; invert=1;};
+		overlay{algo=rndchecker; turbulence=1000; a=7; mat=Sulphur;};
+		overlay{algo=rndchecker; turbulence=1000; a=7; mat=Coal;};
+		overlay{algo=rndchecker; turbulence=1000; a=8; mat=Ore;};
+		overlay{algo=rndchecker; turbulence=1000; a=10; mat=Gold;};
+		overlay{algo=border; b=2; mat=Earth; tex=earth_root; };
+		overlay{algo=rndchecker; turbulence=1000; a=8; mat=Granite;};
+		overlay{algo=rndchecker; turbulence=1000; a=10; mat=Sand;};
+		overlay{algo=rndchecker; turbulence=1000;}
+		  &overlay {algo=bozo; turbulence=250; mat=Earth; tex=earth_spongy;};
+		};
+	};
+	overlay{algo=rndchecker; y=95; turbulence=100; a=1; mat=Gold; loosebounds=1;};
+	overlay{algo=rndchecker; y=95; turbulence=800; a=3; mat=Crystal; loosebounds=1;};
+};

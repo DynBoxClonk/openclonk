@@ -1,0 +1,17 @@
+[DefCore]
+id=ClassicLorry
+Version=8,0
+Category=C4D_Vehicle
+Width=22
+Height=19
+Offset=-11,-9
+Vertices=4
+VertexX=-8,7,-8,7
+VertexY=-6,-6,9,9
+VertexCNAT=5,6,9,10
+VertexFriction=80,80,10,10
+Value=20
+Mass=75
+Collection=-12,-8,24,12
+GrabPutGet=C4D_GrabGet|C4D_GrabPut
+Rotate=46

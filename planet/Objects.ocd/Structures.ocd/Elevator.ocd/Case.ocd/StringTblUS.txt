@@ -1,0 +1,4 @@
+Name=Elevator case
+Description=[Up] / [Down] to drive.
+
+TxtDrillshaft=Drill shaft

@@ -1,0 +1,7 @@
+Name=Piranha
+Description=Not so harmless dweller of the lakes and streams of Amazonia.
+
+TxtMovement=Move
+TxtDrop=Drop item
+TxtLeave=Retransform
+TxtEmbowel=Exploit

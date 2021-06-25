@@ -1,0 +1,72 @@
+################################################################
+#
+# Generic parameters
+#
+################################################################
+
+### Scenario parameters: difficulty
+
+DifficultyName=Schwierigkeit
+DifficultyDesc=Setzt die Schwierigkeit dieser Runde.
+
+DiffEasyName=Einfach
+DiffNormalName=Normal
+DiffHardName=Schwer
+
+### Scenario parameters: map size
+
+MapSizeName=Kartengröße
+MapSizeDesc=Setzt die Kartengröße dieser Runde.
+
+MapSmallName=Klein
+MapSmallDesc=Die Karte wird klein sein.
+
+MapAverageName=Durchschnittlich
+MapAverageDesc=Die Karte wird durchschnittlich sein.
+
+MapLargeName=Groß
+MapLargeDesc=Die Karte wird groß sein.
+
+### Scenario parameters: Power need
+
+PowerNeedName=Energieverbrauch
+PowerNeedDesc=Bestimmt, ob Gebäude Energie verbrauchen.
+
+PowerNeedYesName=An
+PowerNeedYesDesc=Gebäude verbrauchen Energie. 
+
+PowerNeedNoName=Aus
+PowerNeedNoDesc=Gebäude verbrauchen keine Energie.
+
+### Scenario parameters: goal
+
+ScenarioGoalName=Spielziel
+ScenarioGoalDesc=Setzt das Spielziel für diese Runde.
+
+GoalName=Ziele:
+
+GoalMineCrystalName=Kristallabbau
+GoalMineGoldName=Goldabbau
+GoalMineOreName=Erzabbau
+GoalMonsterHuntName=Monsterjagd
+GoalRescueWipfsName=Wipfe retten
+GoalWealthName=Reichtum
+GoalConstructionName=Aufbau
+
+################################################################
+#
+# Scenario parameters
+#
+################################################################
+
+DiffEasyDesc=Katastrophen:|- Wird aktuell nicht angezeigt.
+DiffNormalDesc=Katastrophen:|- Wird aktuell nicht angezeigt.
+DiffHardDesc=Katastrophen:|- Wird aktuell nicht angezeigt.
+
+GoalMineCrystalDesc=|- Wird aktuell nicht angezeigt
+GoalMineGoldDesc=|- Wird aktuell nicht angezeigt
+GoalMineOreDesc=|- Wird aktuell nicht angezeigt
+GoalMonsterHuntDesc=|- Wird aktuell nicht angezeigt
+GoalRescueWipfsDesc=|- Wird aktuell nicht angezeigt
+GoalWealthDesc=|- Wird aktuell nicht angezeigt
+GoalConstructionName=|- Wird aktuell nicht angezeigt

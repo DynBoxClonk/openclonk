@@ -1,0 +1,8 @@
+Name=construction kit
+
+Description=Basic tool for constructing new buildings.
+UsageHelp=Press [Use] to construct a building.
+
+TxtNoconstructionplansa=No construction plans available
+TxtConstructions=Construction: %s
+TxtCantConstruct=%s can't build.

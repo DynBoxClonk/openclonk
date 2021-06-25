@@ -1,0 +1,16 @@
+[DefCore]
+Version=8,0
+id=ClassicWizardTower
+Category=C4D_Structure
+Width=40
+Height=82
+Offset=-20,-41
+Vertices=5
+VertexX=-2,-20,19,-19,19
+VertexY=-41,-8,-8,41,41
+VertexFriction=100,100,100,100,100
+Value=250
+Mass=1000
+Entrance=-9,21,16,20
+Exclusive=1
+Construction=1

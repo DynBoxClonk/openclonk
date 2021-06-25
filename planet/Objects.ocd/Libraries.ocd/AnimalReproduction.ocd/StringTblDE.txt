@@ -1,0 +1,2 @@
+Name=Fortpflanzung
+Description=Steuert die Vermehrung der Tiere.

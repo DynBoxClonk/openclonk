@@ -1,0 +1,12 @@
+If not stated otherwise, the textures are licensed under the
+CC Attribution 3.0 license (http://creativecommons.org/licenses/by/3.0/)
+
+Author				  Work(s)
+===============================================================================
+
+Matthi				- ashes, granite, rock
+MimmoO				- brick
+Nachtfalter			- amethyst, earth, earth_root, earth_spongy, firestone, gold, ice, ore, rock_smooth, ruby, sand, snow1, tunnel
+Newton				- coal, ice3, water
+Redwolf Design GmbH	- snow, lava
+Win					- everrock

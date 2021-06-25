@@ -14,3 +14,6 @@ Soil=1
 Placement=30
 TextureOverlay=ashes
 Instable=1
+PXSGfxSize=6
+PXSGfx=AshesPXS
+PXSGfxRt=0,0,32,32,-16,-16

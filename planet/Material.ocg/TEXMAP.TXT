@@ -1,4 +1,4 @@
-# Static Map Material/Texture Table
+# Static Map Material/Texture Table 
 # Index +128 for underground materials
 
 1=Vehicle-none
@@ -10,11 +10,11 @@
 13=BrickSoft-brick
 
 19=DuroLava-lava_red
-20=Water-water
-21=Oil-oil
 22=Acid-acid
 23=Lava-lava_red
 25=Water-water
+
+26=Oil-Oil
 
 28=Earth-earth
 29=Earth-earth_root
@@ -23,32 +23,33 @@
 32=Earth-earth
 
 33=Ashes-ashes
-35=SandDry-sand
+34=Loam-loam
+35=SandDry-sand_rough
 
-55=Sand-sand
-56=Sand-sand
+36=Ore-ore
 
-70=Snow-snow1
+38=Everrock-everrock
 
-65=Ice-ice
-67=Ice-ice2
+40=Granite-granite
+
+45=Gold-gold
 
 50=Rock-rock
 51=Rock-rock_smooth
 
-54=Coal-coal
 53=Firestone-firestone
 
-36=Ore-ore
+54=Coal-coal
 
-40=Granite-granite
-42=Granite-granite
+55=Sand-sand_rough
+56=Sand-sand_smooth
 
-38=Everrock-everrock
+59=Sulphur-sulphur
+60=Crystal-Crystal
 
-45=Gold-gold
+65=Ice-ice
+67=Ice-ice
 
-60=Ruby-ruby
-61=Amethyst-amethyst
+70=Snow-snow1
 
 73=Brick-brick

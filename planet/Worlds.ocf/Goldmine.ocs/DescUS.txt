@@ -1,0 +1,7 @@
+Goldmine
+
+Mining gold is one of the most basic activities in Clonk.
+
+The goal of this round is to mine all available gold and bring it to your home base.
+
+Start out by collecting and selling loose chunks of gold. From the money gained you can buy flint stones to blast free solid veins of gold.

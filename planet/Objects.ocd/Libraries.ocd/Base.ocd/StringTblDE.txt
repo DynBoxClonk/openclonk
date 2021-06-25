@@ -1,0 +1,5 @@
+MsgBuy=Kaufen
+MsgSell=Verkaufen
+MsgRemoveFlag=Flagge abnehmen
+DescRemoveFlag=Entfernt die Flagge von diesem Gebäude, sodass es nicht mehr als Heimatbasis dient.
+MsgBaseControl=Heimatbasis

@@ -1,0 +1,18 @@
+[DefCore]
+id=Tree3
+Version=8,0
+Category=C4D_StaticBack
+Width=52
+Height=75
+Offset=-26,-37
+Vertices=10
+VertexX=-2,-14,9,0,0,0,0,0,0,0
+VertexY=31,-26,-26,0,24, 17,9,-7,-14,-21 
+VertexFriction=50,50,50,50,50,50,50,50,50,50
+VertexCNAT=8,4,4,16,16,16,16,16,16,16
+Mass=350
+Picture=0,0,52,75
+Rotate=1
+Float=1
+StretchGrowth=1
+IncompleteActivity=1

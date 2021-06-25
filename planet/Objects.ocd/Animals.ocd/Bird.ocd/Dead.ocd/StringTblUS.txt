@@ -1,0 +1,4 @@
+Name=Dead bird
+Description=That bird is dead.
+
+TxtEmbowel=Embowel

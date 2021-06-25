@@ -1,0 +1,3 @@
+Name=Pumpe
+Description=Ermöglicht den Transport von Flüssigkeiten.
+

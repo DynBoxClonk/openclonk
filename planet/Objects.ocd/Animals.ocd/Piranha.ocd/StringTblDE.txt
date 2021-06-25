@@ -1,0 +1,7 @@
+Name=Piranha
+Description=Kleiner Bewohner der Gewässer um den Amazonas.
+
+TxtMovement=Bewegen
+TxtDrop=Gegenstand fallen lassen
+TxtLeave=Zurückverwandeln
+TxtEmbowel=Verwerten

@@ -1,0 +1,8 @@
+﻿Name=Bausatz
+
+Description=Mit dem Bausatz können neue Gebäude errichtet werden.
+UsageHelp=Drücke [Benutzen], um ein Gebäude zu errichten.
+
+TxtNoconstructionplansa=Keine Baupläne verfügbar
+TxtConstructions=Konstruktion: %s
+TxtCantConstruct=%s kann nicht bauen.

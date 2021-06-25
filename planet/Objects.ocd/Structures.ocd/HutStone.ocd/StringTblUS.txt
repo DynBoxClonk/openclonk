@@ -1,0 +1,4 @@
+Name=Cabin
+Description=A safe home base.
+TxtBuy=Buy
+TxtSell=Sell

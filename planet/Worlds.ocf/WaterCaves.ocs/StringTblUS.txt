@@ -1,0 +1,72 @@
+################################################################
+#
+# Generic parameters
+#
+################################################################
+
+### Scenario parameters: difficulty
+
+DifficultyName=Difficulty
+DifficultyDesc=Sets the difficulty for this round.
+
+DiffEasyName=Easy
+DiffNormalName=Normal
+DiffHardName=Hard
+
+### Scenario parameters: map size
+
+MapSizeName=Map size
+MapSizeDesc=Sets the round map size for this round.
+
+MapSmallName=Small
+MapSmallDesc=The map will be small.
+
+MapAverageName=Average
+MapAverageDesc=The map will be average.
+
+MapLargeName=Large
+MapLargeDesc=The map will be large.
+
+### Scenario parameters: Power need
+
+PowerNeedName=Power need
+PowerNeedDesc=Defines whether buildings require power supply in order to work.
+
+PowerNeedYesName=On
+PowerNeedYesDesc=Buildings do require power supply.
+
+PowerNeedNoName=Off
+PowerNeedNoDesc=Buildings do not require power supply.
+
+### Scenario parameters: goal
+
+ScenarioGoalName=Goal
+ScenarioGoalDesc=Sets the goal for this round.
+
+GoalName=Goals:
+
+GoalMineCrystalName=Mine crystal
+GoalMineGoldName=Mine gold
+GoalMineOreName=Mine ore
+GoalMonsterHuntName=Monster hunt
+GoalRescueWipfsName=Rescue wipfs
+GoalWealthName=Gain wealth
+GoalConstructionName=Construction
+
+################################################################
+#
+# Scenario parameters
+#
+################################################################
+
+DiffEasyDesc=Disasters:|- Currently not displayed.
+DiffNormalDesc=Disasters:|- Currently not displayed.
+DiffHardDesc=Disasters:|- Currently not displayed.
+
+GoalMineCrystalDesc=|- Currently not displayed.
+GoalMineGoldDesc=|- Currently not displayed.
+GoalMineOreDesc=|- Currently not displayed.
+GoalMonsterHuntDesc=|- Currently not displayed.
+GoalRescueWipfsDesc=|- Currently not displayed.
+GoalWealthDesc=|- Currently not displayed.
+GoalConstructionName=|- Currently not displayed.

@@ -1,0 +1,2 @@
+Name=Animal fighting
+Description=Lets animals fight enemies or flee.

@@ -1,0 +1,7 @@
+Name=Catch animals
+
+MsgGoalFulfilled=All animals have been sold.
+MsgGoalAnimalRescue=Catch and sell the following animals.
+MsgGoalRescueWithDeathsLot=|{{%i}} %d, and %d of them may die.
+MsgGoalRescueWithDeathsOne=|{{%i}} %d, and %d of them may die.
+MsgGoalRescueNoDeaths=|{{%i}} %d, and none of them may die.

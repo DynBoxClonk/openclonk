@@ -1,0 +1,7 @@
+Sky Islands
+
+Each player starts on an island floating in mid-air.
+
+One wrong step can mean inevitable death. Be careful when moving around.
+
+Construction requires building material and machines such as the elevator or the sawmill require energy which can be generated using windmills and the transported to the consumers through power lines.

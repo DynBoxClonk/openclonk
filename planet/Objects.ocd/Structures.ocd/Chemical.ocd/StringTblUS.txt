@@ -1,0 +1,6 @@
+Name=Chemical plant
+Description=Explosives production facility.
+
+NoPlrKnowledge=No construction plans
+Construction=Construction
+Production=Production

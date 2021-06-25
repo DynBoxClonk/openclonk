@@ -1,0 +1,4 @@
+Name=Flagge
+
+Description=Die Flagge dient zur Markierung der Heimatbasis. Weht die Flagge auf einem Gebäude, so kann in diesem Gebäude Material gekauft und verkauft und Crewmitglieder geheilt werden.
+UsageHelp=Lege die Flagge in einem Basisgebäude ab.

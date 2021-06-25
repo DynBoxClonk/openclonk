@@ -1,0 +1,9 @@
+Mountain Range
+
+A group of brave settlers has made their way to this rough mountain terrain.
+
+You might encounter earthquakes, volcanic eruptions, or meteorite impacts.
+
+Your goal is to mine all ore found in the hills.
+
+As soon as you have gained enough wealth, you can buy additional flags and attach them to new homebase buildings.

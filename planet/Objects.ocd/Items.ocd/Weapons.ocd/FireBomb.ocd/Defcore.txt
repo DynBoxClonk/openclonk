@@ -1,0 +1,12 @@
+[DefCore]
+id=FireBomb
+Version=8,0
+Category=C4D_Object
+Width=6
+Height=6
+Offset=-3,-3
+Value=25
+Mass=12
+Vertices=1
+VertexY=1
+VertexFriction=20

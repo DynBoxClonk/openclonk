@@ -1,0 +1,42 @@
+overlay Tunnels{mat=Tunnel; algo=lines; loosebounds=1;}; // tunnels
+overlay Hoehlen{mat=Tunnel; algo=bozo; turbulence=8000; a=14; zoomX=55; zoomY=35;};
+
+map Vulkan {
+overlay{mat=Earth; ox=-80; oy=20; wdt=200; algo=sin; zoomX=+90; zoomY=+70; turbulence=10; loosebounds=1;
+	/* Surface */
+	overlay{mat=Ashes; algo=border; a=5; b=4; // ashes on the surface
+	  overlay{loosebounds=1; algo=rndchecker; turbulence=300; }
+	  & overlay{mat=Earth; loosebounds=1; algo=checker; turbulence=50;};};
+	overlay{algo=border; a=10; b=10;} // big rocks at the surface
+	  & overlay{loosebounds=1; algo=checker; turbulence=50;}
+	  & overlay{mat=Granite; loosebounds=1; algo=bozo; turbulence=10; a=3;};
+	/* Materials */
+	overlay{algo=bozo; turbulence=1000; a=5; mat=Earth; tex=earth_root;};
+	overlay{algo=bozo; turbulence=1000; a=-9; mat=Rock; invert=1;};
+	overlay{algo=rndchecker; turbulence=1000; a=7; mat=Coal;};
+	overlay{algo=rndchecker; turbulence=1000; a=8; mat=Ore;};
+	overlay{algo=rndchecker; turbulence=1000; a=10; mat=Gold; y=30;};
+	overlay{algo=rndchecker; turbulence=1000; a=9; mat=Sulphur; y=30;};
+	overlay{algo=rndchecker; turbulence=1000; a=7; mat=Granite;};
+	Hoehlen{zoomX=55; zoomY=35; y=30; hgt=50;};
+	Hoehlen{turbulence=5000; a=9; x=60; y=80; loosebounds=1;};
+	Hoehlen{turbulence=5000; a=9; x=0; y=80; wdt=10; loosebounds=1;};
+	overlay{algo=rndchecker; turbulence=1000;}
+	  &overlay {algo=bozo; turbulence=250; mat=Earth; tex=earth_root;};
+	/* Ashy veins */
+	overlay{mat=Ashes; algo=lines; turbulence=1000; loosebounds=1; a=3; b=32;
+		overlay{mat=Ashes; algo=rndchecker; turbulence=500; loosebounds=1; };}; // veins
+	overlay{mat=Ashes; algo=lines; ox=14; wdt=26; turbulence=1000; loosebounds=1; a=15; b=32; // ashes in the volcano
+		overlay{mat=Ashes; algo=rndchecker; turbulence=500; loosebounds=1; };};
+	/* Tunnel */
+	Tunnels{ y=-10; x=-40; wdt=40; hgt=100; turbulence=700; rotate=84; zoomX=30; zoomY=10; a=5; b=50;}; // nearly horizontally going ways
+	Tunnels{ y=20; x=-38; wdt=45; hgt=62; turbulence=550; rotate=36; zoomX=20; zoomY=18; a=4; b=40;}; // ways going "\" on the left side
+	Tunnels{ y=-50; x=25; wdt=43; hgt=50; turbulence=630; rotate=-44; zoomX=20; zoomY=20; a=4; b=30;}; // ways going "/" on the right side
+	/* Chasm and lava*/
+	overlay{mat=Tunnel; algo=lines; ox=17; wdt=16; turbulence=1000; loosebounds=1; a=20; b=32; // veins around the main chasm
+		overlay{mat=DuroLava; algo=solid; wdt=300; y=80; loosebounds=1;};}; // lava 
+	overlay{mat=Tunnel; algo=solid; x=22; wdt=5; turbulence=1000; loosebounds=1; // main chasm
+		overlay{mat=DuroLava; algo=solid; x=-60; wdt=220; y=80; loosebounds=1;};}; // lava 	
+};
+
+};

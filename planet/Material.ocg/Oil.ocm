@@ -6,5 +6,6 @@ MaxAirSpeed=25
 MaxSlide=10000
 WindDrift=30
 Inflammable=1
+Corrode=100
 Placement=10
-TextureOverlay=oil
+TextureOverlay=Oil

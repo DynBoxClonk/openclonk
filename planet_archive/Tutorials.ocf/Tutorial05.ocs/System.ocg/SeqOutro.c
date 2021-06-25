@@ -2,7 +2,7 @@
 
 #appendto Sequence
 
-public func Outro_Init(int for_plr)
+public func Outro_Init(proplist for_plr)
 {
 	this.plr = for_plr;
 	this.head = Dialogue->FindByName("VillageHead")->GetDialogueTarget();

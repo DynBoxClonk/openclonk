@@ -1,0 +1,3 @@
+Name=Monster
+Description=They want not harm.
+DeadDesc=Dead

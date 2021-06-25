@@ -1,0 +1,2 @@
+Name=Fire monster
+Description=Dangerous inhabitant of volcanic areas.
