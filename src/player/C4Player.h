@@ -84,7 +84,6 @@ public:
 	int32_t Eliminated;
 	int32_t Surrendered;
 	bool Evaluated;
-	int32_t Number;
 	int32_t ID; // unique player ID
 	int32_t Team; // team ID - may be 0 for no teams
 	uint32_t ColorDw;
@@ -164,7 +163,7 @@ public:
 	void AdjustCursorCommand();
 
 	bool DoScore(int32_t iChange);
-	bool Init(int32_t iNumber, int32_t iAtClient, const char *szAtClientName, const char *szFilename, bool fScenarioInit, class C4PlayerInfo *pInfo, C4ValueNumbers *);
+	bool Init(int32_t iAtClient, const char *szAtClientName, const char *szFilename, bool fScenarioInit, class C4PlayerInfo *pInfo, C4ValueNumbers *);
 	bool ScenarioAndTeamInit(int32_t idTeam);
 	bool ScenarioInit();
 	bool FinalInit(bool fInitialScore);

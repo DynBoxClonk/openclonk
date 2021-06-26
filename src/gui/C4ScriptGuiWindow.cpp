@@ -1114,7 +1114,7 @@ bool C4ScriptGuiWindow::CreateFromPropList(C4PropList *proplist, bool resetStdTa
 				C4Player* player = proplist->GetPlayer();
 				if (player != nullptr)
 				{
-					playerNumber = player->Number;
+					playerNumber = player->ID;
 				}
 			}
 			props[C4ScriptGuiWindowPropertyName::player].Set(C4Value(playerNumber), stdTag);

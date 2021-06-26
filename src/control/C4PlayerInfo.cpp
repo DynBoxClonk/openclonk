@@ -41,7 +41,7 @@ void C4PlayerInfo::Clear()
 	dwAlternateColor = 0;
 	dwFlags = 0;
 	iID = idSavegamePlayer = idTeam = 0;
-	iInGameNumber = iInGameJoinFrame = iInGamePartFrame = -1;
+	iInGameJoinFrame = iInGamePartFrame = -1;
 	sLeagueAccount = ""; iLeagueScore=iLeagueRank=0;
 	iLeagueProjectedGain = -1;
 	eType = C4PT_User;
@@ -228,11 +228,12 @@ void C4PlayerInfo::CompileFunc(StdCompiler *pComp)
 	// InGame info
 	if (dwFlags & PIF_Joined)
 	{
-		pComp->Value(mkNamingAdapt(iInGameNumber,    "GameNumber", -1));
 		pComp->Value(mkNamingAdapt(iInGameJoinFrame, "GameJoinFrame", -1));
 	}
 	else
-		iInGameNumber = iInGameJoinFrame = -1;
+	{
+		iInGameJoinFrame = -1;
+	}
 
 	if (dwFlags & PIF_Removed)
 		pComp->Value(mkNamingAdapt(iInGamePartFrame, "GamePartFrame", -1));
@@ -330,10 +331,9 @@ bool C4PlayerInfo::SetSavegameResume(C4PlayerInfo *pSavegameInfo)
 	return true;
 }
 
-void C4PlayerInfo::SetJoined(int32_t iNumber)
+void C4PlayerInfo::SetJoined()
 {
 	// mark as joined in current frame
-	iInGameNumber = iNumber;
 	iInGameJoinFrame = Game.FrameCounter;
 	dwFlags |= PIF_Joined;
 }
@@ -1620,7 +1620,7 @@ void C4PlayerInfoList::RemoveUnassociatedPlayers(C4PlayerInfoList &rSavegamePlay
 			// remove players that were in the game but are not associated
 			if (pInfo->IsJoined() && !GetPlayerInfoBySavegameID(pInfo->GetID()))
 			{
-				if (::Players.RemoveUnjoined(pInfo->GetInGameNumber()))
+				if (::Players.RemoveUnjoined(pInfo->GetID()))
 				{
 					LogF(LoadResStr("IDS_PRC_REMOVEPLR"), pInfo->GetName());
 				}

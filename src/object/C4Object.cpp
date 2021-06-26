@@ -596,7 +596,7 @@ void C4Object::DoEnergy(int32_t iChange, bool fExact, int32_t iCause, C4Player *
 	// Was zero?
 	bool fWasZero=(Energy==0);
 	// Mark last damage causing player to trace kills
-	if (iChange < 0) UpdatLastEnergyLossCause(caused_by == nullptr ? NO_OWNER : caused_by->Number);
+	if (iChange < 0) UpdatLastEnergyLossCause(caused_by == nullptr ? NO_OWNER : caused_by->ID);
 	// Living things: ask effects for change first
 	if (pEffects && Alive)
 		pEffects->DoDamage(iChange, iCause, caused_by);
@@ -1131,7 +1131,7 @@ bool C4Object::SetOwner(C4Player *player)
 {
 	// Check valid owner
 	if (!player) return false;
-	int32_t iOwner = player->Number;
+	int32_t iOwner = player->ID;
 	// always set color, even if no owner-change is done
 	if (GetGraphics()->IsColorByOwner())
 	{
