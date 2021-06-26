@@ -914,7 +914,7 @@ static C4PropList *FnGetController(C4Object *Obj)
 static bool FnSetController(C4Object *Obj, C4Player *new_controller)
 {
 	// Set controller
-	Obj->Controller = new_controller == nullptr ? NO_OWNER : new_controller->Number;
+	Obj->Controller = new_controller == nullptr ? NO_OWNER : new_controller->ID;
 	return true;
 }
 
@@ -926,7 +926,7 @@ static C4PropList *FnGetKiller(C4Object *Obj)
 static bool FnSetKiller(C4Object *Obj, C4Player* new_killer)
 {
 	// Set killer as last energy loss cause
-	Obj->LastEnergyLossCausePlayer = new_killer == nullptr ? NO_OWNER : new_killer->Number;
+	Obj->LastEnergyLossCausePlayer = new_killer == nullptr ? NO_OWNER : new_killer->ID;
 	return true;
 }
 
@@ -1657,7 +1657,7 @@ static C4String *FnGetProcedure(C4Object *Obj)
 
 static bool FnCheckVisibility(C4Object *Obj, C4Player *player)
 {
-	return Obj->IsVisible(player == nullptr ? NO_OWNER : player->Number, false);
+	return Obj->IsVisible(player == nullptr ? NO_OWNER : player->ID, false);
 }
 
 static bool FnSetClrModulation(C4Object *Obj, Nillable<long> dwClr, long iOverlayID)

@@ -259,7 +259,7 @@ static bool FnSetFilmView(C4Player *player)
 	// Set new target plr
 	if (C4Viewport *vp = ::Viewports.GetFirstViewport())
 	{
-		vp->Init(player->Number, true); // NO_OWNER is not supported anymore
+		vp->Init(player->ID, true); // NO_OWNER is not supported anymore
 	}
 	// Done, always success (sync)
 	return true;
@@ -389,7 +389,7 @@ static bool FnSetViewLocked(C4Player *player, bool is_locked)
 static bool FnSetViewOffset(C4Player *player, long iX, long iY)
 {
 	// get player viewport
-	C4Viewport *pView = ::Viewports.GetViewport(player->Number);
+	C4Viewport *pView = ::Viewports.GetViewport(player->ID);
 	if (!pView) return true; // sync safety
 	pView->SetViewOffset(iX, iY);
 	return true;

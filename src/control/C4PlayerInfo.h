@@ -86,7 +86,7 @@ private:
 	int32_t idSavegamePlayer{0};   // ID of associated savegame player
 	int32_t idTeam{0};             // team ID
 	StdCopyStrBuf szAuthID;     // authentication ID (for league server, will be cleared on successful join)
-	int32_t iInGameNumber{-1}, iInGameJoinFrame{-1}, iInGamePartFrame{-1}; // information about player in game
+	int32_t iInGameJoinFrame{-1}, iInGamePartFrame{-1}; // information about player in game
 	C4ID idExtraData;           // extra data for script players
 
 	ValidatedStdCopyStrBuf<C4InVal::VAL_NameAllowEmpty> sLeagueAccount; // account name on league server
@@ -108,7 +108,7 @@ public:
 	bool LoadFromLocalFile(const char *szFilename); // load data from local file
 	bool SetAsScriptPlayer(const char *szName, uint32_t dwColor, uint32_t dwFlags, C4ID idExtra); // set as a script (AI) player
 
-	void SetJoined(int32_t iNumber); // mark as joined in current game frame
+	void SetJoined(); // mark as joined in current game frame
 	void SetJoinIssued() { dwFlags |= PIF_JoinIssued; }        // mark as joined
 	void SetRemoved();              // mark as removed in current game frame - always marks as previously joined, too
 	void SetID(int32_t iToID) { iID = iToID; }              // set player info ID
@@ -186,7 +186,6 @@ public:
 	int32_t getLeagueRank() const { return iLeagueRank; } // returns rank on league server (0 for not assigned)
 	int32_t getLeagueRankSymbol() const { return iLeagueRankSymbol; } // returns rank symbol on league server (0 for not assigned)
 	int32_t getLeagueScoreProjected() const { return iLeagueScoreProjected; } // returns score on league server in case of win (0 for not assigned)
-	int32_t GetInGameNumber() const { return iInGameNumber; } // returns player number the player had in the game
 	bool IsLeagueProjectedGainValid() const { return iLeagueProjectedGain>=0; }
 	int32_t GetLeagueProjectedGain() const { return iLeagueProjectedGain; } // get score gain in primary league if this player's team wins
 	const char *GetLeagueProgressData() const { return sLeagueProgressData.getData(); } 

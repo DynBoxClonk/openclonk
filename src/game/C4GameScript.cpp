@@ -152,7 +152,7 @@ long GetValidOwner(C4PropList * _this, C4Player *owner)
 			return NO_OWNER;
 		}
 	}
-	return owner->Number;
+	return owner->ID;
 }
 
 long GetValidPlayerID(C4PropList * _this, C4Player *player)
@@ -805,7 +805,7 @@ static C4Value FnPlayerMessage(C4PropList * _this, C4Value * parameters)
 	{
 		return C4VBool(false);
 	}
-	int player_nr = player->Number;
+	int player_nr = player->ID;
 	C4String * message = parameters[0].getStr();
 	if (!message)
 	{
@@ -1247,7 +1247,7 @@ static bool FnAbortMessageBoard(C4PropList * _this, C4Object *obj, C4Player *pla
 		return false;
 	}
 	// close TypeIn if active
-	::MessageInput.AbortMsgBoardQuery(obj, player->Number);
+	::MessageInput.AbortMsgBoardQuery(obj, player->ID);
 	// abort for it
 	return player->RemoveMessageBoardQuery(obj);
 }
@@ -2118,7 +2118,7 @@ static bool FnCustomMessage(C4PropList * _this, C4String *pMsg, C4Object *pObj, 
 	const char *szMsg = pMsg->GetCStr();
 	if (!szMsg) return false;
 	if (idDeco && !C4Id2Def(idDeco)) return false;
-	long iOwner = player == nullptr ? NO_OWNER : player->Number;
+	long iOwner = player == nullptr ? NO_OWNER : player->ID;
 	// only one positioning flag per direction allowed
 	uint32_t hpos = dwFlags & (C4GM_Left | C4GM_HCenter | C4GM_Right);
 	uint32_t vpos = dwFlags & (C4GM_Top | C4GM_VCenter | C4GM_Bottom);

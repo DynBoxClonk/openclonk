@@ -76,7 +76,7 @@ void C4PlayerList::ClearPointers(C4Object *pObj)
 bool C4PlayerList::Valid(int iPlayer) const
 {
 	for (C4Player *pPlr=First; pPlr; pPlr=pPlr->Next)
-		if (pPlr->Number==iPlayer)
+		if (pPlr->ID==iPlayer)
 			return true;
 	return false;
 }
@@ -84,14 +84,14 @@ bool C4PlayerList::Valid(int iPlayer) const
 bool C4PlayerList::Hostile(C4Player *pPlr1, C4Player *pPlr2) const
 {
 	if (!pPlr1 || !pPlr2) return false;
-	if (pPlr1->Number==pPlr2->Number) return false;
+	if (pPlr1->ID==pPlr2->ID) return false;
 	return pPlr1->IsHostileTowards(pPlr2) || pPlr2->IsHostileTowards(pPlr1);
 }
 
 bool C4PlayerList::HostilityDeclared(C4Player *pPlr1, C4Player *pPlr2) const
 {
 	if (!pPlr1 || !pPlr2) return false;
-	if (pPlr1->Number==pPlr2->Number) return false;
+	if (pPlr1->ID==pPlr2->ID) return false;
 	return pPlr1->IsHostileTowards(pPlr2);
 }
 
@@ -125,7 +125,7 @@ int C4PlayerList::CheckColorDw(DWORD dwColor, C4Player *pExclude)
 C4Player* C4PlayerList::Get(int iNumber) const
 {
 	for (C4Player *pPlr=First; pPlr; pPlr=pPlr->Next)
-		if (pPlr->Number==iNumber)
+		if (pPlr->ID==iNumber)
 			return pPlr;
 	return nullptr;
 }
@@ -180,21 +180,6 @@ int C4PlayerList::GetCount(C4PlayerType eType) const
 	return iCount;
 }
 
-int C4PlayerList::GetFreeNumber() const
-{
-	int iNumber=-1;
-	bool fFree;
-	do
-	{
-		iNumber++; fFree=true;
-		for (C4Player *pPlr=First; pPlr; pPlr=pPlr->Next)
-			if (pPlr->Number==iNumber)
-				fFree=false;
-	}
-	while (!fFree);
-	return iNumber;
-}
-
 bool C4PlayerList::Remove(int iPlayer, bool fDisconnect, bool fNoCalls)
 {
 	return Remove(Get(iPlayer), fDisconnect, fNoCalls);
@@ -247,7 +232,7 @@ bool C4PlayerList::Remove(C4Player *pPlr, bool fDisconnect, bool fNoCalls)
 	pPlr->CrewInfoList.DetachFromObjects();
 
 	// Clear viewports
-	::Viewports.CloseViewport(pPlr->Number, fNoCalls);
+	::Viewports.CloseViewport(pPlr->ID, fNoCalls);
 	// Check fullscreen viewports
 	FullScreen.ViewportCheck();
 
@@ -294,7 +279,7 @@ C4Player* C4PlayerList::Join(const char *szFilename, bool fScenarioInit, int iAt
 	if (pLast) pLast->Next=pPlr; else First = pPlr;
 
 	// Init
-	if (!pPlr->Init(GetFreeNumber(),iAtClient,szAtClientName,szFilename,fScenarioInit,pInfo, numbers))
+	if (!pPlr->Init(iAtClient,szAtClientName,szFilename,fScenarioInit,pInfo, numbers))
 		{ Remove(pPlr, false, false); Log(LoadResStr("IDS_PRC_JOINFAIL")); return nullptr; }
 
 	// Done
@@ -411,7 +396,7 @@ C4Player* C4PlayerList::GetByName(const char *szName, int iExcluding) const
 {
 	for (C4Player *pPlr=First; pPlr; pPlr=pPlr->Next)
 		if (SEqual(pPlr->GetName(),szName))
-			if (pPlr->Number!=iExcluding)
+			if (pPlr->ID!=iExcluding)
 				return pPlr;
 	return nullptr;
 }
@@ -489,7 +474,7 @@ bool C4PlayerList::CtrlRemoveAtClient(int iClient, bool fDisconnect)
 	// Get players
 	for (C4Player *pPlr = First; pPlr; pPlr = pPlr->Next)
 		if (pPlr->AtClient == iClient)
-			if (!CtrlRemove(pPlr->Number, fDisconnect))
+			if (!CtrlRemove(pPlr->ID, fDisconnect))
 				return false;
 	return true;
 }
@@ -499,7 +484,7 @@ bool C4PlayerList::CtrlRemoveAtClient(const char *szName, bool fDisconnect)
 	// Get players
 	for (C4Player *pPlr = First; pPlr; pPlr = pPlr->Next)
 		if (SEqual(pPlr->AtClientName, szName))
-			if (!CtrlRemove(pPlr->Number, fDisconnect))
+			if (!CtrlRemove(pPlr->ID, fDisconnect))
 				return false;
 	return true;
 }
@@ -622,11 +607,11 @@ bool C4PlayerList::HasPlayerInTeamSelection()
 void C4PlayerList::RecheckPlayerSort(C4Player *pForPlayer)
 {
 	if (!pForPlayer || !First) return;
-	int iNumber = pForPlayer->Number;
+	int iNumber = pForPlayer->ID;
 	// get entry that should be the previous
 	// (use '<=' to run past pForPlayer itself)
 	C4Player *pPrev = First;
-	while (pPrev->Next && pPrev->Next->Number <= iNumber)
+	while (pPrev->Next && pPrev->Next->ID <= iNumber)
 		pPrev=pPrev->Next;
 	// if it's correctly sorted, pPrev should point to pForPlayer itself
 	if (pPrev == pForPlayer) return;
@@ -638,7 +623,7 @@ void C4PlayerList::RecheckPlayerSort(C4Player *pForPlayer)
 	while (*pOldLink && *pOldLink != pForPlayer) pOldLink = &((*pOldLink)->Next);
 	if (*pOldLink) *pOldLink = pForPlayer->Next;
 	// then link into new
-	if (pPrev == First && pPrev->Number > iNumber)
+	if (pPrev == First && pPrev->ID > iNumber)
 	{
 		// at head
 		pForPlayer->Next = pPrev;
