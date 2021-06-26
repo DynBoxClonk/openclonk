@@ -2,25 +2,18 @@
 	Base Material & Production
 	Library to control the players base material and production. The initial values are read
 	from the Scenario.txt entries and per script one can modify these by:
-     * GetBaseMaterial(proplist player, id material, int index, int category)
-     * SetBaseMaterial(proplist player, id material, int amount)
-     * DoBaseMaterial(proplist player, id material, int change)
-     * GetBaseProduction(proplist player, id material, int index, int category)
-     * SetBaseProduction(proplist player, id material, int amount)
-     * DoBaseProduction(proplist player, id material, int change)
+     * GetBaseMaterial(id material, int index, int category)
+     * SetBaseMaterial(id material, int amount)
+     * DoBaseMaterial(id material, int change)
+     * GetBaseProduction(id material, int index, int category)
+     * SetBaseProduction(id material, int amount)
+     * DoBaseProduction(id material, int change)
     Performs also two callbacks to a base of the player:
      * OnBaseMaterialChange(id material, int change);
      * OnBaseProductionChange(id material, int change);
 	
 	@author Randrian, Maikel
 */
-
-
-// Local variables to store the player's material and production.
-// Is an array filled with [id, count] arrays.
-local base_material = [];
-local base_production = [];
-local production_unit = 0;
 
 // Maximum number of material. 
 static const BASEMATERIAL_MaxBaseMaterial = 25;
@@ -29,106 +22,60 @@ static const BASEMATERIAL_MaxBaseProduction = 10;
 // Produce every X frames (currently set to a minute).
 static const BASEMATERIAL_ProductionRate = 2160;
 
+/*-- Add to player interface --*/
 
-/*-- Global interface --*/
 
-global func GetBaseMaterial(proplist player, id material, int index, int category)
+protected func Definition(def type)
 {
-	var base = Library_BaseMaterial->GetBaseMaterialManager(player);
-	if (base) 
-		return base->GetBaseMat(material, index, category);
+	AddProperties(Player, {
+		GetBaseMaterial = type.GetBaseMaterial,
+		SetBaseMaterial = type.SetBaseMaterial,
+		DoBaseMaterial = type.DoBaseMaterial,
+		GetBaseProduction = type.GetBaseProduction,
+		SetBaseProduction = type.SetBaseProduction,
+		DoBaseProduction = type.DoBaseProduction,
+		GiveBaseMaterial = type.GiveBaseMaterial,
+		BroadcastBaseMaterialChange = type.BroadcastBaseMaterialChange,
+		BroadcastBaseProductionChange = type.BroadcastBaseProductionChange,
+		GetBaseMaterialData = type.GetBaseMaterialData,
+		GetBaseProductionData = type.GetBaseProductionData,
+		SetBaseProductionAtLeast = type.SetBaseProductionAtLeast,
+		SetBaseMaterialAtLeast = type.SetBaseMaterialAtLeast,
+		});
 }
 
-global func SetBaseMaterial(proplist player, id material, int amount)
-{
-	var base = Library_BaseMaterial->GetBaseMaterialManager(player);
-	if (base)
-		return base->SetBaseMat(material, amount);
-}
 
-global func DoBaseMaterial(proplist player, id material, int change)
-{
-	var base = Library_BaseMaterial->GetBaseMaterialManager(player);
-	if (base)
-		return base->DoBaseMat(material, change);
-}
+/*-- Object interface --*/
 
-global func GetBaseProduction(proplist player, id material, int index, int category)
+func GetBaseMaterialData()
 {
-	var base = Library_BaseMaterial->GetBaseMaterialManager(player);
-	if (base) 
-		return base->GetBaseProd(material, index, category);
-}
-
-global func SetBaseProduction(proplist player, id material, int amount)
-{
-	var base = Library_BaseMaterial->GetBaseMaterialManager(player);
-	if (base)
-		return base->SetBaseProd(material, amount);
-}
-
-global func DoBaseProduction(proplist player, id material, int change)
-{
-	var base = Library_BaseMaterial->GetBaseMaterialManager(player);
-	if (base) 
-		return base->DoBaseProd(material, change);
-}
-
-// Gives the player specific base materials as given in the materials array.
-global func GivePlayerBaseMaterial(proplist player, array base_mats)
-{
-	if (base_mats)
+	// Local variables to store the player's material.
+	// Is an array filled with [id, count] arrays.
+	if (this.Data.BaseMaterial == nil)
 	{
-		for (var mat in base_mats)
-		{
-			DoBaseMaterial(player, mat[0], mat[1]);
-			DoBaseProduction(player, mat[0], mat[2]);
-		}
+		this.Data.BaseMaterial = [];
 	}
+	return this.Data.BaseMaterial;
 }
 
-
-/*-- Definition Interface --*/
-
-protected func GetBaseMaterialManager(proplist player)
+func GetBaseProductionData()
 {
-	var base = FindObject(Find_ID(Library_BaseMaterial), Find_AnyLayer(),  Find_Owner(player));
-	if (!base)
+	// Local variables to store the player's production.
+	// Is an array filled with [id, count] arrays.
+	if (this.Data.BaseProduction == nil)
 	{
-		base = CreateObject(Library_BaseMaterial, 0, 0, player);
+		this.Data.BaseProduction = [];
 	}
-	return base;
-}
-
-/*-- Object Interface --*/
-
-protected func Initialize()
-{
-	// Add a timer for executing base production.
-	AddTimer("ExecBaseProduction", BASEMATERIAL_ProductionRate);
-	return;
-}
-
-// Called every minute and updates the materials according to production.
-public func ExecBaseProduction()
-{
-	production_unit++;
-	// Look at all production.
-	for (var combo in base_production)
+	if (this.Data.BaseProductionManager == nil)
 	{
-		// Check if this id is produced and check if it isn't already full.
-		if (combo[1] > 0 && GetBaseMat(combo[0]) < BASEMATERIAL_MaxBaseMaterial)
-		{
-			// Produce the material every production value / BASEMATERIAL_MaxBaseProduction times.
-			if (production_unit % BoundBy(BASEMATERIAL_MaxBaseProduction + 1 - combo[1], 1, BASEMATERIAL_MaxBaseProduction) == 0)
-				DoBaseMat(combo[0], 1);
-		}
+		this.Data.BaseProductionManager = CreateObject(Library_BaseMaterial, 0, 0, this);
 	}
-	return;
+	return this.Data.BaseProduction;
 }
 
-public func GetBaseMat(id material, int index, int category)
+func GetBaseMaterial(id material, int index, int category)
 {
+	var base_material = GetBaseMaterialData();
 	// Get the count if the id is given.
 	if (material)
 	{
@@ -155,7 +102,7 @@ public func GetBaseMat(id material, int index, int category)
 	return;
 }
 
-public func SetBaseMat(id material, int amount)
+func SetBaseMaterial(id material, int amount)
 {
 	if (amount == nil)
 		return;
@@ -163,6 +110,7 @@ public func SetBaseMat(id material, int amount)
 	var change = 0;
 	// Scan through current list of id's and set material if available.
 	var found = false;
+	var base_material = GetBaseMaterialData();
 	for (var index = 0; index < GetLength(base_material); ++index)
 	{
 		if (base_material[index][0] == material)
@@ -191,12 +139,25 @@ public func SetBaseMat(id material, int amount)
 	return;
 }
 
-public func DoBaseMat(id material, int change)
+
+/**
+ Sets the minimum amount of base material that a player has.
+ Does nothing if the player already has more than this amount.
+ */
+func SetBaseMaterialAtLeast(id material, int amount)
 {
-	if (change == 0) 
+	return SetBaseMaterial(material, Max(amount, GetBaseMaterial(material)));
+}
+
+func DoBaseMaterial(id material, int change)
+{
+	if (change == 0)
+	{
 		return;
+	}
 	// Scan through current list of id's and increase material if available. 
 	var found = false;
+	var base_material = GetBaseMaterialData();
 	for (var index = 0; index < GetLength(base_material); ++index)
 	{
 		if (base_material[index][0] == material)
@@ -227,8 +188,9 @@ public func DoBaseMat(id material, int change)
 	return;
 }
 
-public func GetBaseProd(id material, int index, int category)
+func GetBaseProduction(id material, int index, int category)
 {
+	var base_production = GetBaseProductionData();
 	// Get the count if the id is given.
 	if (material)
 	{
@@ -255,10 +217,13 @@ public func GetBaseProd(id material, int index, int category)
 	return;
 }
 
-public func SetBaseProd(id material, int amount)
+func SetBaseProduction(id material, int amount)
 {
 	if (amount == nil)
+	{
 		return;
+	}
+	var base_production = GetBaseProductionData();
 	amount = Max(0, amount);
 	var change = 0;
 	// Scan through current list of id's and set production if available.
@@ -289,12 +254,25 @@ public func SetBaseProd(id material, int amount)
 	// Callback to the bases of the player.
 	BroadcastBaseProductionChange(material, change);
 	return;
+
 }
 
-public func DoBaseProd(id material, int change)
+/**
+ Sets the minimum amount of base production that a player has.
+ Does nothing if the player already has more than this amount.
+ */
+func SetBaseProductionAtLeast(id material, int amount)
+{
+	return SetBaseProduction(material, Max(amount, GetBaseMaterial(material)));
+}
+
+func DoBaseProduction(id material, int change)
 {
 	if (change == 0)
+	{
 		return;
+	}
+	var base_production = GetBaseProductionData();
 	// Scan through current list of id's and increase production if available. 
 	var found = false;
 	for (var index = 0; index < GetLength(base_production); ++index)
@@ -325,25 +303,68 @@ public func DoBaseProd(id material, int change)
 	// Callback to the bases of the player.
 	BroadcastBaseProductionChange(material, change);
 	return;
+
+}
+
+// Gives the player specific base materials as given in the materials array.
+func GiveBaseMaterial(array base_mats)
+{
+	if (base_mats)
+	{
+		for (var mat in base_mats)
+		{
+			DoBaseMaterial(mat[0], mat[1]);
+			DoBaseProduction(mat[0], mat[2]);
+		}
+	}
+}
+
+/*-- Internal Interface --*/
+
+local production_unit = 0;
+
+func Initialize()
+{
+	// Add a timer for executing base production.
+	AddTimer("ExecBaseProduction", BASEMATERIAL_ProductionRate);
+	return;
+}
+
+// Called every minute and updates the materials according to production.
+public func ExecBaseProduction()
+{
+	production_unit++;
+	// Look at all production.
+	for (var combo in GetOwner()->GetBaseProductionData())
+	{
+		// Check if this id is produced and check if it isn't already full.
+		if (combo[1] > 0 && GetOwner()->GetBaseMaterial(combo[0]) < BASEMATERIAL_MaxBaseMaterial)
+		{
+			// Produce the material every production value / BASEMATERIAL_MaxBaseProduction times.
+			if (production_unit % BoundBy(BASEMATERIAL_MaxBaseProduction + 1 - combo[1], 1, BASEMATERIAL_MaxBaseProduction) == 0)
+				GetOwner()->DoBaseMaterial(combo[0], 1);
+		}
+	}
+	return;
 }
 
 
 /*-- Miscellaneous --*/
 
-protected func BroadcastBaseProductionChange(id material, int change)
+func BroadcastBaseProductionChange(id material, int change)
 {
 	var i = 0, base;
-	while (base = FindBase(GetOwner(), i++))
+	while (base = FindBase(this, i++))
+	{
 		base->~OnBaseProductionChange(material, change);
+	}
 }
 
-protected func BroadcastBaseMaterialChange(id material, int change)
+func BroadcastBaseMaterialChange(id material, int change)
 {
 	var i = 0, base;
-	while (base = FindBase(GetOwner(), i++))
+	while (base = FindBase(this, i++))
+	{
 		base->~OnBaseMaterialChange(material, change);
+	}
 }
-
-// Internal management object not saved. Use Scenario.txt or script 
-// to adjust base materials and production.
-func SaveScenarioObject() { return false; }

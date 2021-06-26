@@ -145,9 +145,19 @@ global func Find_AnyContainer()
 }
 
 // documented in /docs/sdk/script/fn
-global func Find_Owner(proplist owner)
+global func Find_Owner(any owner)
 {
-	return [C4FO_Owner, owner];
+	AssertTypeOneOf([C4V_PropList, C4V_Int, C4V_Nil], owner, "owner");
+	var owner_id = owner;
+	if (GetType(owner) == C4V_PropList)
+	{
+		owner_id = owner.ID;
+	}
+	else if (owner == NO_OWNER)
+	{
+		owner_id = -1;
+	}
+	return [C4FO_Owner, owner_id];
 }
 
 global func Find_Controller(int controller)

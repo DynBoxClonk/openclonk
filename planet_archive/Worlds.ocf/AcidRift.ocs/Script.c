@@ -88,10 +88,10 @@ protected func InitializePlayer(proplist plr)
 	// Give the player the elementary base materials and some tools.
 	GivePlayerElementaryBaseMaterial(plr);
 	GivePlayerToolsBaseMaterial(plr);
-	SetBaseMaterial(plr, Wood, 100);
-	SetBaseProduction(plr, Wood, 10);
-	SetBaseMaterial(plr, Cloth, 10);
-	SetBaseProduction(plr, Cloth, 5);
+	plr->SetBaseMaterial(Wood, 100);
+	plr->SetBaseProduction(Wood, 10);
+	plr->SetBaseMaterial(Cloth, 10);
+	plr->SetBaseProduction(Cloth, 5);
 	
 	// Ensure mimimum player wealth.
 	var add_wealth = Max(0, 75 - 25 * SCENPAR_Difficulty - plr->GetWealth());

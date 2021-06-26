@@ -169,11 +169,11 @@ func InitializePlayer(int player_nr, int x, int y, object base, int team, id ext
 	player_nr->SetWealth(RandomRange(settings.Wealth[0], settings.Wealth[1], settings.Wealth[2], settings.Wealth[3]));
 	for (var material in GetAsList(settings.BaseMaterial))
 	{
-		DoBaseMaterial(player_nr, material, 1);
+		player_nr->DoBaseMaterial(material, 1);
 	}
 	for (var material in GetAsList(settings.BaseProduction))
 	{
-		DoBaseProduction(player_nr, material, 1);
+		player_nr->DoBaseProduction(material, 1);
 	}
 	
 	// Material

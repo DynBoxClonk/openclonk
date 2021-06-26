@@ -29,7 +29,7 @@ public func GetBuyableItems(proplist for_player)
 	// By default get the base material.
 	var i, item;
 	var items = [];
-	while (item = GetBaseMaterial(for_player, nil, i++))
+	while (item = for_player->GetBaseMaterial(nil, i++))
 	{
 		PushBack(items, item);
 	}
@@ -39,13 +39,13 @@ public func GetBuyableItems(proplist for_player)
 public func GetBuyableAmount(proplist for_player, id item)
 {
 	// by default use the base material.
-	return GetBaseMaterial(for_player, item);
+	return for_player->GetBaseMaterial(item);
 }
 
 public func ChangeBuyableAmount(proplist for_player, id item, int amount)
 {
 	// By default use base engine function.
-	DoBaseMaterial(for_player, item, amount);
+	for_player->DoBaseMaterial(item, amount);
 }
 
 // Returns the value of the object if sold in this base.

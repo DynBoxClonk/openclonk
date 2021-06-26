@@ -43,7 +43,7 @@ public func IsInteractable(object clonk)
 // And show a message in an interaction menu.
 public func RejectInteractionMenu(object clonk)
 {
-	if (GetOwner()->Hostile(clonk->GetOwner())) 
+	if (GetOwner() && GetOwner()->Hostile(clonk->GetOwner())) 
 		return Format("$MsgHostile$", GetName(), GetOwner()->GetTaggedName());
 	return _inherited(clonk, ...);
 }
