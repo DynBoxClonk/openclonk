@@ -978,6 +978,12 @@ void C4Player::CompileFunc(StdCompiler *pComp, C4ValueNumbers * numbers)
 	pComp->Value(mkNamingPtrAdapt( pMsgBoardQuery,  "MsgBoardQueries"        ));
 	pComp->Value(mkNamingAdapt(mkParAdapt(SoundModifier, numbers), "SoundModifier", C4Value()));
 	
+	// Save data proplist
+	C4Value data;
+	GetPropertyByS(::Strings.RegString("Data"), &data);
+	C4PropList* data_list = data.getPropList();
+	pComp->Value(mkNamingAdapt( mkParAdapt(*data_list, numbers), "Properties"));
+
 	if (pComp->isDeserializer())
 	{
 		SoundModifier.Denumerate(numbers);
@@ -1004,6 +1010,8 @@ bool C4Player::LoadRuntimeData(C4Group &hGroup, C4ValueNumbers * numbers)
 		return false;
 	// Denumerate pointers
 	DenumeratePointers();
+	// Denumerate data
+	Denumerate(numbers);
 	// Success
 	return true;
 }
@@ -1091,6 +1099,14 @@ void C4Player::DoTeamSelection(int32_t idTeam)
 	// let's hope it doesn't!
 	Status = PS_TeamSelectionPending;
 	::Control.DoInput(CID_PlrAction, C4ControlPlayerAction::InitScenarioPlayer(this, idTeam), CDT_Queue);
+}
+
+void C4Player::Denumerate(C4ValueNumbers * numbers)
+{
+	C4Value data;
+	GetPropertyByS(::Strings.RegString("Data"), &data);
+	C4PropList* data_list = data.getPropList();
+	data_list->Denumerate(numbers);
 }
 
 void C4Player::DenumeratePointers()

@@ -178,6 +178,7 @@ public:
 	bool SetHostility(C4Player *opponent, int32_t iHostility, bool fSilent=false);
 	bool IsHostileTowards(const C4Player *opponent) const;
 	void CompileFunc(StdCompiler *pComp, C4ValueNumbers *);
+	void Denumerate(C4ValueNumbers *);
 	void DenumeratePointers();
 	bool LoadRuntimeData(C4Group &hGroup, C4ValueNumbers *);
 	bool ActivateMenuMain();

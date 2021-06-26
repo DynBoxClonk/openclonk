@@ -44,7 +44,7 @@
         <row>
           <col><code>Data</code></col>
           <col>proplist</col>
-          <col>Storage space for all the player specific data for this scenario.</col>
+          <col>Storage space for all the player specific data for this scenario. You can store other properties in the player directly, if necessary, but that will not be accessible anymore once you load the game.</col>
         </row>
         <row>
           <col><code>ExtraID</code></col>
