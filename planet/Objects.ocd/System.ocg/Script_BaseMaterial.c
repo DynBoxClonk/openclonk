@@ -6,26 +6,6 @@
 	@author Marky
  */
 
-/* -- Additional functions -- */
-
-/**
- Sets the minimum amount of base material that a player has.
- Does nothing if the player already has more than this amount.
- */
-global func SetBaseMaterialAtLeast(proplist player, id material, int amount)
-{
-	return SetBaseMaterial(player, material, Max(amount, GetBaseMaterial(player, material)));
-}
-
-
-/**
- Sets the minimum amount of base production that a player has.
- Does nothing if the player already has more than this amount.
- */
-global func SetBaseProductionAtLeast(proplist player, id material, int amount)
-{
-	return SetBaseProduction(player, material, Max(amount, GetBaseMaterial(player, material)));
-}
 
 /* -- Best effort default homebase -- */
 
@@ -114,8 +94,8 @@ global func  ConfigurePlayerHomebaseMaterial(proplist player, proplist materials
 			// Set home base material: At least the minimum required amount,
 			// but deduct the materials that the player already has
 			var amount = Max(0, materials[material_name] - ObjectCount(Find_ID(material), Find_Owner(player)));
-			SetBaseMaterialAtLeast(player, material, amount);
-			SetBaseProductionAtLeast(player, material, production);
+			player->SetBaseMaterialAtLeast(material, amount);
+			player->SetBaseProductionAtLeast(material, production);
 		}
 		else
 		{

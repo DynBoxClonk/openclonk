@@ -82,8 +82,8 @@ protected func InitializePlayer(proplist plr)
 	var nr_clonks = Max(9 - 2 * SCENPAR_Difficulty, 1);
 	if (SCENPAR_Difficulty == 1)
 		nr_clonks += 3;
-	SetBaseMaterial(plr, Clonk, nr_clonks);
-	SetBaseProduction(plr, Clonk, nr_clonks);
+	plr->SetBaseMaterial(Clonk, nr_clonks);
+	plr->SetBaseProduction(Clonk, nr_clonks);
 	
 	// Claim ownership of structures, last player who joins owns all the main island flags.
 	for (var structure in FindObjects(Find_Or(Find_Category(C4D_Structure), Find_Func("IsFlagpole"))))

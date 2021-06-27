@@ -395,17 +395,17 @@ private func InitializeCrew(proplist plr)
 	return true;
 }
 
-private func InitializeBaseMaterial(proplist plr)
+private func InitializeBaseMaterial(proplist player)
 {
 	// Set base material to minimum of current material and material given by this object
 	if (starting_base_material)
 	{
 		for (var entry in starting_base_material)
 		{
-			var current_num = GetBaseMaterial(plr, entry.id);
+			var current_num = player->GetBaseMaterial(entry.id);
 			if (current_num < entry.count)
 			{
-				SetBaseMaterial(plr, entry.id, entry.count);
+				player->SetBaseMaterial(entry.id, entry.count);
 			}
 		}
 	}

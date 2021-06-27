@@ -71,7 +71,7 @@ global func Test2(proplist player)
 	var passed = true;
 	var base = CreateObjectAbove(ClassicHutWooden, GetCrew(player)->GetX(), GetCrew(player)->GetY() + 10, player);
 
-	DoBaseMaterial(player, ClassicClonk, 1);
+	player->DoBaseMaterial(ClassicClonk, 1);
 
 	Log("---------------------");
 	Log("Test: Buy a clonk");
@@ -104,13 +104,13 @@ global func Test3(proplist player)
 	Log("---------------------");
 	Log("Test: Sell a shovel");
 
-	passed &= doTest("Player should have no shovel buyable before selling it. Got %d, expected %d.", GetBaseMaterial(player, Shovel), 0);
+	passed &= doTest("Player should have no shovel buyable before selling it. Got %d, expected %d.", player->GetBaseMaterial(Shovel), 0);
 	
 	var shovel = base->CreateContents(Shovel);
 	
 	base->DoSell(shovel, player);
 	
-	passed &= doTest("Player should have a shovel buyable after selling it. Got %d, expected %d.", GetBaseMaterial(player, Shovel), 1);
+	passed &= doTest("Player should have a shovel buyable after selling it. Got %d, expected %d.", player->GetBaseMaterial(Shovel), 1);
 	
 	if (base) base->RemoveObject();
 

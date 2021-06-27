@@ -186,7 +186,7 @@ protected func InitializePlayer(proplist plr)
 	// Knowledge and base material for this round.
 	plr->GiveKnowledge(Compensator);
 	plr->GiveKnowledge(SteamEngine);
-	SetBaseMaterial(plr, Metal, 20);
+	plr->SetBaseMaterial(Metal, 20);
 	
 	// Set wealth to buy items.
 	plr->SetWealth(400);
