@@ -122,13 +122,13 @@ func DoPoint(proplist player, int count)
 	Scoreboard->SetPlayerData(player, "koth", player_points[player.ID]);
 }
 
-protected func InitializePlayer(proplist plr, int x, int y, object base, int team)
+protected func InitializePlayer(proplist plr, int x, int y, int team)
 {
 	Scoreboard->NewPlayerEntry(plr);
 	player_suicides[plr]=0;
 	
 	Goal_Melee->MakeHostileToAll(plr, team);
-	return inherited(plr, x, y, base, team, ...);
+	return inherited(plr, x, y, team, ...);
 }
 
 public func IsFulfilled()

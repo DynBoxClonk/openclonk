@@ -145,7 +145,7 @@ func GetAsList(proplist props)
 	return list;
 }
 
-func InitializePlayer(int player_nr, int x, int y, object base, int team, id extra_data)
+func InitializePlayer(int player_nr, int x, int y, int team, id extra_data)
 {
 	var profiles = [Player1, Player2, Player3, Player4];
 	RemoveHoles(profiles);

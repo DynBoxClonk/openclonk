@@ -582,7 +582,6 @@ bool C4Player::ScenarioInit()
 	FindConSiteSpot(ptx, pty, 30, 50, 400);
 
 	// Place Readies
-	C4Object *FirstBase = nullptr;
 	PlaceReadyCrew(ptx-30,ptx+30,pty);
 
 	// set initial hostility by team info
@@ -592,7 +591,6 @@ bool C4Player::ScenarioInit()
 	::Game.GRBroadcast(PSF_InitializePlayer, &C4AulParSet(this,
 	                        ptx,
 	                        pty,
-	                        FirstBase,
 	                        Team,
 	                        C4Id2Def(GetInfo()->GetScriptPlayerExtraID())));
 	return true;
