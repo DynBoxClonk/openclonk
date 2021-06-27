@@ -203,7 +203,7 @@ void C4RoundResultsPlayers::Add(C4RoundResultsPlayer *pNewPlayer)
 
 C4RoundResultsPlayer *C4RoundResultsPlayers::GetCreateByID(int32_t id)
 {
-	assert(id);
+	assert(id >= 0);
 	// find existing
 	C4RoundResultsPlayer *pPlr = GetByID(id);
 	// not found: Add new

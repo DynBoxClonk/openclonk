@@ -49,7 +49,7 @@
 C4Player::C4Player() : C4PlayerInfoCore(), C4PropList(GetPropListPrototype(C4PlayerScript::PROTOTYPE_NAME_SCRIPT))
 {
 	Filename[0] = 0;
-	ID = 0;
+	ID = NO_OWNER;
 	Team = 0;
 	DefaultRuntimeData();
 	Menu.Default();
@@ -935,7 +935,7 @@ void C4Player::AdjustCursorCommand()
 
 void C4Player::CompileFunc(StdCompiler *pComp, C4ValueNumbers * numbers)
 {
-	assert(ID);
+	assert(ID >= 0);
 
 	pComp->Value(mkNamingAdapt(Status,              "Status",               0));
 	pComp->Value(mkNamingAdapt(AtClient,            "AtClient",             C4ClientIDUnknown));
@@ -999,7 +999,7 @@ bool C4Player::LoadRuntimeData(C4Group &hGroup, C4ValueNumbers * numbers)
 	if (!SSearch(pSource, FormatString("[Player%i]", ID).getData())) return false;
 	// Compile (Search player section - runtime data is stored by unique player ID)
 	// Always compile exact. Exact data will not be present for savegame load, so it does not matter
-	assert(ID);
+	assert(ID >= 0);
 	if (!CompileFromBuf_LogWarn<StdCompilerINIRead>(
 	      mkNamingAdapt(mkParAdapt(*this, numbers), FormatString("Player%i", ID).getData()),
 	      StdStrBuf(pSource),

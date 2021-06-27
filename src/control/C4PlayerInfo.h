@@ -310,7 +310,7 @@ private:
 	C4ClientPlayerInfos **ppClients{nullptr}; // array of registered client information
 	void GrowList(size_t iByVal); // increase list capacity
 
-	int32_t iLastPlayerID{0};              // last ID given to a player
+	int32_t iLastPlayerID{NO_OWNER};              // last ID given to a player
 
 	enum MatchingLevel { PML_PlrFileName=0, PML_PlrName, PML_PrefColor, PML_Any };
 
