@@ -397,7 +397,7 @@ private func IsWinner(proplist plr)
 
 /*-- Player section --*/
 
-protected func InitializePlayer(proplist plr, int x, int y, object base, int team)
+protected func InitializePlayer(proplist plr, int x, int y, int team)
 {
 	// If the parkour is already finished, then immediately eliminate player.
 	if (finished)

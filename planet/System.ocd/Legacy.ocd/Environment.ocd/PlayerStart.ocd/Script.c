@@ -203,7 +203,7 @@ public func SetZoomSet(int zoom)
 
 /* Player initialization checks */
 
-public func InitializePlayer(proplist plr, x, y, base, team, script_id)
+public func InitializePlayer(proplist plr, x, y, team, script_id)
 {
 	// Find which one to evaluate
 	var possible_startpoints = FindObjects(Find_ID(PlayerStart), Find_Func("IsStartFor", plr));

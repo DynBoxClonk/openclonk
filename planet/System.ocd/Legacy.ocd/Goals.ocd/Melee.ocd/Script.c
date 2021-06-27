@@ -18,10 +18,10 @@ func MakeHostileToAll(proplist newplr, int team)
 	}
 }
 
-protected func InitializePlayer(proplist newplr, int x, int y, object base, int team)
+protected func InitializePlayer(proplist newplr, int x, int y, int team)
 {
 	MakeHostileToAll(newplr, team);
-	return inherited(newplr, x, y, base, team, ...);
+	return inherited(newplr, x, y, team, ...);
 }
 
 private func CheckTeamHostile(proplist plr1, proplist plr2)
