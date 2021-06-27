@@ -190,7 +190,7 @@ void C4PlayerInfo::CompileFunc(StdCompiler *pComp)
 		{ "AttributesFixed", PIF_AttributesFixed },
 		{ "NoScenarioInit", PIF_NoScenarioInit },
 		{ "NoScenarioSave", PIF_NoScenarioSave },
-		{ "NoEliminationCheck", PIF_NoEliminationCheck },
+		{ "DoEliminationCheck", PIF_DoEliminationCheck },
 		{ "Invisible", PIF_Invisible},
 		{ nullptr, 0 },
 	};

@@ -98,7 +98,7 @@ public:
 	char AtClientName[C4MaxTitle+1];
 	bool LocalControl; // Local-NoSave //
 	bool LeagueEvaluated; // Local-NoSave //
-	bool NoEliminationCheck; // Local-NoSave. Always set in init and restore by info //
+	bool DoEliminationCheck; // Local-NoSave. Always set in init and restore by info //
 	// Menu
 	C4MainMenu Menu; // Local-NoSave //
 	// View

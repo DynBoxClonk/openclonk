@@ -81,7 +81,7 @@ public func Initialize()
 		if (!GetType(g_enemyspawn_player))
 		{
 			g_enemyspawn_player = NO_OWNER; // Sentinel value: Script player join scheduled but not joined yet
-			CreateScriptPlayer("$PlayerAttackers$", nil, 0, CSPF_NoEliminationCheck | CSPF_Invisible | CSPF_FixedAttributes | CSPF_NoScenarioInit | CSPF_NoScenarioSave, GetID());
+			CreateScriptPlayer("$PlayerAttackers$", nil, 0, CSPF_Invisible | CSPF_FixedAttributes | CSPF_NoScenarioInit | CSPF_NoScenarioSave, GetID());
 		}
 	}
 }

@@ -6,7 +6,7 @@
   <func>
     <title>CreateScriptPlayer</title>
     <category>Player</category>
-    <version>1.0 OC</version>
+    <version>1.0 OC<extversion>9.0 OC</extversion></version>
     <syntax>
       <rtype>bool</rtype>
       <params>
@@ -49,8 +49,8 @@
               </row>
               <row>
                 <col>2</col>
-                <col>CSPF_NoEliminationCheck</col>
-                <col>If set, the player will not be eliminated automatically if its crew is empty.</col>
+                <col>CSPF_DoEliminationCheck</col>
+                <col>If set, the player will be eliminated automatically if its crew is empty. Was <code>CSPF_NoEliminationCheck</code> before 9.0 OC.</col>
               </row>
               <row>
                 <col>3</col>
@@ -83,4 +83,5 @@
     </related>
   </func>
   <author>Sven2</author><date>2007-12</date>
+  <author>Marky</author><date>2021-06</date>
 </funcs>

@@ -10,7 +10,7 @@ protected func Initialize()
 {
 	// Create a script player for some tests.
 	script_player = nil;
-	CreateScriptPlayer("PowerBuddy", RGB(0, 0, 255), nil, CSPF_NoEliminationCheck);
+	CreateScriptPlayer("PowerBuddy", RGB(0, 0, 255));
 	return;
 }
 

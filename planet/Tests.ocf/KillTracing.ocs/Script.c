@@ -23,9 +23,9 @@ static const TEST_START_NR = 1;
 protected func Initialize()
 {
 	// Create script players for these tests.
-	CreateScriptPlayer("Victim", RGB(0, 0, 255), nil, CSPF_NoEliminationCheck);
-	CreateScriptPlayer("Killer", RGB(0, 255, 0), nil, CSPF_NoEliminationCheck);
-	CreateScriptPlayer("KillerFake", RGB(255, 0, 0), nil, CSPF_NoEliminationCheck);
+	CreateScriptPlayer("Victim", RGB(0, 0, 255));
+	CreateScriptPlayer("Killer", RGB(0, 255, 0));
+	CreateScriptPlayer("KillerFake", RGB(255, 0, 0));
 	
 	// No power required in these tests.
 	CreateObject(Rule_NoPowerNeed);

@@ -66,7 +66,7 @@ C4Player::C4Player() : C4PlayerInfoCore(), C4PropList(GetPropListPrototype(C4Pla
 	LastControlType = PCID_None;
 	LastControlID = 0;
 	pMsgBoardQuery = nullptr;
-	NoEliminationCheck = false;
+	DoEliminationCheck = false;
 	Evaluated = false;
 	ZoomLimitMinWdt = ZoomLimitMinHgt = ZoomLimitMaxWdt = ZoomLimitMaxHgt = ZoomWdt = ZoomHgt = 0;
 	ZoomLimitMinVal = ZoomLimitMaxVal = ZoomVal = Fix0;
@@ -282,7 +282,7 @@ bool C4Player::Init(int32_t iAtClient, const char *szAtClientName,
 	Status=PS_Normal;
 	ID = pInfo->GetID();
 	Team = pInfo->GetTeam();
-	NoEliminationCheck = pInfo->IsNoEliminationCheck();
+	DoEliminationCheck = pInfo->HasEliminationCheck();
 
 	// At client
 	AtClient=iAtClient; SCopy(szAtClientName,AtClientName,C4MaxTitle);
@@ -1013,14 +1013,17 @@ bool C4Player::LoadRuntimeData(C4Group &hGroup, C4ValueNumbers * numbers)
 
 void C4Player::CheckElimination()
 {
-	// Standard elimination: no crew
-	if (!Crew.GetFirstObject())
-		// Already eliminated safety
-		if (!Eliminated)
-			// No automatic elimination desired?
-			if (!NoEliminationCheck)
-				// Do elimination!
-				Eliminate();
+	// No automatic elimination desired?
+	// Already eliminated safety
+	if (DoEliminationCheck && !Eliminated)
+	{
+		// Standard elimination: no crew
+		if (!Crew.GetFirstObject())
+		{
+			// Do elimination!
+			Eliminate();
+		}
+	}
 }
 
 void C4Player::UpdateView()
