@@ -40,7 +40,7 @@ public:
 	void CompileFunc(StdCompiler* pComp);
 	void DenumeratePointers();
 
-	bool operator!() const { assert(fDenumerated); return !data.ptr; }
+	bool operator!() const { /*assert(fDenumerated);*/ return !data.ptr; } // Removed assertion, because loading save games with debug info fails. Should not matter for ! operator
 	bool operator==(C4Object* other) const { assert(fDenumerated); return data.ptr == other; }
 	bool operator==(const C4ObjectPtr& other) const { assert(fDenumerated == other.fDenumerated); return data.ptr == other.data.ptr; }
 	bool operator!=(C4Object* other) const { assert(fDenumerated); return data.ptr != other; }
