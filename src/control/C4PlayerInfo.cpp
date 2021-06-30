@@ -272,6 +272,18 @@ void C4PlayerInfo::CompileFunc(StdCompiler *pComp)
 
 }
 
+void C4PlayerInfo::SetEliminationCheck(bool active)
+{
+	if (active)
+	{
+		dwFlags |= PIF_DoEliminationCheck;
+	}
+	else
+	{
+		dwFlags &= ~PIF_DoEliminationCheck;
+	}
+}
+
 void C4PlayerInfo::SetFilename(const char *szToFilename)
 {
 	szFilename = szToFilename;
@@ -1418,7 +1430,7 @@ bool C4PlayerInfoList::RestoreSavegameInfos(C4PlayerInfoList &rSavegamePlayers)
 					// in savegames, this is unusual. For regular script player restore, it's not
 					if (Game.C4S.Head.SaveGame) LogF(LoadResStr("IDS_PRC_RESUMENOPLRASSOCIATION"), (const char *)pInfo->GetName());
 				}
-		}
+			}
 		// otherwise any remaining players
 		int32_t iCountRemaining = rSavegamePlayers.GetPlayerCount() - iNumGrabbed;
 		if (iCountRemaining)

@@ -57,6 +57,11 @@
           <col>The score value that was saved in the player profile at the beginning of the round, read-only. See <funclink>GetPlayerScoreGain</funclink>.</col>
         </row>
         <row>
+          <col><code>RequireCrew</code></col>
+          <col>bool</col>
+          <col>Defines whether the player is automatically eliminated without crew. Default value is false.</col>
+        </row>
+        <row>
           <col><code>Score</code></col>
           <col>int</col>
           <col>The current score of this player. See <funclink>GetPlayerScore</funclink>, <funclink>DoPlayerScore</funclink>.</col>
@@ -294,4 +299,5 @@
     </related>
   </func>
   <author>Marky</author><date>2020-05</date>
+  <author>Marky</author><date>2021-06</date>
 </funcs>

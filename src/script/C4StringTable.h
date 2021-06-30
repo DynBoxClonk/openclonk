@@ -317,6 +317,7 @@ enum C4PropertyName
 	P_Stop,
 	P_Timer,
 	P_Effect,
+	P_EliminationCheck,
 	P_Damage,
 	P_Collectible,
 	P_Touchable,
