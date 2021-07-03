@@ -108,9 +108,16 @@ static long FnGetGravity(C4PropList * _this)
 	return fixtoi(::Landscape.GetGravity() * 100);
 }
 
-static C4PropList *FnGetPlayer(C4PropList * _this, long player_nr)
+static C4PropList *FnGetPlayer(C4PropList * _this, Nillable<long> player_nr)
 {
-	return ::Players.Get(player_nr);
+	if (player_nr.IsNil())
+	{
+		return ::Players.First;
+	}
+	else
+	{
+		return ::Players.Get(player_nr);
+	}
 }
 
 static Nillable<long> FnGetX(C4PropList * _this, long precision)
