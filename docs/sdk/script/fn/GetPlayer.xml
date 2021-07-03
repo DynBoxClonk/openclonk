@@ -13,7 +13,7 @@
         <param>
           <type>int</type>
           <name>player</name>
-          <desc>ID of the player to get.</desc>
+          <desc>ID of the player to get (first player has ID=1). Optionally, you can pass <code>nil</code> if you want to get the first player.</desc>
         </param>
       </params>
     </syntax>
