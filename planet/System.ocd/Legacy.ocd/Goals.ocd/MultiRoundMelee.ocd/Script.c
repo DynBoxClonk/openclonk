@@ -69,7 +69,7 @@ protected func Initialize()
 	return inherited(...);
 }
 
-protected func InitializePlayer(proplist plr, int x, int y, object base, int team)
+protected func InitializePlayer(proplist plr, int x, int y, int team)
 {
 	// Add the player and their team to the scoreboard.
 	Scoreboard->NewPlayerEntry(plr);
@@ -82,7 +82,7 @@ protected func InitializePlayer(proplist plr, int x, int y, object base, int tea
 	// Should only happen if it's not game start, else Clonks would start stuck in a RelaunchContainer.
 	if (FrameCounter() > 1) PutInRelaunchContainer(plr->GetCrew());
 
-	return inherited(plr, x, y, base, team, ...);
+	return inherited(plr, x, y, team, ...);
 }
 
 protected func InitializePlayers()

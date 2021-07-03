@@ -268,7 +268,7 @@
     </text>
     <examples>
       <example>
-        <code>protected func InitializePlayer(int player)
+        <code>protected func InitializePlayer(proplist player)
   {
   // Is it a script player?
   if (GetPlayer(player).Type == C4PT_Script)

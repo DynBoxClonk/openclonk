@@ -37,7 +37,7 @@ func Initialize()
 	InitWaveData();
 }
 
-func InitializePlayer(proplist plr, int iX, int iY, object pBase, int iTeam)
+func InitializePlayer(proplist plr, int iX, int iY, int iTeam)
 {
 	if (plr.Type != C4PT_User) return;
 	plr->SetWealth(50);
