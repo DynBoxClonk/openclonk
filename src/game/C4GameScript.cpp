@@ -971,7 +971,7 @@ static bool FnSetLeaguePerformance(C4PropList * _this, long iScore, C4Player *pl
 
 static const int32_t CSPF_FixedAttributes = 1 << 0,
                      CSPF_NoScenarioInit = 1 << 1,
-                     CSPF_NoEliminationCheck = 1 << 2,
+                     CSPF_DoEliminationCheck = 1 << 2,
                      CSPF_Invisible = 1 << 3,
                      CSPF_NoScenarioSave = 1 << 4;
 
@@ -994,7 +994,7 @@ static bool FnCreateScriptPlayer(C4PropList * _this, C4String *name, long dwColo
 	uint32_t dwInfoFlags = 0u;
 	if (dwFlags & CSPF_FixedAttributes   ) dwInfoFlags |= C4PlayerInfo::PIF_AttributesFixed;
 	if (dwFlags & CSPF_NoScenarioInit    ) dwInfoFlags |= C4PlayerInfo::PIF_NoScenarioInit;
-	if (dwFlags & CSPF_NoEliminationCheck) dwInfoFlags |= C4PlayerInfo::PIF_NoEliminationCheck;
+	if (dwFlags & CSPF_DoEliminationCheck) dwInfoFlags |= C4PlayerInfo::PIF_DoEliminationCheck;
 	if (dwFlags & CSPF_Invisible         ) dwInfoFlags |= C4PlayerInfo::PIF_Invisible;
 	if (dwFlags & CSPF_NoScenarioSave)     dwInfoFlags |= C4PlayerInfo::PIF_NoScenarioSave;
 	pScriptPlrInfo->SetAsScriptPlayer(name->GetCStr(), dwColor, dwInfoFlags, idExtra);
@@ -2553,7 +2553,7 @@ C4ScriptConstDef C4ScriptGameConstMap[]=
 
 	{ "CSPF_FixedAttributes"      ,C4V_Int,      CSPF_FixedAttributes },
 	{ "CSPF_NoScenarioInit"       ,C4V_Int,      CSPF_NoScenarioInit },
-	{ "CSPF_NoEliminationCheck"   ,C4V_Int,      CSPF_NoEliminationCheck },
+	{ "CSPF_DoEliminationCheck"   ,C4V_Int,      CSPF_DoEliminationCheck },
 	{ "CSPF_Invisible"            ,C4V_Int,      CSPF_Invisible },
 	{ "CSPF_NoScenarioSave"       ,C4V_Int,      CSPF_NoScenarioSave },
 

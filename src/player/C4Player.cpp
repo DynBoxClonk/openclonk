@@ -66,7 +66,7 @@ C4Player::C4Player() : C4PlayerInfoCore(), C4PropList(GetPropListPrototype(C4Pla
 	LastControlType = PCID_None;
 	LastControlID = 0;
 	pMsgBoardQuery = nullptr;
-	NoEliminationCheck = false;
+	DoEliminationCheck = false;
 	Evaluated = false;
 	ZoomLimitMinWdt = ZoomLimitMinHgt = ZoomLimitMaxWdt = ZoomLimitMaxHgt = ZoomWdt = ZoomHgt = 0;
 	ZoomLimitMinVal = ZoomLimitMaxVal = ZoomVal = Fix0;
@@ -282,7 +282,7 @@ bool C4Player::Init(int32_t iAtClient, const char *szAtClientName,
 	Status=PS_Normal;
 	ID = pInfo->GetID();
 	Team = pInfo->GetTeam();
-	NoEliminationCheck = pInfo->IsNoEliminationCheck();
+	DoEliminationCheck = pInfo->HasEliminationCheck();
 
 	// At client
 	AtClient=iAtClient; SCopy(szAtClientName,AtClientName,C4MaxTitle);
@@ -1013,14 +1013,17 @@ bool C4Player::LoadRuntimeData(C4Group &hGroup, C4ValueNumbers * numbers)
 
 void C4Player::CheckElimination()
 {
-	// Standard elimination: no crew
-	if (!Crew.GetFirstObject())
-		// Already eliminated safety
-		if (!Eliminated)
-			// No automatic elimination desired?
-			if (!NoEliminationCheck)
-				// Do elimination!
-				Eliminate();
+	// No automatic elimination desired?
+	// Already eliminated safety
+	if (DoEliminationCheck && !Eliminated)
+	{
+		// Standard elimination: no crew
+		if (!Crew.GetFirstObject())
+		{
+			// Do elimination!
+			Eliminate();
+		}
+	}
 }
 
 void C4Player::UpdateView()
@@ -1818,6 +1821,13 @@ void C4Player::SetPropertyByS(C4String * k, const C4Value & to)
 	{
 		switch(k - &Strings.P[0])
 		{
+			case P_EliminationCheck:
+			{
+				bool active = to.getBool();
+				GetInfo()->SetEliminationCheck(active);
+				DoEliminationCheck = GetInfo()->HasEliminationCheck();
+				return;
+			}
 			case P_Score: CurrentScore = to.getInt(); return;
 		}
 	}
@@ -1847,6 +1857,13 @@ bool C4Player::GetPropertyByS(const C4String *k, C4Value *pResult) const
 			case P_Name:         *pResult = C4VString(Name);          return true;
 			case P_Type:         *pResult = C4VInt(GetType());        return true;
 			case P_CrewSkin:     *pResult = C4VInt(PrefClonkSkin);    return true;
+			case P_EliminationCheck:    *pResult = C4VBool(DoEliminationCheck);    return true;
+			case P_ExtraID:
+			{
+				C4PlayerInfo *info = Game.PlayerInfos.GetPlayerInfoByID(ID); // see GetInfo(), but I got a compile error using it
+				*pResult = info ? C4VPropList(C4Id2Def(info->GetScriptPlayerExtraID())) : C4VNull;
+				return true;
+			}
 			case P_InitialScore: *pResult = C4VInt(InitialScore);     return true;
 			case P_Score:        *pResult = C4VInt(CurrentScore);     return true;
 			case P_ZoomLimit_MaxWidth:  *pResult = C4VInt((ZoomLimitMaxWdt || ZoomLimitMaxHgt) ? ZoomLimitMaxWdt : C4VP_DefMaxViewRangeX); return true;
@@ -1855,12 +1872,6 @@ bool C4Player::GetPropertyByS(const C4String *k, C4Value *pResult) const
 	        case P_ZoomLimit_MinWidth:  *pResult = C4VInt((ZoomLimitMinWdt || ZoomLimitMinHgt) ? ZoomLimitMinWdt : C4VP_DefMinViewRangeX); return true;
 	        case P_ZoomLimit_MinHeight: *pResult = C4VInt(ZoomLimitMinHgt); return true;
 	        case P_ZoomLimit_MinValue:  *pResult = C4VInt(fixtoi(ZoomLimitMinVal, 100)); return true;
-			case P_ExtraID: // Gives me a error: jump to case label [-fpermissive] caused by the line *info if I use this at any of the earlier cases..
-			{
-				C4PlayerInfo *info = Game.PlayerInfos.GetPlayerInfoByID(ID); // see GetInfo(), but I got a compile error using it
-				*pResult = info ? C4VPropList(C4Id2Def(info->GetScriptPlayerExtraID())) : C4VNull;
-				return true;
-			}
 		}
 	}
 	return C4PropList::GetPropertyByS(k, pResult);
@@ -1871,11 +1882,12 @@ C4ValueArray * C4Player::GetProperties() const
 	C4ValueArray * a = C4PropList::GetProperties();
 	int i;
 	i = a->GetSize();
-	a->SetSize(i + 13);
+	a->SetSize(i + 14);
 	(*a)[i++] = C4VString(&::Strings.P[P_ID]);
 	(*a)[i++] = C4VString(&::Strings.P[P_Name]);
 	(*a)[i++] = C4VString(&::Strings.P[P_Type]);
 	(*a)[i++] = C4VString(&::Strings.P[P_CrewSkin]);
+	(*a)[i++] = C4VString(&::Strings.P[P_EliminationCheck]);
 	(*a)[i++] = C4VString(&::Strings.P[P_ExtraID]);
 	(*a)[i++] = C4VString(&::Strings.P[P_InitialScore]);
 	(*a)[i++] = C4VString(&::Strings.P[P_Score]);

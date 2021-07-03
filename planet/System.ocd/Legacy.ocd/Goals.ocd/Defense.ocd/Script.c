@@ -54,7 +54,7 @@ public func Construction()
 		{key = "kills", title = Scoreboard_Kill, sorted = true, desc = true, default = "0", priority = 50}
 	]);
 	// Create the enemy script player, the script player should be in the attackers team (id = 2).
-	CreateScriptPlayer("$PlayerAttackers$", nil, 2, CSPF_NoEliminationCheck | CSPF_NoScenarioInit | CSPF_NoScenarioSave, GetID());
+	CreateScriptPlayer("$PlayerAttackers$", nil, 2, CSPF_NoScenarioInit | CSPF_NoScenarioSave, GetID());
 	return _inherited(...);
 }
 

@@ -91,6 +91,7 @@ C4StringTable::C4StringTable()
 	P[P_Stop] = "Stop";
 	P[P_Timer] = "Timer";
 	P[P_Effect] = "Effect";
+	P[P_EliminationCheck] = "RequireCrew";
 	P[P_Damage] = "Damage";
 	P[P_Collectible] = "Collectible";
 	P[P_Touchable] = "Touchable";

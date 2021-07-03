@@ -20,7 +20,7 @@ protected func Initialize()
 {
 	// Create a script player for some tests.
 	script_plr = nil;
-	CreateScriptPlayer("PowerBuddy", RGB(0, 0, 255), nil, CSPF_NoEliminationCheck);
+	CreateScriptPlayer("PowerBuddy", RGB(0, 0, 255));
 	return;
 }
 
@@ -636,7 +636,7 @@ global func Test11_OnStart(proplist plr)
 	{
 		ScheduleCall(nil, "EliminatePlayer", 18 * 36, 0, script_plr);
 		// Rejoin the script player for other tests.
-		ScheduleCall(nil, "CreateScriptPlayer", 21 * 36, 0, "PowerBuddy", RGB(0, 0, 255), nil, CSPF_NoEliminationCheck);	
+		ScheduleCall(nil, "CreateScriptPlayer", 21 * 36, 0, "PowerBuddy", RGB(0, 0, 255));	
 	}
 	
 	// Log what the test is about.
@@ -657,7 +657,7 @@ global func Test11_OnFinished()
 	ClearScheduleCall(nil, "EliminatePlayer");
 	ClearScheduleCall(nil, "CreateScriptPlayer");	
 	if (script_plr == nil)
-		CreateScriptPlayer("PowerBuddy", RGB(0, 0, 255), nil, CSPF_NoEliminationCheck);	
+		CreateScriptPlayer("PowerBuddy", RGB(0, 0, 255));	
 	// Remove wind generator, steam engine, flagpole, shipyard, airship.
 	RemoveAll(Find_Or(Find_ID(WindGenerator), Find_ID(SteamEngine), Find_ID(Compensator), Find_ID(Shipyard), Find_ID(Airship)));
 	return;

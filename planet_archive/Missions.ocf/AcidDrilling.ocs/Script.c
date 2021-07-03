@@ -31,7 +31,7 @@ func InitializePlayer(proplist plr)
 	// First player init base
 	if (!g_was_player_init)
 	{
-		CreateScriptPlayer("POMMES", 0, 0, CSPF_FixedAttributes | CSPF_NoEliminationCheck | CSPF_Invisible);
+		CreateScriptPlayer("POMMES", 0, 0, CSPF_FixedAttributes | CSPF_Invisible);
 		InitBase(plr);
 		g_was_player_init = true;
 	}
